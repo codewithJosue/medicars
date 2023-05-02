@@ -1,18 +1,11 @@
-import Screen from "./src/components/Screen";
-import Icon from 'react-native-vector-icons/FontAwesome';
+import LoginScreen from "./src/screen/auth/LoginScreen";
 
 const App = () => {
 
   return (
-    <Screen>
-      <Icon.Button
-        name="facebook"
-        backgroundColor="#3b5998"
-        onPress={()=> console.log('onpress')}
-      >
-        Login with Facebook
-      </Icon.Button>
-    </Screen>
+
+      <LoginScreen />
+
   )
 }
 

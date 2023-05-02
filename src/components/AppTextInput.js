@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     flexDirection: 'row',
     width: '100%',
-    padding: 0,
+    padding: 10,
     marginVertical: 5,
   },
   icon: {
