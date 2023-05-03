@@ -1,4 +1,4 @@
-package com.medicartapp;
+package com.medicars;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
