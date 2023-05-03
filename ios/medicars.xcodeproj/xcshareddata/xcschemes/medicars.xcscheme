@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "medicartApp.app"
-               BlueprintName = "medicartApp"
-               ReferencedContainer = "container:medicartApp.xcodeproj">
+               BuildableName = "medicars.app"
+               BlueprintName = "medicars"
+               ReferencedContainer = "container:medicars.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "medicartAppTests.xctest"
-               BlueprintName = "medicartAppTests"
-               ReferencedContainer = "container:medicartApp.xcodeproj">
+               BuildableName = "medicarsTests.xctest"
+               BlueprintName = "medicarsTests"
+               ReferencedContainer = "container:medicars.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "medicartApp.app"
-            BlueprintName = "medicartApp"
-            ReferencedContainer = "container:medicartApp.xcodeproj">
+            BuildableName = "medicars.app"
+            BlueprintName = "medicars"
+            ReferencedContainer = "container:medicars.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "medicartApp.app"
-            BlueprintName = "medicartApp"
-            ReferencedContainer = "container:medicartApp.xcodeproj">
+            BuildableName = "medicars.app"
+            BlueprintName = "medicars"
+            ReferencedContainer = "container:medicars.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

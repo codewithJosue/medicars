@@ -1,5 +1,5 @@
 {
-  "name": "medicartApp",
+  "name": "medicars",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -12,6 +12,7 @@
   "dependencies": {
     "formik": "^2.2.9",
     "react": "18.1.0",
+    "react-native": "0.70.1",
     "react-native-rename": "^3.2.12",
     "react-native-vector-icons": "^9.2.0",
     "yup": "^1.1.1"
