@@ -3,7 +3,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import defaultStyles from '../config/styles';
 
-const AppTextInput = ({icon, ...otherProps}) => (
+const AppTextInput = ({icon,...otherProps}) => (
   <View style={styles.container}>
     {icon && (
       <Icon
@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
   icon: {
     paddingTop: 15,
     marginRight: 5,
-    paddingLeft:10,
+    //paddingLeft:10,
   },
 });

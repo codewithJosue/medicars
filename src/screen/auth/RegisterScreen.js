@@ -1,5 +1,5 @@
 import  { useState, useEffect } from "react";
-import { Image, StyleSheet, View, ScrollView } from "react-native";
+import { Dimensions, Image, StyleSheet, View, ScrollView } from "react-native";
 import * as Yup from "yup";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import StepIndicator from 'react-native-step-indicator';
@@ -12,6 +12,7 @@ import colors from "../../config/colors";
 import customStyles from '../../config/customStyleSteps';
 
 import defaultStyles from "../../config/styles";
+
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("El nombre es requerido").label("Name"),
@@ -30,7 +31,7 @@ const RegisterScreen = () => {
   const logo = require("../../assets/logoApp.png");
 
   const [eyePassword, setEyePassword] = useState(true);
-  const [currentPosition, setCurrentPosition] = useState(0);
+  const [currentPosition, setCurrentPosition] = useState(1);
   const [form, setForm] = useState(true);
   const [data, setData] = useState({name:'', lastName:'', phone:"",email:"",password:"", passwordRepeat:""});
 
@@ -47,14 +48,12 @@ const RegisterScreen = () => {
   };
 
 
-  useEffect(()=> {
-
-  },[currentPosition])
+  useEffect(()=> {},[currentPosition])
 
   const onPageChange = (value) => {
-
-    setCurrentPosition(currentPosition+1);
     setForm(false);
+    setCurrentPosition(currentPosition+1);
+
   }
 
 
@@ -163,73 +162,74 @@ const RegisterScreen = () => {
 
           </View>
         </AppForm>
-      ): <AppForm
-        initialValues={data}
-        onSubmit={(value)=> backPageChange(value)}
-        validationSchema={validationSchema}>
+      ): (
+        <AppForm
+          initialValues={data}
+          onSubmit={(value)=> backPageChange(value)}
+          validationSchema={validationSchema}>
+          <ScrollView>
+            <View>
+              <AppText style={styles.textDropdown}>
+                Marca
+              </AppText>
+              <SelectList
+                maxHeight={60}
+                placeholder="Seleccionar"
+                searchPlaceholder="Búsqueda"
+                boxStyles={styles.inputStyle}
+                dropdownStyles={styles.dropdownContainer}
+                searchicon={<Icon name="search-web" size={12} color={'black'} />}
+                setSelected={setSelected} data={data2} onSelect={() => alert(selected)} />
+            </View>
+            <View>
+              <AppText style={styles.textDropdown}>
+                Modelo
+              </AppText>
+              <SelectList
+                maxHeight={60}
+                placeholder="Seleccionar"
+                searchPlaceholder="Búsqueda"
+                boxStyles={styles.inputStyle}
+                dropdownStyles={styles.dropdownContainer}
+                searchicon={<Icon name="search-web" size={12} color={'black'} />}
+                setSelected={setSelected} data={data2} onSelect={() => alert(selected)} />
+            </View>
+            <View style={{flexDirection:"row", width:"35%", justifyContent:"space-between"}}>
+              <SelectList
+                inputStyles={styles.dropdownContainerText}
+                maxHeight={60}
+                placeholder="año"
+                searchPlaceholder="Búsqueda"
+                boxStyles={styles.inputStyle}
+                dropdownStyles={styles.dropdownContainerMin}
+                searchicon={<Icon name="search-web" size={12} color={'black'} />}
+                setSelected={setSelected} data={data2} onSelect={() => alert(selected)} />
+              <View style={{ margin:20 }} />
+              <SelectList
+                inputStyles={styles.dropdownContainerText}
+                maxHeight={60}
+                dropdownItemStyles={styles.dropdownContainerMin}
+                placeholder="Motor"
+                searchPlaceholder="Búsqueda"
+                boxStyles={styles.inputStyle}
+                dropdownStyles={styles.dropdownContainerMin}
+                searchicon={<Icon name="search-web" size={12} color={'black'} />}
+                setSelected={setSelected} data={data2} onSelect={() => alert(selected)} />
 
-        <ScrollView>
+            </View>
+
+          </ScrollView>
           <View>
-            <AppText style={styles.textDropdown}>
-              Marca
-            </AppText>
-            <SelectList
-              maxHeight={60}
-              placeholder="Seleccionar"
-              searchPlaceholder="Búsqueda"
-              boxStyles={styles.inputStyle}
-              dropdownStyles={styles.dropdownContainer}
-              searchicon={<Icon name="search-web" size={12} color={'black'} />}
-              setSelected={setSelected} data={data2} onSelect={() => alert(selected)} />
-          </View>
+            <View style={styles.botones}>
+              <AppButton title="Guardar" onpress={()=> console.log("guardar")} />
+                <View style={{padding:20}}/>
 
-          <View>
-            <AppText style={styles.textDropdown}>
-              Modelo
-            </AppText>
-            <SelectList
-              maxHeight={60}
-              placeholder="Seleccionar"
-              searchPlaceholder="Búsqueda"
-              boxStyles={styles.inputStyle}
-              dropdownStyles={styles.dropdownContainer}
-              searchicon={<Icon name="search-web" size={12} color={'black'} />}
-              setSelected={setSelected} data={data2} onSelect={() => alert(selected)} />
-          </View>
-          <View style={{flexDirection:"row", width:"35%", justifyContent:"space-between"}}>
-            <SelectList
-              inputStyles={styles.dropdownContainerText}
-              maxHeight={60}
-              placeholder="año"
-              searchPlaceholder="Búsqueda"
-              boxStyles={styles.inputStyle}
-              dropdownStyles={styles.dropdownContainerMin}
-              searchicon={<Icon name="search-web" size={12} color={'black'} />}
-              setSelected={setSelected} data={data2} onSelect={() => alert(selected)} />
-            <View style={{ margin:20 }} />
-            <SelectList
-              inputStyles={styles.dropdownContainerText}
-              maxHeight={60}
-              dropdownItemStyles={styles.dropdownContainerMin}
-              placeholder="Motor"
-              searchPlaceholder="Búsqueda"
-              boxStyles={styles.inputStyle}
-              dropdownStyles={styles.dropdownContainerMin}
-              searchicon={<Icon name="search-web" size={12} color={'black'} />}
-              setSelected={setSelected} data={data2} onSelect={() => alert(selected)} />
+                <SubmitButton title="Atrás" color="secondary" />
 
+            </View>
           </View>
-
-        </ScrollView>
-        <View>
-          <View style={styles.botones}>
-            <SubmitButton title="Atrás" color="secondary" />
-            <View style={{padding:40}} />
-            <AppButton title="Guardar" onpress={()=> console.log("guardar")} />
-          </View>
-        </View>
-      </AppForm>
-      }
+        </AppForm>
+      )}
 
     </Screen>
   );
@@ -237,9 +237,11 @@ const RegisterScreen = () => {
 
 export default RegisterScreen;
 
+const { height } = Dimensions.get('window');
+
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: 20
   },
   containerLogo: {
     alignSelf: "center",
@@ -248,8 +250,8 @@ const styles = StyleSheet.create({
   },
   iconPass: {
     position: "absolute",
-    padding: 30,
-    right: 0,
+    paddingTop: 15,
+    right: 10,
   },
   logo: {
     height: 100,
@@ -262,11 +264,10 @@ const styles = StyleSheet.create({
     alignSelf:"center"
   },
   botones: {
-    flexDirection:"row",
-    width:"40%",
-    justifyContent:"space-between",
-    alignContent:"space-between",
-    //marginVertical:350,
+    flexDirection: 'row',
+    width: '45%',
+    //justifyContent:'space-between',
+    //alignContent:'space-between'
   },
   dropdownContainer: {
     backgroundColor: colors.light,
@@ -293,8 +294,6 @@ const styles = StyleSheet.create({
   textDropdown: {
     marginVertical:5,
     //paddingRight:10,
-  },
-
-
+  }
 });
 
