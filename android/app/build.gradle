@@ -133,7 +133,6 @@ android {
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
-
     defaultConfig {
         applicationId "com.medicars"
         minSdkVersion rootProject.ext.minSdkVersion
