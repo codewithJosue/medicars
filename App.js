@@ -1,8 +1,8 @@
-import { createStackNavigator } from "@react-navigation/stack";
 import { Text, View, Button } from "react-native";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createDrawerNavigator } from '@react-navigation/drawer';
-createStackNavigator();
+import RootNavigations from "./src/navigations/RootNavigations";
+
 const Drawer = createDrawerNavigator();
 
 function HomeScreen() {
@@ -29,13 +29,7 @@ function DetailsScreen() {
 function App () {
 
   return (
-
-    <NavigationContainer>
-    <Drawer.Navigator>
-      <Drawer.Screen name="home" component={HomeScreen} />
-      <Drawer.Screen name="detail" component={DetailsScreen} />
-    </Drawer.Navigator>
-    </NavigationContainer>
+    <RootNavigations />
   );
 }
 

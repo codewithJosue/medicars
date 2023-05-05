@@ -1,5 +1,6 @@
 import { useState } from "react";
-import {Image, StyleSheet, View, Text} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as Yup from "yup";
 
@@ -21,8 +22,12 @@ const validationSchema = Yup.object().shape({
 })
 
 const LoginScreen = () => {
+
+  const navigation = useNavigation();
+
   const logo = require("../../assets/logoApp.png");
   const [eyePassword, setEyePassword] = useState(true);
+
   return (
     <Screen style={styles.container}>
       <View style={styles.containerLogo}>
@@ -68,27 +73,35 @@ const LoginScreen = () => {
 
       <View style={styles.containerSocial}>
         <Text style={styles.containerSocialTitle}> Iniciar sesión con redes sociales </Text>
-        <View style={styles.facebook}>
-          <Icon.Button
-            name="facebook"
-            backgroundColor="#3b5998"
-            style={styles.btnFacebook}
-          >
-            Iniciar sesión con Facebook
-          </Icon.Button>
-        </View>
-        <View>
-          <Icon.Button
-            name="google"
-            color={colors.black}
-            backgroundColor={colors.white}
-            style={styles.btnGoogle}
-          >
-            Iniciar sesión con Google
-          </Icon.Button>
-        </View>
       </View>
-      <AppButton title="Registrate" color="secondary" onpress={()=> console.log("hi")} />
+        <View style={styles.accounts}>
+
+          <View>
+            <Icon.Button
+              name="facebook"
+              backgroundColor="#3b5998"
+              style={styles.btnFacebook}
+            >
+              acebook
+            </Icon.Button>
+          </View>
+
+         <View>
+           <Icon.Button
+             name="google"
+             color={colors.black}
+             backgroundColor={colors.white}
+             style={styles.btnGoogle}
+           >
+            oogle
+           </Icon.Button>
+         </View>
+
+        </View>
+
+        <AppButton title="Registrate" color='black' onPress={()=>navigation.navigate('register')} />
+
+
     </Screen>
   );
 };
@@ -101,8 +114,8 @@ const styles = StyleSheet.create({
   },
   containerLogo: {
     alignSelf: "center",
-    marginTop: 0,
-    marginBottom: 20,
+    //marginTop: 0,
+    marginBottom: 10,
   },
   containerIconPass: {
     justifyContent: "center",
@@ -115,7 +128,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     height: 100,
-    width: 310,
+    width: 320,
   },
   text: {
     fontWeight: "bold",
@@ -129,22 +142,25 @@ const styles = StyleSheet.create({
     marginBottom:20,
   },
   btnFacebook:{
-    justifyContent:'center',
+    width:100,
   },
   containerSocial: {
     backgroundColor:colors.light,
     padding:20,
   },
-  facebook: {
-    marginVertical:10,
-  },
   btnGoogle: {
-    justifyContent:'center',
+    width:100,
   },
   containerSocialTitle:{
     position:"absolute",
     //fontWeight:"bold",
     alignSelf:"center",
+  },
+  accounts: {
+    flexDirection:'row',
+    justifyContent:'space-evenly',
+    alignContent:'center',
+    bottom:10,
   }
 
 });
