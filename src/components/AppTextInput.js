@@ -1,5 +1,5 @@
 import { Platform, StyleSheet, TextInput, View } from "react-native";
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import  Icon from  'react-native-vector-icons/MaterialCommunityIcons';
 
 import defaultStyles from '../config/styles';
 
