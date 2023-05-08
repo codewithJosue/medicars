@@ -7,7 +7,6 @@ import AvatarText from "../components/AvatarText";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { Divider, useTheme } from "@rneui/themed";
 
 const DrawerContent = (props) => {
 
@@ -16,7 +15,6 @@ const DrawerContent = (props) => {
     navigation.navigate(screen);
   };
 
-  const { theme } = useTheme();
 
   return (
   <View style={{flex:1}}>
@@ -36,13 +34,21 @@ const DrawerContent = (props) => {
               </View>
             </View>
           </View>
-          <Divider width={2} color={theme?.colors?.grey0} />
+
+          <DrawerItem
+            label="Inicio"
+            icon={({color, size}) => (
+              <Icon name="home" color={color} size={size} />
+            )}
+            onPress={() => onchangeScreen('home')}
+          />
+
             <DrawerItem
               label="Adicionar Vehículos"
               icon={({color, size}) => (
                 <Icon name="plus-circle" color={color} size={size} />
               )}
-              onPress={() => onchangeScreen('home')}
+              onPress={() => onchangeScreen('addVehicle')}
             />
             <DrawerItem
               label="Historial Mantenimientos"
@@ -58,7 +64,7 @@ const DrawerContent = (props) => {
               )}
               onPress={() => onchangeScreen('setting')}
             />
-           <Divider width={1} />
+
             <DrawerItem
               label="Consultar Estado Orden"
               icon={({color, size}) => (
@@ -80,7 +86,7 @@ const DrawerContent = (props) => {
             )}
             onPress={() => onchangeScreen('support')}
           />
-          <Divider width={1} />
+
           <DrawerItem
             label="Cambiar contraseña"
             icon={({color, size}) => (
@@ -97,7 +103,6 @@ const DrawerContent = (props) => {
             onPress={() => onchangeScreen('support')}
           />
 
-          <Divider width={1} />
         </View>
 
     </DrawerContentScrollView>

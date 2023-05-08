@@ -1,15 +1,30 @@
-import { Avatar } from '@rneui/themed';
 import { useState } from "react";
+import { StyleSheet,View } from "react-native";
+import { AppText } from "./index";
 
 const AvatarText = ({size='small'}) => {
 
-  const [avatar, setAvatar] = useState("Josue Flores");
+  const [avatar, setAvatar] = useState("Josue");
 
   return (
-    <Avatar size={size} rounded title={avatar.substring(0, 2).toLocaleUpperCase()}
-            containerStyle={{ backgroundColor: "blue" }}   />
+    <View style={styles.container}>
+    <AppText>
+      {avatar.substring(0, 2).toLocaleUpperCase()}
+    </AppText>
+    </View>
   )
 }
 
 export default AvatarText;
+
+const styles = StyleSheet.create({
+  container:{
+    width:30,
+    height:30,
+    borderRadius:25,
+    backgroundColor:'blue',
+    justifyContent:'center',
+    padding:5,
+  }
+})
 

@@ -1,8 +1,8 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerContent from "./DrawerContent";
 
-import MaintenanceHistory from '../screen/MaintenanceHistory';
-import PurchaseHistory from '../screen/PurchaseHistory';
+import Home from '../screen/Home';
+import AddVehicles from '../screen/AddVehicles'
 
 
 
@@ -13,8 +13,8 @@ const Drawer = () => {
     <RootDrawer.Navigator
       drawerContent={(props) => <DrawerContent {...props} />}
     >
-      <RootDrawer.Screen name="historyMaintenances" component={MaintenanceHistory} />
-      <RootDrawer.Screen name="historyPurchase" component={PurchaseHistory} />
+      <RootDrawer.Screen name="home" component={Home} />
+      <RootDrawer.Screen name="addVehicle" component={AddVehicles} />
     </RootDrawer.Navigator>
   )
 }

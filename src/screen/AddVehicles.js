@@ -1,5 +1,13 @@
-import { Text } from "react-native";
+import { AppText } from "../components";
 
-const AddVehicles = () => <Text>Adicionar vehiculos</Text>
+const AddVehicles = () => {
+  return (
+    <>
+      <AppText>
+        add vehiculos
+      </AppText>
+    </>
+  )
+}
 
 export default AddVehicles;
