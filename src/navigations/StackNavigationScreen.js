@@ -73,7 +73,6 @@ const theme = useTheme();
 export default StackNavigationScreen;
 
 const styles = StyleSheet.create({
-
     heading: {
       color: 'white',
       fontSize: 22,
