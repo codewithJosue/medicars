@@ -3,15 +3,17 @@ import { Dimensions, Image, StyleSheet, View, ScrollView } from "react-native";
 import * as Yup from "yup";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import StepIndicator from 'react-native-step-indicator';
-import SelectList from 'react-native-dropdown-select-list';
 
 
 import {AppButton,AppText,Screen} from "../../components";
 import { AppForm, AppFormField, SubmitButton } from "../../components/forms";
 import colors from "../../config/colors";
+
 import customStyles from '../../config/customStyleSteps';
 
 import defaultStyles from "../../config/styles";
+import AppSelectList from "../../components/AppSelectList";
+import { Divider } from "@rneui/base";
 
 
 const validationSchema = Yup.object().shape({
@@ -168,66 +170,39 @@ const RegisterScreen = () => {
           onSubmit={(value)=> backPageChange(value)}
           validationSchema={validationSchema}>
           <ScrollView>
-            <View>
-              <AppText style={styles.textDropdown}>
-                Marca
-              </AppText>
-              <SelectList
-                maxHeight={60}
-                placeholder="Seleccionar"
-                searchPlaceholder="Búsqueda"
-                boxStyles={styles.inputStyle}
-                dropdownStyles={styles.dropdownContainer}
-                searchicon={<Icon name="search-web" size={12} color={'black'} />}
-                setSelected={setSelected} data={data2} onSelect={() => alert(selected)} />
-            </View>
-            <View>
-              <AppText style={styles.textDropdown}>
-                Modelo
-              </AppText>
-              <SelectList
-                maxHeight={60}
-                placeholder="Seleccionar"
-                searchPlaceholder="Búsqueda"
-                boxStyles={styles.inputStyle}
-                dropdownStyles={styles.dropdownContainer}
-                searchicon={<Icon name="search-web" size={12} color={'black'} />}
-                setSelected={setSelected} data={data2} onSelect={() => alert(selected)} />
-            </View>
-            <View style={{flexDirection:"row", width:"35%", justifyContent:"space-between"}}>
-              <SelectList
-                inputStyles={styles.dropdownContainerText}
-                maxHeight={60}
-                placeholder="año"
-                searchPlaceholder="Búsqueda"
-                boxStyles={styles.inputStyle}
-                dropdownStyles={styles.dropdownContainerMin}
-                searchicon={<Icon name="search-web" size={12} color={'black'} />}
-                setSelected={setSelected} data={data2} onSelect={() => alert(selected)} />
-              <View style={{ margin:20 }} />
-              <SelectList
-                inputStyles={styles.dropdownContainerText}
-                maxHeight={60}
-                dropdownItemStyles={styles.dropdownContainerMin}
-                placeholder="Motor"
-                searchPlaceholder="Búsqueda"
-                boxStyles={styles.inputStyle}
-                dropdownStyles={styles.dropdownContainerMin}
-                searchicon={<Icon name="search-web" size={12} color={'black'} />}
-                setSelected={setSelected} data={data2} onSelect={() => alert(selected)} />
 
+            <View style={{zIndex:4}}>
+              <AppText style={styles.textDropdown}>Marca</AppText>
+              <AppSelectList setSelected={setSelected}  data={data2} />
             </View>
 
-          </ScrollView>
+            <View style={{zIndex:3}}>
+              <AppText  style={styles.textDropdown}>Modelo</AppText>
+              <AppSelectList setSelected={setSelected}  data={data2} />
+            </View>
+
+              <View style={{zIndex:2, flexDirection:"row", justifyContent:"space-between"}}>
+                <View>
+                  <AppText style={styles.textDropdown}>Motor</AppText>
+                  <AppSelectList setSelected={setSelected} min={false}  data={data2} />
+                </View>
+                <Divider orientation="vertical"  />
+                <View>
+                  <AppText style={styles.textDropdown}>Año</AppText>
+                  <AppSelectList setSelected={setSelected} min={false}  data={data2} />
+                </View>
+              </View>
+
           <View>
             <View style={styles.botones}>
               <AppButton title="Guardar" onpress={()=> console.log("guardar")} />
                 <View style={{padding:20}}/>
 
-                <SubmitButton title="Atrás" color="secondary" />
+                <SubmitButton title="Atrás" color="black" />
 
             </View>
           </View>
+          </ScrollView>
         </AppForm>
       )}
 
@@ -241,7 +216,7 @@ const { height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20
+    padding: 10,
   },
   containerLogo: {
     alignSelf: "center",
@@ -266,8 +241,8 @@ const styles = StyleSheet.create({
   botones: {
     flexDirection: 'row',
     width: '45%',
-    //justifyContent:'space-between',
-    //alignContent:'space-between'
+    marginTop:100,
+    bottom:0,
   },
   dropdownContainer: {
     backgroundColor: colors.light,
@@ -294,6 +269,13 @@ const styles = StyleSheet.create({
   textDropdown: {
     marginVertical:5,
     //paddingRight:10,
-  }
+  },
+  containerMotorYear: {
+    flexDirection: "row",
+    padding: 2,
+    justifyContent: "space-between",
+    width: "42%"
+  },
+
 });
 

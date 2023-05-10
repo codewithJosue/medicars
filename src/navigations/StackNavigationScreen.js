@@ -1,16 +1,16 @@
-import Image, { TouchableOpacity, Platform, View, Text, StyleSheet } from "react-native";
+import Image, { Platform, StyleSheet, View } from "react-native";
 import { DrawerActions, useTheme } from "@react-navigation/native";
-import { getHeaderTitle, HeaderBackButton, HeaderTitle } from "@react-navigation/elements";
-import { Header } from '@rneui/themed';
+import { Header, withBadge } from "@rneui/themed";
 import {createStackNavigator} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import AvatarText from "../components/AvatarText";
 const image = require('../assets/logoApp.png');
 
 import {Home, AddVehicles} from '../screen/';
 
 const Stack = createStackNavigator();
+
+const BadgedIcon = withBadge(1)(Icon);
 
 const HeaderLogo = () => (
 
@@ -45,11 +45,19 @@ const theme = useTheme();
               color: '#fff',
               onPress: ()=> navigation.dispatch(DrawerActions.openDrawer())
             }} centerComponent={{text:"Medicars", style: styles.heading}}
-                     rightComponent={{
-                       icon: 'shopping-cart',
-                       color: '#fff',
-                     }}
-            />
+                     rightComponent={()=> (
+                       <>
+                         <View style={{ position: 'absolute', top: -10, right:8 }}>
+                           <BadgedIcon
+                             type="ionicon"
+                             name="ios-chatbubbles" />
+                         </View>
+                         <Icon name='shopping-cart' size={25} color='white' />
+                       </>
+                     )}
+            >
+
+            </Header>
 
           )
         },

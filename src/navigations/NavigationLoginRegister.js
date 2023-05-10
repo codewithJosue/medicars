@@ -1,6 +1,6 @@
-import { Text, Platform, View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import {createStackNavigator} from '@react-navigation/stack';
-import { DrawerActions, useTheme } from "@react-navigation/native";
+import { useTheme } from "@react-navigation/native";
 
 
 const Stack = createStackNavigator();
@@ -8,7 +8,6 @@ const Stack = createStackNavigator();
 //screens
 import {LoginScreen, RegisterScreen} from '../screen/auth';
 import { Header } from "@rneui/themed";
-//import colors from '../config/colors';
 
 const NavigationLoginRegister = () => {
 
@@ -20,7 +19,8 @@ const NavigationLoginRegister = () => {
       header: ({navigation,route})=> {
         if(route.name ==='login')
           return (
-            <Header backgroundColor='black'  centerComponent={{text: "Medicars", style: styles.heading}}
+            <Header backgroundColor='black'
+                    centerComponent={{text: "Medicars", style: styles.heading}}
             />
           )
 

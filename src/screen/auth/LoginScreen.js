@@ -32,7 +32,7 @@ const LoginScreen = () => {
     <Screen style={styles.container}>
       <View style={styles.containerLogo}>
         <Image style={styles.logo} source={logo} />
-        <AppText style={styles.text}>Inicio de Sesion</AppText>
+        <AppText style={styles.text}>Inicio de Sesión</AppText>
       </View>
       <AppForm
         initialValues={{ email: "", password: "" }}
@@ -99,7 +99,9 @@ const LoginScreen = () => {
 
         </View>
 
-        <AppButton title="Registrate" color='black' onPress={()=>navigation.navigate('register')} />
+        <View style={{top:20}}>
+          <AppButton title="Registrate" color='black' onPress={()=>navigation.navigate('register')} />
+        </View>
 
 
     </Screen>
@@ -114,7 +116,6 @@ const styles = StyleSheet.create({
   },
   containerLogo: {
     alignSelf: "center",
-    //marginTop: 0,
     marginBottom: 10,
   },
   containerIconPass: {
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: "bold",
     fontSize: 20,
-    top:20,
+    top:10,
     alignSelf:"center"
   },
   forgoutPass: {
@@ -145,7 +146,7 @@ const styles = StyleSheet.create({
     width:100,
   },
   containerSocial: {
-    backgroundColor:colors.light,
+    backgroundColor:colors.white,
     padding:20,
   },
   btnGoogle: {
@@ -153,14 +154,14 @@ const styles = StyleSheet.create({
   },
   containerSocialTitle:{
     position:"absolute",
-    //fontWeight:"bold",
+    fontWeight:"bold",
     alignSelf:"center",
   },
   accounts: {
     flexDirection:'row',
     justifyContent:'space-evenly',
     alignContent:'center',
-    bottom:10,
+    bottom:0,
   }
 
 });
