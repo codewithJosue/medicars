@@ -1,11 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
-import StackNavigationLoginRegister from "./StackNavigationLoginRegister";
+import Drawer from "./Drawer";
 
 const RootNavigations = () => {
 
   return (
     <NavigationContainer>
-      <StackNavigationLoginRegister />
+      <Drawer />
     </NavigationContainer>
   );
 };

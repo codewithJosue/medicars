@@ -13,7 +13,6 @@ import customStyles from "../../config/customStyleSteps";
 
 import defaultStyles from "../../config/styles";
 import AppSelectList from "../../components/AppSelectList";
-import { Divider } from "@rneui/base";
 
 
 const validationSchema = Yup.object().shape({
@@ -185,7 +184,7 @@ const RegisterScreen = () => {
 
                 <AppSelectList placeholder="Seleccione el año" setSelected={setSelected} min={false} data={data2} />
               </View>
-              <Divider orientation="vertical" />
+
               <View>
                 <AppSelectList placeholder="Seleccione el motor" setSelected={setSelected} min={false} data={data2} />
               </View>

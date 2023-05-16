@@ -12,6 +12,7 @@ const img = require("../assets/logoApp-icon.png");
 const StackNavigationLoginRegister = () => {
 
   //const {colors} = useTheme();
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -29,7 +30,11 @@ const StackNavigationLoginRegister = () => {
         name="login"
         options={{
           title: "",
-          headerLeft: () => <LogoHeader />,
+          headerTitleAlign: "center",
+          headerTitle: () => (
+            <LogoHeader />
+
+          ),
         }}
         component={LoginScreen}
       />
@@ -39,6 +44,7 @@ const StackNavigationLoginRegister = () => {
         component={RegisterScreen}
         options={({ navigation, route }) => ({
           title: "",
+          headerTitleAlign: "center",
           headerLeft: () => (
 
             <>
@@ -51,11 +57,9 @@ const StackNavigationLoginRegister = () => {
                 />
               </View>
             </>
-
           ),
-          headerRight: () => (
-            //<Image resizeMode="center" style={{ width: 120, height: 200 }} source={img} />
-            <LogoHeader left={150} />
+          headerTitle: () => (
+            <LogoHeader />
           ),
         })}
       />
