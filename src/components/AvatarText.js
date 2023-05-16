@@ -1,30 +1,15 @@
 import { useState } from "react";
-import { StyleSheet,View } from "react-native";
-import { AppText } from "./index";
+import { Avatar } from "react-native-paper";
 
-const AvatarText = ({size='small'}) => {
+const AvatarText = ({size=20}) => {
 
   const [avatar, setAvatar] = useState("Josue");
 
   return (
-    <View style={styles.container}>
-    <AppText>
-      {avatar.substring(0, 2).toLocaleUpperCase()}
-    </AppText>
-    </View>
+    <Avatar.Text size={size} label={avatar.substring(0, 2).toLocaleUpperCase()} />
   )
 }
 
 export default AvatarText;
 
-const styles = StyleSheet.create({
-  container:{
-    width:30,
-    height:30,
-    borderRadius:25,
-    backgroundColor:'blue',
-    justifyContent:'center',
-    padding:5,
-  }
-})
 

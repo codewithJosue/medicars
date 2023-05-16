@@ -26,7 +26,7 @@ export default AppTextInput;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: defaultStyles.colors.light,
-    borderRadius: 5,
+    borderRadius: 25,
     flexDirection: 'row',
     width: '100%',
     padding: Platform.OS === 'android' ? 0 : 5,

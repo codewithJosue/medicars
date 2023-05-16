@@ -1,12 +1,11 @@
 import RootNavigations from "./src/navigations/RootNavigations";
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-
+import { Provider as PaperProvider } from 'react-native-paper';
 function App () {
 
   return (
-    <SafeAreaProvider>
+    <PaperProvider>
       <RootNavigations />
-    </SafeAreaProvider>
+    </PaperProvider>
   );
 }
 

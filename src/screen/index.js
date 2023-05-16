@@ -1,4 +1,5 @@
 import Home from "./Home";
 import AddVehicles from "./AddVehicles";
+import Account from "./Account";
 
-export  {Home, AddVehicles }
+export  {Account,Home, AddVehicles }

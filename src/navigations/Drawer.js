@@ -1,9 +1,6 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerContent from "./DrawerContent";
-import Image, { View } from "react-native";
 
-import Home from '../screen/Home';
-import AddVehicles from '../screen/AddVehicles'
 import StackNavigationScreen from "./StackNavigationScreen";
 
 const RootDrawer = createDrawerNavigator();

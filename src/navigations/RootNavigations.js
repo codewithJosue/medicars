@@ -1,15 +1,13 @@
 import { NavigationContainer } from "@react-navigation/native";
-
-import NavigationLoginRegister from "./NavigationLoginRegister";
-import Drawer from "./Drawer";
+import StackNavigationLoginRegister from "./StackNavigationLoginRegister";
 
 const RootNavigations = () => {
 
   return (
     <NavigationContainer>
-      <Drawer />
+      <StackNavigationLoginRegister />
     </NavigationContainer>
-  )
-}
+  );
+};
 
 export default RootNavigations;

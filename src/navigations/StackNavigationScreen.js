@@ -1,30 +1,16 @@
-import Image, { Platform, StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, TouchableOpacity } from "react-native";
 import { DrawerActions, useTheme } from "@react-navigation/native";
-import { Header, withBadge } from "@rneui/themed";
+import {Appbar} from 'react-native-paper';
 import {createStackNavigator} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const image = require('../assets/logoApp.png');
+import {AddVehicles} from '../screen/';
 
-import {Home, AddVehicles} from '../screen/';
+import BottomTabs from "./BottomTabs";
+import route from "./route";
 
 const Stack = createStackNavigator();
-
-const BadgedIcon = withBadge(1)(Icon);
-
-const HeaderLogo = () => (
-
-    <Image resizeMode="cover" style={{
-      width:150,
-      height:36,
-      resizeMode:"contain",
-      alignSelf:'center',
-      marginLeft: Platform.OS === "android" ? "50%" : "0%"
-    }}
-           source={image}
-    />
-
-)
 
 const StackNavigationScreen = () => {
 
@@ -39,41 +25,52 @@ const theme = useTheme();
           ? options.headerTitle
             : options.title !== undefined
           ? options.title : route.name;
-          return (
-            <Header backgroundColor='black' leftComponent={{
-              icon: 'menu',
-              color: '#fff',
-              onPress: ()=> navigation.dispatch(DrawerActions.openDrawer())
-            }} centerComponent={{text:"Medicars", style: styles.heading}}
-                     rightComponent={()=> (
-                       <>
-                         <View style={{ position: 'absolute', top: -10, right:8 }}>
-                           <BadgedIcon
-                             type="ionicon"
-                             name="ios-chatbubbles" />
-                         </View>
-                         <Icon name='shopping-cart' size={25} color='white' />
-                       </>
-                     )}
-            >
 
-            </Header>
+          return (
+            <Appbar.Header theme={{colors: {primary: theme.colors.background}}}>
+              {back ? (
+                <Appbar.BackAction
+                  style={styles.back}
+                  onPress={navigation.goBack}
+                  color={theme.colors.primary}
+                />
+              ) : (
+                <TouchableOpacity
+                  style={{marginLeft: 10}}
+                  onPress={() => {
+                    navigation.dispatch(DrawerActions.openDrawer());
+                  }}>
+                  <Icon name="align-left" size={25} color={theme.colors.primary} />
+                </TouchableOpacity>
+              )}
+              <Appbar.Content
+                style={{marginLeft: Platform.OS === 'android' && 160}}
+                title={
+                  title && (
+                    <MaterialCommunityIcons
+                      style={{marginRight: 10}}
+                      name="car"
+                      size={20}
+                      color={theme.colors.primary}
+                    />
+                  )
+                }
+                titleStyle={{
+                  fontSize: 18,
+                  fontWeight: 'bold',
+                  color: theme.colors.primary,
+                }}
+              />
+            </Appbar.Header>
 
           )
         },
       }}
     >
 
-      <Stack.Screen
-        name="home"
-        component={Home}
+      <Stack.Screen name='initial' component={BottomTabs} />
 
-        />
-
-      <Stack.Screen
-        name="addVehicle"
-        component={AddVehicles}
-      />
+      <Stack.Screen name={route.ADD_VEHICLE} component={AddVehicles} />
     </Stack.Navigator>
   )
 }

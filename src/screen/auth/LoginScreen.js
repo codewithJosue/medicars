@@ -31,7 +31,7 @@ const LoginScreen = () => {
   return (
     <Screen style={styles.container}>
       <View style={styles.containerLogo}>
-        <Image style={styles.logo} source={logo} />
+        {/*<Image style={styles.logo} source={logo} />*/}
         <AppText style={styles.text}>Inicio de Sesión</AppText>
       </View>
       <AppForm
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   },
   containerLogo: {
     alignSelf: "center",
-    marginBottom: 10,
+    marginBottom: 20,
   },
   containerIconPass: {
     justifyContent: "center",
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   },
   forgoutPass: {
     textAlign: "right",
-    color: colors.secondary,
+    color: colors.black,
     marginBottom:20,
   },
   btnFacebook:{

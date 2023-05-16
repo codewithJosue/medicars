@@ -15,6 +15,6 @@ const styles = StyleSheet.create({
     flex:1,
     //paddingTop: Platform.OS === 'android' ?  : 0,
     paddingTop:0,
-    backgroundColor:colors.white
+    backgroundColor:colors.white,
   }
 })

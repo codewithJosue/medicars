@@ -2,16 +2,20 @@ import {
   DrawerContentScrollView,
   DrawerItem,
 } from '@react-navigation/drawer';
-import { View, StyleSheet, Text } from "react-native";
+import {
+  Title,
+  Caption,
+  Drawer,
+} from 'react-native-paper';
+import { View, StyleSheet} from "react-native";
 import AvatarText from "../components/AvatarText";
 import Icon from 'react-native-vector-icons/FontAwesome';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import route from "./route";
 
 
-const DrawerContent = (props) => {
+const DrawerContent = ({navigation, ...props}) => {
 
   const onchangeScreen = (screen) => {
-    const {navigation} = props;
     navigation.navigate(screen);
   };
 
@@ -29,26 +33,26 @@ const DrawerContent = (props) => {
                   marginLeft: 15,
                   flexDirection: 'column',
                 }}>
-                <Text style={styles.title}>Josue A. Flores </Text>
-                {/*<Text style={styles.caption}>correo@gmail.com</Text>*/}
+                <Title style={styles.title}>Josue A. Flores </Title>
+                <Caption style={styles.caption}>correo@gmail.com</Caption>
               </View>
             </View>
           </View>
 
+          <Drawer.Section style={styles.drawerSection}>
           <DrawerItem
             label="Inicio"
             icon={({color, size}) => (
               <Icon name="home" color={color} size={size} />
             )}
-            onPress={() => onchangeScreen('home')}
+            onPress={() => onchangeScreen(route.HOME)}
           />
-
             <DrawerItem
               label="Adicionar Vehículos"
               icon={({color, size}) => (
                 <Icon name="plus-circle" color={color} size={size} />
               )}
-              onPress={() => onchangeScreen('addVehicle')}
+              onPress={() => onchangeScreen(route.ADD_VEHICLE)}
             />
             <DrawerItem
               label="Historial Mantenimientos"
@@ -57,6 +61,8 @@ const DrawerContent = (props) => {
               )}
               onPress={() => onchangeScreen('profile')}
             />
+          </Drawer.Section>
+          <Drawer.Section style={styles.drawerSection}>
             <DrawerItem
               label="Historial Compras"
               icon={({color, size}) => (
@@ -87,6 +93,8 @@ const DrawerContent = (props) => {
             onPress={() => onchangeScreen('support')}
           />
 
+          </Drawer.Section>
+
           <DrawerItem
             label="Cambiar contraseña"
             icon={({color, size}) => (
@@ -95,17 +103,20 @@ const DrawerContent = (props) => {
             onPress={() => onchangeScreen('support')}
           />
 
-          <DrawerItem
-            label="Salir"
-            icon={({color, size}) => (
-              <MaterialCommunityIcons name="logout" color={color} size={size} />
-            )}
-            onPress={() => onchangeScreen('support')}
-          />
-
         </View>
 
     </DrawerContentScrollView>
+
+    <Drawer.Section style={styles.bottomDrawerSection}>
+      <DrawerItem
+        label="Cerrar Sesión"
+        labelStyle={{fontWeight:"bold", color:'red'}}
+        onPress={() => console.log('salir')}
+        icon={({color, size}) => (
+          <Icon name="sign-in" color={color} size={size} />
+        )}
+      />
+    </Drawer.Section>
   </View>
   )
 }

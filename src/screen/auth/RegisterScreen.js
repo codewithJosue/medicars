@@ -1,15 +1,15 @@
-import  { useState, useEffect } from "react";
-import { Dimensions, Image, StyleSheet, View, ScrollView } from "react-native";
+import { useEffect, useState } from "react";
+import { Dimensions, ScrollView, StyleSheet, View } from "react-native";
 import * as Yup from "yup";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import StepIndicator from 'react-native-step-indicator';
+import StepIndicator from "react-native-step-indicator";
 
 
-import {AppButton,AppText,Screen} from "../../components";
+import { AppButton, Screen } from "../../components";
 import { AppForm, AppFormField, SubmitButton } from "../../components/forms";
 import colors from "../../config/colors";
 
-import customStyles from '../../config/customStyleSteps';
+import customStyles from "../../config/customStyleSteps";
 
 import defaultStyles from "../../config/styles";
 import AppSelectList from "../../components/AppSelectList";
@@ -25,7 +25,7 @@ const validationSchema = Yup.object().shape({
     .label("Password"),
 });
 
-const labels = ["Datos Personales","Datos del vehiculo"];
+const labels = ["Datos Personales", "Datos del vehiculo"];
 
 
 const RegisterScreen = () => {
@@ -35,11 +35,11 @@ const RegisterScreen = () => {
   const [eyePassword, setEyePassword] = useState(true);
   const [currentPosition, setCurrentPosition] = useState(1);
   const [form, setForm] = useState(true);
-  const [data, setData] = useState({name:'', lastName:'', phone:"",email:"",password:"", passwordRepeat:""});
+  const [data, setData] = useState({ name: "", lastName: "", phone: "", email: "", password: "", passwordRepeat: "" });
 
   const [selected, setSelected] = useState("");
 
-  const data2 = [{key:'1',value:'Jammu & Kashmir'}];
+  const data2 = [{ key: "1", value: "Jammu & Kashmir" }];
 
 
   const onChange_text = (e, type) => {
@@ -50,19 +50,20 @@ const RegisterScreen = () => {
   };
 
 
-  useEffect(()=> {},[currentPosition])
+  useEffect(() => {
+  }, [currentPosition]);
 
   const onPageChange = (value) => {
     setForm(false);
-    setCurrentPosition(currentPosition+1);
+    setCurrentPosition(currentPosition + 1);
 
-  }
+  };
 
 
   const backPageChange = (value) => {
     setCurrentPosition(0);
     setForm(true);
-  }
+  };
 
   console.log(data);
 
@@ -77,13 +78,13 @@ const RegisterScreen = () => {
       />
 
       <View style={styles.containerLogo}>
-        <Image style={styles.logo} source={logo} />
+        {/*<Image style={styles.logo} source={logo} />*/}
       </View>
 
       {form ? (
         <AppForm
           initialValues={data}
-          onSubmit={(value)=> onPageChange(value)}
+          onSubmit={(value) => onPageChange(value)}
           validationSchema={validationSchema}>
 
           <View>
@@ -92,7 +93,7 @@ const RegisterScreen = () => {
               icon="account"
               name="name"
               value={data.name}
-              onChange={(e) => onChange_text(e, 'name')}
+              onChange={(e) => onChange_text(e, "name")}
               placeholder="Nombres"
             />
             <AppFormField
@@ -100,7 +101,7 @@ const RegisterScreen = () => {
               icon="account"
               name="lastName"
               value={data.lastName}
-              onChange={(e) => onChange_text(e, 'lastName')}
+              onChange={(e) => onChange_text(e, "lastName")}
               placeholder="Apellidos"
             />
             <AppFormField
@@ -108,7 +109,7 @@ const RegisterScreen = () => {
               icon="phone"
               name="phone"
               value={data.phone}
-              onChange={(e) => onChange_text(e, 'phone')}
+              onChange={(e) => onChange_text(e, "phone")}
               placeholder="Teléfono"
             />
             <AppFormField
@@ -119,7 +120,7 @@ const RegisterScreen = () => {
               name="email"
               placeholder="Email"
               value={data.email}
-              onChange={(e) => onChange_text(e, 'email')}
+              onChange={(e) => onChange_text(e, "email")}
               textContentType="emailAddress"
             />
             <View>
@@ -130,7 +131,7 @@ const RegisterScreen = () => {
                 name="password"
                 placeholder="Contraseña"
                 value={data.password}
-                onChange={(e) => onChange_text(e, 'password')}
+                onChange={(e) => onChange_text(e, "password")}
                 secureTextEntry={eyePassword}
                 textContentType="password"
               />
@@ -150,7 +151,7 @@ const RegisterScreen = () => {
                 secureTextEntry={eyePassword}
                 textContentType="password"
                 value={data.passwordRepeat}
-                onChange={(e) => onChange_text(e, 'passwordRepeat')}
+                onChange={(e) => onChange_text(e, "passwordRepeat")}
               />
               <Icon
                 onPress={() => setEyePassword(!eyePassword)}
@@ -164,55 +165,50 @@ const RegisterScreen = () => {
 
           </View>
         </AppForm>
-      ): (
+      ) : (
         <AppForm
           initialValues={data}
-          onSubmit={(value)=> backPageChange(value)}
+          onSubmit={(value) => backPageChange(value)}
           validationSchema={validationSchema}>
           <ScrollView>
 
-            <View style={{zIndex:4}}>
-              <AppText style={styles.textDropdown}>Marca</AppText>
-              <AppSelectList setSelected={setSelected}  data={data2} />
+            <View style={{ zIndex: 4 }}>
+              <AppSelectList placeholder="Seleccione la marca" setSelected={setSelected} data={data2} />
             </View>
 
-            <View style={{zIndex:3}}>
-              <AppText  style={styles.textDropdown}>Modelo</AppText>
-              <AppSelectList setSelected={setSelected}  data={data2} />
+            <View style={{ zIndex: 3 }}>
+              <AppSelectList placeholder="Seleccione el modelo" setSelected={setSelected} data={data2} />
             </View>
 
-              <View style={{zIndex:2, flexDirection:"row", justifyContent:"space-between"}}>
-                <View>
-                  <AppText style={styles.textDropdown}>Motor</AppText>
-                  <AppSelectList setSelected={setSelected} min={false}  data={data2} />
-                </View>
-                <Divider orientation="vertical"  />
-                <View>
-                  <AppText style={styles.textDropdown}>Año</AppText>
-                  <AppSelectList setSelected={setSelected} min={false}  data={data2} />
-                </View>
+            <View style={{ zIndex: 2, flexDirection: "row", justifyContent: "space-between" }}>
+              <View>
+
+                <AppSelectList placeholder="Seleccione el año" setSelected={setSelected} min={false} data={data2} />
               </View>
-
-          <View>
-            <View style={styles.botones}>
-              <AppButton title="Guardar" onpress={()=> console.log("guardar")} />
-                <View style={{padding:20}}/>
-
-                <SubmitButton title="Atrás" color="black" />
-
+              <Divider orientation="vertical" />
+              <View>
+                <AppSelectList placeholder="Seleccione el motor" setSelected={setSelected} min={false} data={data2} />
+              </View>
             </View>
-          </View>
+
+            <View>
+              <View style={styles.botones}>
+                <SubmitButton title="Atrás" color="black" />
+                <View style={{ padding: 20 }} />
+                <AppButton title="Guardar" onpress={() => console.log("guardar")} />
+              </View>
+            </View>
           </ScrollView>
         </AppForm>
       )}
 
     </Screen>
   );
-}
+};
 
 export default RegisterScreen;
 
-const { height } = Dimensions.get('window');
+const { height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
@@ -220,8 +216,7 @@ const styles = StyleSheet.create({
   },
   containerLogo: {
     alignSelf: "center",
-    marginTop: 0,
-    marginBottom: 20,
+    marginTop: 15,
   },
   iconPass: {
     position: "absolute",
@@ -235,46 +230,46 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: "bold",
     fontSize: 20,
-    top:20,
-    alignSelf:"center"
+    top: 20,
+    alignSelf: "center",
   },
   botones: {
-    flexDirection: 'row',
-    width: '45%',
-    marginTop:100,
-    bottom:0,
+    flexDirection: "row",
+    width: "45%",
+    marginTop: 100,
+    bottom: 0,
   },
   dropdownContainer: {
     backgroundColor: colors.light,
-    width:"100%",
-    borderRadius:10
+    width: "100%",
+    borderRadius: 10,
   },
   dropdownContainerMin: {
     backgroundColor: colors.light,
-    width:165,
-    borderRadius:10
+    width: 165,
+    borderRadius: 10,
   },
-  dropdownContainerText:{
-    width:102,
-    fontSize:12,
+  dropdownContainerText: {
+    width: 102,
+    fontSize: 12,
   },
   inputStyle: {
     backgroundColor: defaultStyles.colors.light,
     borderRadius: 5,
-    flexDirection: 'row',
-    width: '100%',
+    flexDirection: "row",
+    width: "100%",
     padding: 0,
     marginVertical: 5,
   },
   textDropdown: {
-    marginVertical:5,
+    marginVertical: 5,
     //paddingRight:10,
   },
   containerMotorYear: {
     flexDirection: "row",
     padding: 2,
     justifyContent: "space-between",
-    width: "42%"
+    width: "42%",
   },
 
 });

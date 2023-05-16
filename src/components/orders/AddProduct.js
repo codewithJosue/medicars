@@ -3,6 +3,7 @@ import { AppButton, Screen } from "../index";
 import { Carousel } from "./index";
 import { useState } from "react";
 import AppSelectList from "../AppSelectList";
+import CardImage from "../CardImage";
 
 
 const img = require('../../assets/PZ-3.jpeg');
@@ -15,10 +16,10 @@ const aceites =[{key:'1', value:"Aceite Supertech 25W60 Mineral Gl"},
 
 const AddProduct = () => {
   const [selected, setSelected] = useState([])
-  console.log(selected);
+
   return (
     <Screen>
-      <Carousel img={img}  />
+      <CardImage img={img} height={150}   />
       <View style={{margin:10}}>
 
         <View style={{zIndex:3}}>
