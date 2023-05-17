@@ -1,5 +1,5 @@
-import Home from "./Home";
+import HomeScreen from "./HomeScreen";
 import AddVehicles from "./AddVehicles";
 import Account from "./Account";
 
-export  {Account,Home, AddVehicles }
+export { Account, HomeScreen, AddVehicles };
