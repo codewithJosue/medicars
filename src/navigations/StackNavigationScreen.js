@@ -4,10 +4,11 @@ import { Appbar } from "react-native-paper";
 import { createStackNavigator } from "@react-navigation/stack";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-import BottomTabs from "./BottomTabs";
 import LogoHeader from "../components/LogoHeader";
-import { AddVehicles } from "../screen";
 import route from "./route";
+
+import BottomTabs from "./BottomTabs";
+import { AddVehicle, Order } from "../screen";
 
 const Stack = createStackNavigator();
 
@@ -63,7 +64,8 @@ const StackNavigationScreen = () => {
     >
 
       <Stack.Screen name="initial" component={BottomTabs} />
-      <Stack.Screen name={route.ADD_VEHICLE} component={AddVehicles} />
+      <Stack.Screen name={route.ORDER} component={Order} />
+      <Stack.Screen name={route.ADD_VEHICLE} component={AddVehicle} />
     </Stack.Navigator>
   );
 };

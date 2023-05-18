@@ -1,11 +1,15 @@
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import colors from "../config/colors";
 import { AppText } from "./index";
+import { useNavigation } from "@react-navigation/native";
+import route from "../navigations/route";
 
 const Card = ({ title, subTitle, image }) => {
 
+  const { navigate } = useNavigation();
+
   return (
-    <TouchableOpacity onPress={() => console.log("click image")} style={styles.card}>
+    <TouchableOpacity onPress={() => navigate(route.ORDER, { title, image })} style={styles.card}>
       <Image style={styles.image} source={image} />
       <View style={styles.detailsContainer}>
         <AppText style={styles.title}>{title}</AppText>

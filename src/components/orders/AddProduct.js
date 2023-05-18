@@ -13,12 +13,12 @@ const marcas = [{ key: "1", value: "Castrol" }, { key: "2", value: "Elf" }, { ke
 const aceites = [{ key: "1", value: "Aceite Supertech 25W60 Mineral Gl" },
   { key: "2", value: "Aceite Pennzoil Para Motor Gasolina 10W30 5 - 1Qt" }];
 
-const AddProduct = () => {
+const AddProduct = ({ order: { title, image } }) => {
   const [selected, setSelected] = useState([]);
 
   return (
     <Screen>
-      <CardImage img={img} height={150} />
+      <CardImage img={image} height={150} />
       <View style={{ margin: 10 }}>
 
         <View style={{ zIndex: 3 }}>
