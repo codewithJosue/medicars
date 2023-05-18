@@ -1,40 +1,39 @@
-import { StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import colors from "../../config/colors";
-import { AppText } from "../../components";
+import { Screen } from "../../components";
+import Card from "../../components/Card";
 
-const listings = [
-  {
-    id: 1,
-    title: "Aceite Penzol",
-    price: 100,
-    image: require("../../assets/Aceite-1.jpg"),
-  },
-  {
-    id: 2,
-    title: "Aceite Penzol",
-    price: 150,
-    image: require("../../assets/PZ-3.jpeg"),
-  },
-];
+import { services } from "../../data/services";
 
 const Services = () => {
   return (
 
-    <AppText>Services</AppText>
- 
+    <Screen style={styles.screen}>
+      <FlatList
+        data={services}
+        keyExtractor={listings => listings.id.toString()}
+        renderItem={({ item }) => (
+          <Card title={item.title} subTitle={item.price} image={item.image} />
+        )}
+        numColumns={2}
+        columnWrapperStyle={styles.column}
+      />
+    </Screen>
+
   );
 };
 
 export default Services;
 
+
 const styles = StyleSheet.create({
   screen: {
     padding: 5,
     backgroundColor: colors.light,
-    flexDirection: "row",
+  },
+  column: {
+    //flexShrink: 1,
     justifyContent: "space-between",
-    alignItems: "space-between",
-    alignContent: "space-between",
   },
 });
 
