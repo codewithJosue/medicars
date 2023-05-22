@@ -1,4 +1,5 @@
 export default Object.freeze({
+  ACCOUNT: "account",
   ABOUT: "about",
   ORDER: "order",
   EDIT_PROFILE: "edit_profile",

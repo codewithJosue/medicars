@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import color from "color";
 
-import { Account, HomeScreen } from "../screen";
+import { HomeScreen, Settings } from "../screen";
 import { useTheme } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import route from "./route";
@@ -38,11 +38,11 @@ const BottomTabs = () => {
 
         <Tab.Screen
           name="account"
-          component={Account}
+          component={Settings}
           options={{
             title: "Cuenta",
             tabBarIcon: ({ color, size }) => (
-              <Icon name="shopping-outline" color={color} size={size} />
+              <Icon name="cogs" color={color} size={size} />
             ),
 
           }}

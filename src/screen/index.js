@@ -1,6 +1,6 @@
 import HomeScreen from "./HomeScreen";
 import Order from "./Order";
-import Account from "./Account";
+import Settings from "./Settings";
 import AddVehicle from "./AddVehicle";
 
-export { Account, AddVehicle, HomeScreen, Order };
+export { AddVehicle, HomeScreen, Order, Settings };
