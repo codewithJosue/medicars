@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">medicars</string>
+    <string name="facebook_app_id">3599462877007660</string>
+    <string name="facebook_client_token">a9aaf7654d72d8075d1e80dd727e75d5</string>
 </resources>
