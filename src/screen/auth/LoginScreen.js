@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { useNavigation } from '@react-navigation/native';
-import { Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, Text, View } from "react-native";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import * as Yup from "yup";
 
 import { AppForm, AppFormField, SubmitButton } from "../../components/forms";
-import { AppText, Screen, AppButton } from "../../components";
+import { AppButton, AppText, Screen } from "../../components";
 
 import colors from "../../config/colors";
+import { fbAuth } from "../../helpers/loginFB";
 
 
 const validationSchema = Yup.object().shape({
@@ -19,7 +20,14 @@ const validationSchema = Yup.object().shape({
     .required("Ingrese su contraseña")
     .min(4, "Debe ingresar 4 caracteres como mínimo")
     .label("Password"),
-})
+});
+
+const login = async () => {
+
+  const data = await fbAuth();
+
+  console.log(data);
+};
 
 const LoginScreen = () => {
 
@@ -74,34 +82,35 @@ const LoginScreen = () => {
       <View style={styles.containerSocial}>
         <Text style={styles.containerSocialTitle}> Iniciar sesión con redes sociales </Text>
       </View>
-        <View style={styles.accounts}>
+      <View style={styles.accounts}>
 
-          <View>
-            <Icon.Button
-              name="facebook"
-              backgroundColor="#3b5998"
-              style={styles.btnFacebook}
-            >
-              acebook
-            </Icon.Button>
-          </View>
+        <View>
+          <Icon.Button
+            onPress={login}
+            name="facebook"
+            backgroundColor="#3b5998"
+            style={styles.btnFacebook}
+          >
+            acebook
+          </Icon.Button>
+        </View>
 
-         <View>
-           <Icon.Button
-             name="google"
-             color={colors.black}
-             backgroundColor={colors.white}
-             style={styles.btnGoogle}
-           >
+        <View>
+          <Icon.Button
+            name="google"
+            color={colors.black}
+            backgroundColor={colors.white}
+            style={styles.btnGoogle}
+          >
             oogle
-           </Icon.Button>
-         </View>
-
+          </Icon.Button>
         </View>
 
-        <View style={{top:20}}>
-          <AppButton title="Registrate" color='black' onPress={()=>navigation.navigate('register')} />
-        </View>
+      </View>
+
+      <View style={{ top: 20 }}>
+        <AppButton title="Registrate" color="black" onPress={() => navigation.navigate("register")} />
+      </View>
 
 
     </Screen>
@@ -123,8 +132,8 @@ const styles = StyleSheet.create({
   },
   iconPass: {
     position: "absolute",
-    paddingTop:15,
-    paddingRight:15,
+    paddingTop: 15,
+    paddingRight: 15,
     right: 0,
   },
   logo: {
@@ -134,35 +143,35 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: "bold",
     fontSize: 20,
-    top:10,
-    alignSelf:"center"
+    top: 10,
+    alignSelf: "center",
   },
   forgoutPass: {
     textAlign: "right",
     color: colors.black,
-    marginBottom:20,
+    marginBottom: 20,
   },
-  btnFacebook:{
-    width:100,
+  btnFacebook: {
+    width: 100,
   },
   containerSocial: {
-    backgroundColor:colors.white,
-    padding:20,
+    backgroundColor: colors.white,
+    padding: 20,
   },
   btnGoogle: {
-    width:100,
+    width: 100,
   },
-  containerSocialTitle:{
-    position:"absolute",
-    fontWeight:"bold",
-    alignSelf:"center",
+  containerSocialTitle: {
+    position: "absolute",
+    fontWeight: "bold",
+    alignSelf: "center",
   },
   accounts: {
-    flexDirection:'row',
-    justifyContent:'space-evenly',
-    alignContent:'center',
-    bottom:0,
-  }
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignContent: "center",
+    bottom: 0,
+  },
 
 });
 
