@@ -8,6 +8,8 @@
 
 //Facebook
 #import <FBSDKCoreKit/FBSDKCoreKit-swift.h>
+//Google
+#import <RNGoogleSignin/RNGoogleSignin.h>
 
 #if RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
@@ -141,13 +143,17 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 #endif
 
 //Facebook
-- (BOOL)application:(UIApplication *)app
+/*- (BOOL)application:(UIApplication *)app
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
   return [[FBSDKApplicationDelegate sharedInstance]application:app
                                                        openURL:url
                                                        options:options];
+}*/
+// AppDelegate.m
+- (BOOL)application:(UIApplication *)application openURL:(nonnull NSURL *)url options:(nonnull NSDictionary<NSString *,id> *)options {
+  return [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url options:options] || [RNGoogleSignin application:application openURL:url options:options];
 }
 //End facebook
 

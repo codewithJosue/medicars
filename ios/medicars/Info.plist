@@ -20,8 +20,31 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb3599462877007660</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.554003163222-atm8sj278pt9u5hmojhp971adck158or</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>3599462877007660</string>
+	<key>FacebookClientToken</key>
+	<string>a9aaf7654d72d8075d1e80dd727e75d5</string>
+	<key>FacebookDisplayName</key>
+	<string>medicars</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -70,20 +93,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-  <key>CFBundleURLTypes</key>
-  <array>
-    <dict>
-    <key>CFBundleURLSchemes</key>
-    <array>
-      <string>fb3599462877007660</string>
-    </array>
-    </dict>
-  </array>
-  <key>FacebookAppID</key>
-  <string>3599462877007660</string>
-  <key>FacebookClientToken</key>
-  <string>a9aaf7654d72d8075d1e80dd727e75d5</string>
-  <key>FacebookDisplayName</key>
-  <string>medicars</string>
 </dict>
 </plist>

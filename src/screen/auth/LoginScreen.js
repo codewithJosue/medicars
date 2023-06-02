@@ -1,39 +1,43 @@
-import { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, Text, View } from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import * as Yup from "yup";
+import {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import {StyleSheet, Text, View} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import * as Yup from 'yup';
 
-import { AppForm, AppFormField, SubmitButton } from "../../components/forms";
-import { AppButton, AppText, Screen } from "../../components";
+import {AppForm, AppFormField, SubmitButton} from '../../components/forms';
+import {AppButton, AppText, Screen} from '../../components';
 
-import colors from "../../config/colors";
-import { fbAuth } from "../../helpers/loginFB";
-
+import colors from '../../config/colors';
+import {fbAuth} from '../../helpers/loginFacebook';
+import {signIn} from '../../helpers/loginGoogle';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
-    .required("Ingrese una dirección de correo")
-    .email("Dirección de correo inválida")
-    .label("Email"),
+    .required('Ingrese una dirección de correo')
+    .email('Dirección de correo inválida')
+    .label('Email'),
   password: Yup.string()
-    .required("Ingrese su contraseña")
-    .min(4, "Debe ingresar 4 caracteres como mínimo")
-    .label("Password"),
+    .required('Ingrese su contraseña')
+    .min(4, 'Debe ingresar 4 caracteres como mínimo')
+    .label('Password'),
 });
 
 const login = async () => {
-
   const data = await fbAuth();
 
-  console.log(data);
+  console.log('FACEBOOK', data);
+};
+
+const loginGoogle = async () => {
+  const data = await signIn();
+
+  console.log('GOOGLE', data);
 };
 
 const LoginScreen = () => {
-
   const navigation = useNavigation();
 
-  const logo = require("../../assets/logoApp.png");
+  const logo = require('../../assets/logoApp.png');
   const [eyePassword, setEyePassword] = useState(true);
 
   return (
@@ -43,7 +47,7 @@ const LoginScreen = () => {
         <AppText style={styles.text}>Inicio de Sesión</AppText>
       </View>
       <AppForm
-        initialValues={{ email: "", password: "" }}
+        initialValues={{email: '', password: ''}}
         onSubmit={values => console.log(values)}
         validationSchema={validationSchema}>
         <AppFormField
@@ -68,7 +72,7 @@ const LoginScreen = () => {
           <Icon
             onPress={() => setEyePassword(!eyePassword)}
             style={styles.iconPass}
-            name={eyePassword ? "eye-off" : "eye"}
+            name={eyePassword ? 'eye-off' : 'eye'}
             size={25}
             color={eyePassword ? colors.medium : colors.secondary}
           />
@@ -80,39 +84,41 @@ const LoginScreen = () => {
       </AppForm>
 
       <View style={styles.containerSocial}>
-        <Text style={styles.containerSocialTitle}> Iniciar sesión con redes sociales </Text>
+        <Text style={styles.containerSocialTitle}>
+          {' '}
+          Iniciar sesión con redes sociales{' '}
+        </Text>
       </View>
       <View style={styles.accounts}>
-
         <View>
           <Icon.Button
             onPress={login}
             name="facebook"
             backgroundColor="#3b5998"
-            style={styles.btnFacebook}
-          >
+            style={styles.btnFacebook}>
             acebook
           </Icon.Button>
         </View>
 
         <View>
           <Icon.Button
+            onPress={loginGoogle}
             name="google"
             color={colors.black}
             backgroundColor={colors.white}
-            style={styles.btnGoogle}
-          >
+            style={styles.btnGoogle}>
             oogle
           </Icon.Button>
         </View>
-
       </View>
 
-      <View style={{ top: 20 }}>
-        <AppButton title="Registrate" color="black" onPress={() => navigation.navigate("register")} />
+      <View style={{top: 20}}>
+        <AppButton
+          title="Registrate"
+          color="black"
+          onPress={() => navigation.navigate('register')}
+        />
       </View>
-
-
     </Screen>
   );
 };
@@ -124,14 +130,14 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   containerLogo: {
-    alignSelf: "center",
+    alignSelf: 'center',
     marginBottom: 20,
   },
   containerIconPass: {
-    justifyContent: "center",
+    justifyContent: 'center',
   },
   iconPass: {
-    position: "absolute",
+    position: 'absolute',
     paddingTop: 15,
     paddingRight: 15,
     right: 0,
@@ -141,13 +147,13 @@ const styles = StyleSheet.create({
     width: 320,
   },
   text: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 20,
     top: 10,
-    alignSelf: "center",
+    alignSelf: 'center',
   },
   forgoutPass: {
-    textAlign: "right",
+    textAlign: 'right',
     color: colors.black,
     marginBottom: 20,
   },
@@ -162,17 +168,14 @@ const styles = StyleSheet.create({
     width: 100,
   },
   containerSocialTitle: {
-    position: "absolute",
-    fontWeight: "bold",
-    alignSelf: "center",
+    position: 'absolute',
+    fontWeight: 'bold',
+    alignSelf: 'center',
   },
   accounts: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    alignContent: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignContent: 'center',
     bottom: 0,
   },
-
 });
-
-

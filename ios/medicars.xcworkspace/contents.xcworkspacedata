@@ -7,4 +7,70 @@
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
+   <Group
+      location = "group:Pods"
+      name = "Targets Support Files">
+      <Group
+         location = "group:Pods/Target Support Files/Pods-medicars"
+         name = "Pods-medicars">
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars/Pods-medicars.modulemap">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars/Pods-medicars-acknowledgements.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars/Pods-medicars-acknowledgements.plist">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars/Pods-medicars-dummy.m">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars/Pods-medicars-frameworks.sh">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars/Pods-medicars-resources.sh">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars/Pods-medicars-umbrella.h">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars/Pods-medicars.debug.xcconfig">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars/Pods-medicars.release.xcconfig">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Pods/Target Support Files/Pods-medicars-medicarsTests"
+         name = "Pods-medicars-medicarsTests">
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests.modulemap">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-acknowledgements.markdown">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-acknowledgements.plist">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-dummy.m">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-frameworks.sh">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-resources.sh">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-umbrella.h">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests.debug.xcconfig">
+         </FileRef>
+         <FileRef
+            location = "group:Pods/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests.release.xcconfig">
+         </FileRef>
+      </Group>
+   </Group>
 </Workspace>

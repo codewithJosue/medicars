@@ -1,16 +1,15 @@
-import { StyleSheet, View } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
-import colors from "../config/colors";
+import {StyleSheet, View} from 'react-native';
+import {createStackNavigator} from '@react-navigation/stack';
+import colors from '../config/colors';
 //screens
-import { LoginScreen, RegisterScreen } from "../screen/auth";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import LogoHeader from "../components/LogoHeader";
+import {LoginScreen, RegisterScreen} from '../screen/auth';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import LogoHeader from '../components/LogoHeader';
 
 const Stack = createStackNavigator();
-const img = require("../assets/logoApp-icon.png");
+const img = require('../assets/logoApp-icon.png');
 
 const RootNavigationLogin = () => {
-
   //const {colors} = useTheme();
 
   return (
@@ -23,18 +22,15 @@ const RootNavigationLogin = () => {
         },
         headerTintColor: colors.text,
         headerTitleStyle: {
-          color: "#007dd7",
+          color: '#007dd7',
         },
       }}>
       <Stack.Screen
         name="login"
         options={{
-          title: "",
-          headerTitleAlign: "center",
-          headerTitle: () => (
-            <LogoHeader />
-
-          ),
+          title: '',
+          headerTitleAlign: 'center',
+          headerTitle: () => <LogoHeader />,
         }}
         component={LoginScreen}
       />
@@ -42,11 +38,10 @@ const RootNavigationLogin = () => {
       <Stack.Screen
         name="register"
         component={RegisterScreen}
-        options={({ navigation, route }) => ({
-          title: "",
-          headerTitleAlign: "center",
+        options={({navigation, route}) => ({
+          title: '',
+          headerTitleAlign: 'center',
           headerLeft: () => (
-
             <>
               <View style={styles.containerBack}>
                 <MaterialCommunityIcons
@@ -58,12 +53,9 @@ const RootNavigationLogin = () => {
               </View>
             </>
           ),
-          headerTitle: () => (
-            <LogoHeader />
-          ),
+          headerTitle: () => <LogoHeader />,
         })}
       />
-
     </Stack.Navigator>
   );
 };
@@ -76,8 +68,8 @@ const styles = StyleSheet.create({
     top: 10,
   },
   back: {
-    color: "#c2c2c2",
-    backgroundColor: "#fff",
+    color: '#c2c2c2',
+    backgroundColor: '#fff',
     borderRadius: 14,
     elevation: 3,
   },
