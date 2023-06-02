@@ -1,12 +1,11 @@
-import {
-  GoogleSignin,
-  statusCodes,
-} from '@react-native-google-signin/google-signin';
+import { GoogleSignin, statusCodes } from "@react-native-google-signin/google-signin";
 
 export const signIn = async () => {
   await GoogleSignin.configure({
     iosClientId:
-      '554003163222-atm8sj278pt9u5hmojhp971adck158or.apps.googleusercontent.com',
+      "554003163222-atm8sj278pt9u5hmojhp971adck158or.apps.googleusercontent.com",
+    androidClientId: "554003163222-e4c0o1r47ihhmgme5nbk7qhdgv4k5jee.apps.googleusercontent.com",
+
   });
 
   try {
@@ -20,12 +19,12 @@ export const signIn = async () => {
 
 const exceptionErros = error => {
   if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-    return 'Se cancelo el inicio de sesion';
+    return "Se cancelo el inicio de sesion";
   } else if (errpr.code === statusCodes.IN_PROGRESS) {
-    return 'la operacion de inicio de sesion ya esta en curso';
+    return "la operacion de inicio de sesion ya esta en curso";
   } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-    return 'los servicios de google play no estan disponibles';
+    return "los servicios de google play no estan disponibles";
   } else {
-    return 'error desconocido';
+    return "error desconocido";
   }
 };
