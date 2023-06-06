@@ -64,6 +64,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
             margin: 10,
             flexDirection: 'row',
             justifyContent: 'space-around',
+            zIndex: 999,
           }}>
           <View style={{zIndex: 3}}>
             <AppSelectList
@@ -82,7 +83,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
             />
           </View>
         </View>
-        <View style={{marginLeft: 20, flexDirection: 'row', zIndex: 1}}>
+        <View style={{marginLeft: 30, flexDirection: 'row', zIndex: 1}}>
           <AppSelectList
             placeholder="Seleccionar Aceite"
             data={aceites}
