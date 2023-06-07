@@ -1,9 +1,9 @@
 import { Formik } from "formik";
 
-const AppForm = ({initialValues, onSubmit, validationSchema, children}) => (
+const AppForm = ({ initialValues, onSubmit, validationSchema, children }) => (
 
   <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-    {()=> <>{children}</>}
+    {() => <>{children}</>}
   </Formik>
 
 );

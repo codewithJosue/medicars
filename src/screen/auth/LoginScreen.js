@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import * as Yup from "yup";
 
@@ -79,8 +79,10 @@ const LoginScreen = () => {
         </View>
 
         <SubmitButton title="Inicio de Sesión" />
+        <TouchableOpacity onPress={() => navigation.navigate("recover_password")}>
+          <AppText style={styles.forgoutPass}>Olvidaste tu contrasena?</AppText>
+        </TouchableOpacity>
 
-        <AppText style={styles.forgoutPass}>Olvidaste tu contrasena?</AppText>
       </AppForm>
 
       <View style={styles.containerSocial}>
