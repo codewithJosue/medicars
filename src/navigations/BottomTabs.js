@@ -5,6 +5,7 @@ import { HomeScreen, Settings } from "../screen";
 import { useTheme } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import route from "./route";
+import colors from "../config/colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -30,7 +31,7 @@ const BottomTabs = () => {
           options={{
             title: "Inicio",
             tabBarIcon: ({ color, size }) => (
-              <Icon name="home" color={color} size={size} />
+              <Icon name="home" color={colors.primary} size={size} />
             ),
 
           }}
@@ -42,7 +43,7 @@ const BottomTabs = () => {
           options={{
             title: "Cuenta",
             tabBarIcon: ({ color, size }) => (
-              <Icon name="cogs" color={color} size={size} />
+              <Icon name="cogs" color={colors.primary} size={size} />
             ),
 
           }}

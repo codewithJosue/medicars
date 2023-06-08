@@ -26,15 +26,15 @@ const HomeScreen = () => {
   const renderTabBar = (props) => (
     <TabBar
       {...props}
-      indicatorStyle={{ backgroundColor: theme.colors.primary }}
+      indicatorStyle={{ backgroundColor: colors.medium }}
       style={{
         backgroundColor: colors.white,
         shadowColor: theme.colors.text,
       }}
-      labelStyle={{ color: theme.colors.primary }}
+      labelStyle={{ color: colors.primary }}
       //pressColor={rippleColor}
-      activeColor={theme.colors.primary}
-      inactiveColor={theme.colors.text}
+      activeColor={colors.black}
+      inactiveColor={colors.black}
     />
   );
 

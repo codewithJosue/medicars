@@ -9,7 +9,7 @@ import LogoHeader from "../components/LogoHeader";
 const Stack = createStackNavigator();
 const img = require("../assets/logoApp-icon.png");
 
-const RootNavigationLogin = () => {
+const StackNavigationLogin = () => {
   //const {colors} = useTheme();
 
   return (
@@ -81,7 +81,7 @@ const RootNavigationLogin = () => {
   );
 };
 
-export default RootNavigationLogin;
+export default StackNavigationLogin;
 
 const styles = StyleSheet.create({
   containerBack: {

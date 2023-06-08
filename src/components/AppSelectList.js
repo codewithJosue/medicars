@@ -3,17 +3,19 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { StyleSheet } from "react-native";
 
 import colors from "../config/colors";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
-const AppSelectList = ({ data, placeholder = "Seleccionar", setSelected, min = true }) => {
+const AppSelectList = ({ data, placeholder = "Seleccionar", setSelected, width_max = true }) => {
 
   return (
     <SelectList
-      inputStyles={styles.dropdownContainerText}
+      arrowicon={<FontAwesome name="chevron-down" size={12} color={"black"} />}
+      inputStyles={[styles.dropdownContainerText, width_max ? { width: "100%" } : { width: 130 }]}
       maxHeight={100}
       placeholder={placeholder}
       searchPlaceholder="Búsqueda"
-      boxStyles={min ? styles.inputStyle : styles.inputStyleMin}
-      dropdownStyles={min ? styles.dropdownContainer : styles.dropdownContainerMin}
+      boxStyles={[styles.inputStyle, width_max ? { width: "100%" } : { width: 170 }]}
+      dropdownStyles={[styles.dropdownContainer, width_max ? { width: "100%" } : { width: 170 }]}
       searchicon={<Icon name="search-web" size={12} color={"black"} />}
       setSelected={setSelected} data={data} />
   );
@@ -23,36 +25,18 @@ export default AppSelectList;
 
 const styles = StyleSheet.create({
   dropdownContainerText: {
-    width: "100%",
-    fontSize: 12,
+    fontSize: 9,
+    height: 20,
     fontWeight: "bold",
   },
   dropdownContainer: {
     backgroundColor: colors.light,
-    width: "100%",
-    borderRadius: 25,
     position: "absolute",
-
-  },
-  dropdownContainerMin: {
-    backgroundColor: colors.light,
-    width: 165,
-    borderRadius: 25,
-    position: "absolute",
+    zIndex: 999,
   },
   inputStyle: {
     backgroundColor: colors.light,
     borderRadius: 25,
-    width: "100%",
-    padding: 0,
-    marginVertical: 5,
-  },
-
-  inputStyleMin: {
-    backgroundColor: colors.light,
-    borderRadius: 25,
-    width: 165,
-    padding: 0,
     marginVertical: 5,
   },
 });

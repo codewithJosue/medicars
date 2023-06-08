@@ -1,11 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
-import RootNavigationLogin from "./RootNavigationLogin";
+import StackNavigationLogin from "./StackNavigationLogin";
 
 const RootNavigations = () => {
 
   return (
     <NavigationContainer>
-      <RootNavigationLogin />
+      <StackNavigationLogin />
     </NavigationContainer>
   );
 };

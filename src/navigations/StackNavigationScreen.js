@@ -9,6 +9,7 @@ import route from "./route";
 
 import BottomTabs from "./BottomTabs";
 import { AddVehicle, Order } from "../screen";
+import colors from "../config/colors";
 
 const Stack = createStackNavigator();
 
@@ -32,7 +33,7 @@ const StackNavigationScreen = () => {
                 <Appbar.BackAction
                   style={styles.back}
                   onPress={navigation.goBack}
-                  color={theme.colors.primary}
+                  color={colors.primary}
                 />
               ) : (
                 <TouchableOpacity
@@ -40,7 +41,7 @@ const StackNavigationScreen = () => {
                   onPress={() => {
                     navigation.dispatch(DrawerActions.openDrawer());
                   }}>
-                  <Icon name="align-left" size={25} color={theme.colors.primary} />
+                  <Icon name="align-left" size={25} color={colors.primary} />
                 </TouchableOpacity>
               )}
               <Appbar.Content
@@ -53,7 +54,7 @@ const StackNavigationScreen = () => {
                 titleStyle={{
                   fontSize: 18,
                   fontWeight: "bold",
-                  color: theme.colors.primary,
+                  color: colors.primary,
                 }}
               />
             </Appbar.Header>
