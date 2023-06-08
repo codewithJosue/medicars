@@ -1,37 +1,27 @@
-import {StyleSheet, View} from 'react-native';
-import {AppButton, Screen} from '../index';
-import {useState} from 'react';
-import AppSelectList from '../AppSelectList';
-import CardImage from '../CardImage';
+import { StyleSheet, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { AppButton, Screen } from "../index";
+import { useState } from "react";
+import AppSelectList from "../AppSelectList";
+import CardImage from "../CardImage";
 
-const vehicles = [
-  {key: '1', value: 'Corolla 2008'},
-  {key: '2', value: 'Mazda GT'},
-];
-const marcas = [
-  {key: '1', value: 'Castrol'},
-  {key: '2', value: 'Elf'},
-  {key: '3', value: 'Penzoil'},
-];
 
-const aceites = [
-  {key: '1', value: 'Aceite Supertech 25W60 Mineral Gl'},
-  {key: '2', value: 'Aceite Pennzoil Para Motor Gasolina 10W30 5 - 1Qt'},
-];
+import { aceites, marcas, vehicles } from "../../data/";
 
-const AddProduct = ({order: {title, image}}) => {
+
+const AddProduct = ({ order: { title, image } }) => {
   const [selected, setSelected] = useState([]);
-
+  const navigation = useNavigation();
   return (
     <Screen style={styles.container}>
       <CardImage img={image} height={150} />
       <View
         style={{
           margin: 10,
-          flexDirection: 'row',
-          justifyContent: 'space-around',
+          flexDirection: "row",
+          justifyContent: "space-around",
         }}>
-        <View style={{zIndex: 1}}>
+        <View style={{ zIndex: 1 }}>
           <AppSelectList
             placeholder="Seleccionar vehículo"
             data={vehicles}
@@ -46,7 +36,7 @@ const AddProduct = ({order: {title, image}}) => {
           width_max={false}
         />
       </View>
-      <View style={{marginLeft: 20, flexDirection: 'row'}}>
+      <View style={{ marginLeft: 20, flexDirection: "row" }}>
         <AppSelectList
           placeholder="Seleccionar Aceite"
           data={aceites}
@@ -54,8 +44,11 @@ const AddProduct = ({order: {title, image}}) => {
           width_max={false}
         />
       </View>
+
       <View style={styles.footer}>
-        <AppButton title="Agregar" onPress={() => console.log('press')} />
+        <AppButton title="Seguir comprando" color="black" onPress={() => navigation.goBack()} />
+        <View style={{ margin: 10 }} />
+        <AppButton title="Agregar al carrito" onPress={() => console.log("press")} />
       </View>
     </Screen>
   );
@@ -68,10 +61,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   footer: {
-    position: 'absolute',
-    width: '50%',
+    flexDirection: "row",
+    width: "50%",
+    position: "absolute",
     bottom: 0,
-    alignSelf: 'flex-end',
-    right: 10,
+    padding: 10,
   },
 });
