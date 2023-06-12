@@ -21,6 +21,7 @@
     "react": "18.1.0",
     "react-native": "0.70.1",
     "react-native-dropdown-select-list": "^1.0.23",
+    "react-native-easy-toast": "^2.3.0",
     "react-native-fbsdk-next": "^11.2.1",
     "react-native-gesture-handler": "^2.9.0",
     "react-native-pager-view": "^6.2.0",

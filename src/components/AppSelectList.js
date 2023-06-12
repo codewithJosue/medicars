@@ -9,13 +9,13 @@ const AppSelectList = ({ data, placeholder = "Seleccionar", setSelected, width_m
 
   return (
     <SelectList
-      arrowicon={<FontAwesome name="chevron-down" size={12} color={"black"} />}
+      arrowicon={<FontAwesome name="chevron-down" size={12} color={"black"} style={!width_max && { right: 30 }} />}
       inputStyles={[styles.dropdownContainerText, width_max ? { width: "100%" } : { width: 130 }]}
       maxHeight={100}
       placeholder={placeholder}
       searchPlaceholder="Búsqueda"
-      boxStyles={[styles.inputStyle, width_max ? { width: "100%" } : { width: 170 }]}
-      dropdownStyles={[styles.dropdownContainer, width_max ? { width: "100%" } : { width: 170 }]}
+      boxStyles={[styles.inputStyle, width_max ? { width: "100%" } : { width: 150 }]}
+      dropdownStyles={[styles.dropdownContainer, width_max ? { width: "100%" } : { width: 150 }]}
       searchicon={<Icon name="search-web" size={12} color={"black"} />}
       setSelected={setSelected} data={data} />
   );
@@ -26,7 +26,7 @@ export default AppSelectList;
 const styles = StyleSheet.create({
   dropdownContainerText: {
     fontSize: 9,
-    height: 20,
+    height: 10,
     fontWeight: "bold",
   },
   dropdownContainer: {

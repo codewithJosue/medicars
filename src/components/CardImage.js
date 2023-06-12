@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   Animated,
-  Dimensions,
   Image,
   Modal,
   Platform,
@@ -12,16 +11,20 @@ import {
 } from "react-native";
 import { Card } from "react-native-paper";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import colors from "../config/colors";
+import { AppText } from "./index";
 
-const screenWidth = Dimensions.get("window").width;
-const CardImage = ({ img, width = 380, height = 150 }) => {
+
+const CardImage = ({ img, width = 300, height = 150, title }) => {
   const [isVisible, setIsvisible] = useState(false);
+
   return (
     <>
       <TouchableOpacity onPress={() => setIsvisible(true)}>
         <Card style={{ margin: 10, flexDirection: "row", alignSelf: "center" }}>
+          <AppText style={styles.carCoverTitle}>{title}</AppText>
           <Card.Cover
-            style={{ width: width, height: height }}
+            style={{ width: width, height: height, opacity: 0.7 }}
             source={img}>
 
           </Card.Cover>
@@ -59,6 +62,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+  },
+  carCoverTitle: {
+    position: "absolute",
+    color: colors.black,
+    fontWeight: "bold",
+    zIndex: 1,
+    alignSelf: "center",
+    top: 50,
+    fontSize: 18,
   },
   imageZoom: {
     width: 400,

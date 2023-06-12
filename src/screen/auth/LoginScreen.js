@@ -73,7 +73,7 @@ const LoginScreen = () => {
             onPress={() => setEyePassword(!eyePassword)}
             style={styles.iconPass}
             name={eyePassword ? "eye-off" : "eye"}
-            size={25}
+            size={17}
             color={eyePassword ? colors.medium : colors.secondary}
           />
         </View>
