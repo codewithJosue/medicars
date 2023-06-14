@@ -157,7 +157,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
           <View style={styles.btnCar}>
             <AppButton
               title="añadir al carrito"
-              onPress={() => console.log('press')}
+              onPress={() => navigation.navigate('cart_shopping', {detail})}
             />
           </View>
         </View>

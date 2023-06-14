@@ -1,5 +1,9 @@
-import { Text } from "react-native";
+import LocationShoppingCart from '../components/shopping_cart/LocationShoppingCart';
 
-const CartShopping = () => <Text>Carrito de compras</Text>
+const CartShopping = props => {
+  const {detail} = props.route.params;
+
+  return <LocationShoppingCart detail={detail} />;
+};
 
 export default CartShopping;

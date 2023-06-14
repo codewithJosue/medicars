@@ -3,7 +3,7 @@ import {AppText} from '../index';
 import {useCallback, useEffect} from 'react';
 import {details} from '../../data/detailProduct';
 
-const DetailProduct = ({item, index, data, setDetail}) => {
+const DetailProduct = ({item, index, data, setDetail, flag = true}) => {
   const increment = () => {
     const dataNew = data.map(a => {
       if (a.id === item.id) {
@@ -37,13 +37,17 @@ const DetailProduct = ({item, index, data, setDetail}) => {
           {item.descripcion}
         </AppText>
         <View style={styles.counter}>
-          <TouchableOpacity onPress={() => decrement()}>
-            <AppText style={{fontWeight: 'bold'}}>-</AppText>
-          </TouchableOpacity>
+          {flag && (
+            <TouchableOpacity onPress={() => decrement()}>
+              <AppText style={{fontWeight: 'bold'}}>-</AppText>
+            </TouchableOpacity>
+          )}
           <AppText style={styles.text}>{item.cantidad}</AppText>
-          <TouchableOpacity onPress={() => increment()}>
-            <Text style={{fontWeight: 'bold'}}>+</Text>
-          </TouchableOpacity>
+          {flag && (
+            <TouchableOpacity onPress={() => increment()}>
+              <Text style={{fontWeight: 'bold'}}>+</Text>
+            </TouchableOpacity>
+          )}
         </View>
         <AppText style={[styles.text, {width: 40}]}>{item.precio}</AppText>
       </View>
