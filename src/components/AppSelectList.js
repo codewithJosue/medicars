@@ -18,12 +18,12 @@ const AppSelectList = ({
           name="chevron-down"
           size={12}
           color={'black'}
-          style={!width_max && {right: 25}}
+          style={!width_max && {right: -10}}
         />
       }
       inputStyles={[
         styles.dropdownContainerText,
-        width_max ? {width: '100%'} : {width: 130},
+        width_max ? {width: '100%'} : {width: 100},
       ]}
       maxHeight={100}
       placeholder={placeholder}
