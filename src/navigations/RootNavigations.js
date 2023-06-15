@@ -5,7 +5,7 @@ import StackNavigationLogin from './StackNavigationLogin';
 const RootNavigations = () => {
   return (
     <NavigationContainer>
-      <StackNavigationLogin />
+      <Drawer />
     </NavigationContainer>
   );
 };

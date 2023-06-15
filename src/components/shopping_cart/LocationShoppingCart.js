@@ -1,4 +1,5 @@
 import {FlatList, StyleSheet, View} from 'react-native';
+import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 
 import {AppButton, AppText, Screen} from '../index';
 import colors from '../../config/colors';
@@ -40,7 +41,19 @@ const LocationShoppingCart = ({detail}) => {
           onPress={() => {}}
         />
 
-        <View style={styles.location}></View>
+        <View style={styles.location}>
+          <MapView
+            style={styles.map}
+            provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+            initialRegion={{
+              latitude: 37.78825,
+              longitude: -122.4324,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
+            onPress={() => {}}
+          />
+        </View>
       </View>
     </Screen>
   );
@@ -70,5 +83,9 @@ const styles = StyleSheet.create({
   location: {
     backgroundColor: '#dbdbdb',
     flex: 3,
+    marginVertical: 5,
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
   },
 });

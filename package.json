@@ -24,6 +24,7 @@
     "react-native-easy-toast": "^2.3.0",
     "react-native-fbsdk-next": "^11.2.1",
     "react-native-gesture-handler": "^2.9.0",
+    "react-native-maps": "^1.7.1",
     "react-native-pager-view": "^6.2.0",
     "react-native-paper": "^5.7.2",
     "react-native-reanimated": "^3.1.0",
