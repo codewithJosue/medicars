@@ -13,6 +13,9 @@
 //Splashscreen
 #import "RNSplashScreen.h"
 
+//Maps
+#import <GoogleMaps/GoogleMaps.h>
+
 #if RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
 #import <React/RCTCxxBridgeDelegate.h>
@@ -44,6 +47,10 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   [[FBSDKApplicationDelegate sharedInstance] application:application
                             didFinishLaunchingWithOptions:launchOptions];
   //end Facebook
+
+  //Maps
+[GMSServices provideAPIKey:@"AIzaSyCKqul9cT_ZuMVMGZqkafu9IRj1NOmFNO0"];
+  //end maps
   
   RCTAppSetupPrepareApp(application);
 
