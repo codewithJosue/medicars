@@ -13,6 +13,7 @@ import colors from '../../config/colors';
 import {details} from '../../data/detailProduct';
 import DetailProduct from './DetailProduct';
 import route from '../../navigations/route';
+import Feather from 'react-native-vector-icons/Feather';
 
 const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   const [selectedVehicle, setSelectedVehicle] = useState('');
@@ -60,80 +61,61 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
     <GestureHandlerRootView style={{flex: 1}}>
       <Screen style={styles.container}>
         <CardImage img={image} height={130} title={title} />
-        <View
-          style={{
-            zIndex: 999,
-          }}>
-          <View style={{zIndex: 3}}>
+        <View style={{flex: 1, top: 10}}>
+          <View
+            style={{
+              zIndex: 999,
+            }}>
+            <View style={{zIndex: 3}}>
+              <AppSelectList
+                placeholder="Seleccionar vehículo"
+                data={vehicles}
+                setSelected={setSelectedVehicle}
+              />
+            </View>
+            <View style={{zIndex: 2}}>
+              <AppSelectList
+                placeholder="Seleccionar marca"
+                data={marcas}
+                setSelected={setSelectedBrand}
+              />
+            </View>
+          </View>
+          <View style={{zIndex: 1}}>
             <AppSelectList
-              placeholder="Seleccionar vehículo"
-              data={vehicles}
-              setSelected={setSelectedVehicle}
+              placeholder="Seleccionar Aceite"
+              data={aceites}
+              setSelected={setSelectedOil}
             />
           </View>
-          <View style={{zIndex: 2}}>
-            <AppSelectList
-              placeholder="Seleccionar marca"
-              data={marcas}
-              setSelected={setSelectedBrand}
+
+          <View style={styles.containerElements}>
+            <View>
+              <TouchableOpacity style={styles.itemsAdd} onPress={onPress}>
+                <Feather name="list" size={20} />
+              </TouchableOpacity>
+              <Badge style={styles.badge} size={15}>
+                {data.length}
+              </Badge>
+            </View>
+
+            <View style={{width: '40%'}}>
+              <AppButton title="Agregar" onPress={onSubmitDataVehicle} />
+            </View>
+          </View>
+
+          <View style={styles.footer}>
+            <AppButton
+              title="Seguir comprando"
+              color="black"
+              onPress={() => navigation.goBack()}
+            />
+            <View style={{margin: 10}} />
+            <AppButton
+              title="Ir al carrito"
+              onPress={() => console.log('press')}
             />
           </View>
-        </View>
-        <View style={{zIndex: 1}}>
-          <AppSelectList
-            placeholder="Seleccionar Aceite"
-            data={aceites}
-            setSelected={setSelectedOil}
-          />
-        </View>
-
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}>
-          <View>
-            <TouchableOpacity
-              style={{
-                backgroundColor: 'white',
-                borderRadius: 25,
-                elevation: 2,
-                top: 5,
-              }}
-              onPress={onPress}>
-              <AppText style={{textAlign: 'center'}}>
-                Elementos agregados
-              </AppText>
-            </TouchableOpacity>
-            <Badge
-              style={{
-                backgroundColor: 'black',
-                position: 'absolute',
-                marginLeft: 10,
-                top: -2,
-                right: -10,
-              }}
-              size={15}>
-              {data.length}
-            </Badge>
-          </View>
-
-          <View style={{width: '40%'}}>
-            <AppButton title="Agregar" onPress={onSubmitDataVehicle} />
-          </View>
-        </View>
-
-        <View style={styles.footer}>
-          <AppButton
-            title="Seguir comprando"
-            color="black"
-            onPress={() => navigation.goBack()}
-          />
-          <View style={{margin: 10}} />
-          <AppButton
-            title="Ir al carrito"
-            onPress={() => console.log('press')}
-          />
         </View>
       </Screen>
       <BottomSheet ref={ref}>
@@ -187,9 +169,25 @@ const styles = StyleSheet.create({
     right: 20,
     bottom: 0,
   },
+  badge: {
+    backgroundColor: colors.primary,
+    position: 'absolute',
+    marginLeft: 10,
+    top: -2,
+    right: -10,
+  },
   container: {
     flex: 1,
     margin: 20,
+    marginTop: 0,
+  },
+  containerElements: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    top: 10,
+    backgroundColor: colors.light,
+    borderRadius: 10,
+    padding: 5,
   },
   footer: {
     flexDirection: 'row',
@@ -206,6 +204,12 @@ const styles = StyleSheet.create({
   details: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  itemsAdd: {
+    // backgroundColor: colors.white,
+    // borderRadius: 25,
+    top: 5,
+    padding: 3,
   },
   textTitle: {
     //color: '#D3DBE2',

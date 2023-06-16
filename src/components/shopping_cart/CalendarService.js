@@ -7,22 +7,14 @@ import DatePicker from 'react-native-date-picker';
 
 import colors from '../../config/colors';
 import route from '../../navigations/route';
+import {getDate} from '../../helpers/date';
 
-const img = require('../../assets/logoApp-icon.png');
 const CalendarService = props => {
   const [method, setMethod] = useState(false);
   const [text, setText] = useState('');
 
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
-
-  const getDate = dateStart => {
-    let day = dateStart.getDate();
-    let month = dateStart.getMonth();
-    let year = dateStart.getFullYear();
-
-    return `${day}/${month}/${year}`;
-  };
 
   return (
     <Screen style={styles.container}>

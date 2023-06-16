@@ -20,7 +20,7 @@ const CardImage = ({img, width = 250, height = 150, title}) => {
   return (
     <>
       <TouchableOpacity onPress={() => setIsvisible(true)}>
-        <Card style={{margin: 10, flexDirection: 'row', alignSelf: 'center'}}>
+        <Card style={{flexDirection: 'row', alignSelf: 'center'}}>
           <AppText style={styles.carCoverTitle}>{title}</AppText>
           <Card.Cover
             style={{width: width, height: height, opacity: 0.7}}

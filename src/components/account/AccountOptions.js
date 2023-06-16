@@ -1,15 +1,17 @@
-import { TouchableRipple } from "react-native-paper";
-import { StyleSheet, View } from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { generateOptionsMenu, selectedComponent } from "../../helpers/generateOptionsMenu";
-import { AppText } from "../index";
+import {TouchableRipple} from 'react-native-paper';
+import {StyleSheet, View} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {
+  generateOptionsMenu,
+  selectedComponent,
+} from '../../helpers/generateOptionsMenu';
+import {AppText} from '../index';
 
 const AccountOptions = () => {
-
   const menuOptions = generateOptionsMenu(selectedComponent);
 
   return (
-    <View style={{ backgroundColor: "white", marginTop: 10 }}>
+    <View style={{backgroundColor: 'white', marginTop: 10}}>
       {menuOptions.map((item, index) => {
         return (
           <TouchableRipple key={index} onPress={item.onPress}>
@@ -30,7 +32,6 @@ const AccountOptions = () => {
                   size={25}
                 />
               </View>
-
             </View>
           </TouchableRipple>
         );
@@ -43,23 +44,22 @@ export default AccountOptions;
 
 const styles = StyleSheet.create({
   menuItem: {
-    flexDirection: "row",
+    flexDirection: 'row',
     paddingVertical: 15,
-    alignSelf: "stretch",
+    alignSelf: 'stretch',
     paddingHorizontal: 30,
     borderBottomWidth: 1,
-    borderBottomColor: "#e3e3e3",
+    borderBottomColor: '#e3e3e3',
   },
   menuItemText: {
-    color: "#777777",
+    color: '#777777',
     marginLeft: 20,
-    fontWeight: "600",
-    fontSize: 16,
+    fontWeight: '600',
     lineHeight: 26,
   },
   rightIcon: {
-    position: "absolute",
-    alignSelf: "center",
+    position: 'absolute',
+    alignSelf: 'center',
     top: 12,
     right: 5,
   },
