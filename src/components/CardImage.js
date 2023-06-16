@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from 'react';
 import {
   Animated,
   Image,
@@ -8,26 +8,23 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
-} from "react-native";
-import { Card } from "react-native-paper";
-import AntDesign from "react-native-vector-icons/AntDesign";
-import colors from "../config/colors";
-import { AppText } from "./index";
+} from 'react-native';
+import {Card} from 'react-native-paper';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import colors from '../config/colors';
+import {AppText} from './index';
 
-
-const CardImage = ({ img, width = 300, height = 150, title }) => {
+const CardImage = ({img, width = 250, height = 150, title}) => {
   const [isVisible, setIsvisible] = useState(false);
 
   return (
     <>
       <TouchableOpacity onPress={() => setIsvisible(true)}>
-        <Card style={{ margin: 10, flexDirection: "row", alignSelf: "center" }}>
+        <Card style={{margin: 10, flexDirection: 'row', alignSelf: 'center'}}>
           <AppText style={styles.carCoverTitle}>{title}</AppText>
           <Card.Cover
-            style={{ width: width, height: height, opacity: 0.7 }}
-            source={img}>
-
-          </Card.Cover>
+            style={{width: width, height: height, opacity: 0.7}}
+            source={img}></Card.Cover>
         </Card>
       </TouchableOpacity>
       <Modal
@@ -42,8 +39,8 @@ const CardImage = ({ img, width = 300, height = 150, title }) => {
 
 export default CardImage;
 
-const ImageZoom = (props) => {
-  const { img, closeModal } = props;
+const ImageZoom = props => {
+  const {img, closeModal} = props;
   return (
     <View style={styles.container}>
       <Image style={styles.imageZoom} source={img} />
@@ -61,25 +58,25 @@ const ImageZoom = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
   },
   carCoverTitle: {
-    position: "absolute",
+    position: 'absolute',
     color: colors.black,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     zIndex: 1,
-    alignSelf: "center",
+    alignSelf: 'center',
     top: 50,
     fontSize: 18,
   },
   imageZoom: {
     width: 400,
-    height: Platform.OS === "ios" ? 500 : 400,
+    height: Platform.OS === 'ios' ? 500 : 400,
     top: 100,
   },
   back: {
-    position: "absolute",
-    alignItems: "center",
+    position: 'absolute',
+    alignItems: 'center',
     marginLeft: 170,
     bottom: 100,
   },
@@ -88,14 +85,14 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 60 / 2,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     shadowRadius: 10,
-    shadowColor: "#F02A4B",
+    shadowColor: '#F02A4B',
     shadowOpacity: 0.3,
-    shadowOffset: { height: 10 },
+    shadowOffset: {height: 10},
   },
   menu: {
-    backgroundColor: "#F02A4B",
+    backgroundColor: '#F02A4B',
   },
 });

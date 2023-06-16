@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Dimensions, ScrollView, StyleSheet, View} from 'react-native';
 import * as Yup from 'yup';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import StepIndicator from 'react-native-step-indicator';
@@ -61,147 +61,146 @@ const RegisterScreen = () => {
   };
 
   return (
-    <Screen style={styles.container}>
-      <StepIndicator
-        customStyles={customStyles}
-        currentPosition={currentPosition}
-        labels={labels}
-        stepCount={2}
-      />
+    <ScrollView keyboardShouldPersistTaps="always">
+      <Screen style={styles.container}>
+        <StepIndicator
+          customStyles={customStyles}
+          currentPosition={currentPosition}
+          labels={labels}
+          stepCount={2}
+        />
 
-      <View style={styles.containerLogo}>
-        {/*<Image style={styles.logo} source={logo} />*/}
-      </View>
+        <View style={styles.containerLogo}>
+          {/*<Image style={styles.logo} source={logo} />*/}
+        </View>
 
-      {form ? (
-        <AppForm
-          initialValues={data}
-          onSubmit={value => onPageChange(value)}
-          validationSchema={validationSchema}>
-          <AppFormField
-            autoCorrect={false}
-            icon="account"
-            name="name"
-            value={data.name}
-            onChange={e => onChange_text(e, 'name')}
-            placeholder="Nombres"
-          />
-          <AppFormField
-            autoCorrect={false}
-            icon="account"
-            name="lastName"
-            value={data.lastName}
-            onChange={e => onChange_text(e, 'lastName')}
-            placeholder="Apellidos"
-          />
-          <AppFormField
-            autoCorrect={false}
-            icon="phone"
-            name="phone"
-            value={data.phone}
-            onChange={e => onChange_text(e, 'phone')}
-            placeholder="Teléfono"
-          />
-          <AppFormField
-            autoCapitalize="none"
-            autoCorrect={false}
-            icon="email"
-            keyboardType="email-address"
-            name="email"
-            placeholder="Email"
-            value={data.email}
-            onChange={e => onChange_text(e, 'email')}
-            textContentType="emailAddress"
-          />
-          <View>
+        {form ? (
+          <AppForm
+            initialValues={data}
+            onSubmit={value => onPageChange(value)}
+            validationSchema={validationSchema}>
             <AppFormField
-              autoCapitalize="none"
               autoCorrect={false}
-              icon="lock"
-              name="password"
-              placeholder="Contraseña"
-              value={data.password}
-              onChange={e => onChange_text(e, 'password')}
-              secureTextEntry={eyePassword}
-              textContentType="password"
+              icon="account"
+              name="name"
+              value={data.name}
+              onChange={e => onChange_text(e, 'name')}
+              placeholder="Nombres"
             />
-            <Icon
-              onPress={() => setEyePassword(!eyePassword)}
-              style={styles.iconPass}
-              name={eyePassword ? 'eye-off' : 'eye'}
-              size={17}
-              color={eyePassword ? colors.medium : colors.primary}
+            <AppFormField
+              autoCorrect={false}
+              icon="account"
+              name="lastName"
+              value={data.lastName}
+              onChange={e => onChange_text(e, 'lastName')}
+              placeholder="Apellidos"
+            />
+            <AppFormField
+              autoCorrect={false}
+              icon="phone"
+              name="phone"
+              value={data.phone}
+              onChange={e => onChange_text(e, 'phone')}
+              placeholder="Teléfono"
             />
             <AppFormField
               autoCapitalize="none"
               autoCorrect={false}
-              icon="lock"
-              name="passwordRepeat"
-              placeholder="Repetir contraseña"
-              secureTextEntry={eyePassword}
-              textContentType="password"
-              value={data.passwordRepeat}
-              onChange={e => onChange_text(e, 'passwordRepeat')}
+              icon="email"
+              keyboardType="email-address"
+              name="email"
+              placeholder="Email"
+              value={data.email}
+              onChange={e => onChange_text(e, 'email')}
+              textContentType="emailAddress"
             />
-            <Icon
-              onPress={() => setEyePassword(!eyePassword)}
-              style={styles.iconPass}
-              name={eyePassword ? 'eye-off' : 'eye'}
-              size={17}
-              color={eyePassword ? colors.medium : colors.primary}
-            />
-          </View>
+            <View>
+              <AppFormField
+                autoCapitalize="none"
+                autoCorrect={false}
+                icon="lock"
+                name="password"
+                placeholder="Contraseña"
+                value={data.password}
+                onChange={e => onChange_text(e, 'password')}
+                secureTextEntry={eyePassword}
+                textContentType="password"
+              />
+              <Icon
+                onPress={() => setEyePassword(!eyePassword)}
+                style={styles.iconPass}
+                name={eyePassword ? 'eye-off' : 'eye'}
+                size={17}
+                color={eyePassword ? colors.medium : colors.primary}
+              />
+              <AppFormField
+                autoCapitalize="none"
+                autoCorrect={false}
+                icon="lock"
+                name="passwordRepeat"
+                placeholder="Repetir contraseña"
+                secureTextEntry={eyePassword}
+                textContentType="password"
+                value={data.passwordRepeat}
+                onChange={e => onChange_text(e, 'passwordRepeat')}
+              />
+              <Icon
+                onPress={() => setEyePassword(!eyePassword)}
+                style={styles.iconPass}
+                name={eyePassword ? 'eye-off' : 'eye'}
+                size={17}
+                color={eyePassword ? colors.medium : colors.primary}
+              />
+            </View>
 
-          <View style={{flex: 1}}>
-            <View
-              style={{
-                position: 'absolute',
-                bottom: 0,
-                right: 0,
-                width: '40%',
-              }}>
+            <View style={styles.btnSiguiente}>
               <SubmitButton title="siguiente" />
             </View>
-          </View>
-        </AppForm>
-      ) : (
-        <AppForm
-          initialValues={data}
-          onSubmit={value => backPageChange(value)}
-          validationSchema={validationSchema}>
-          <View style={{zIndex: 4}}>
-            <AppText style={styles.titleSelect}>Marca de vehículo (*)</AppText>
-            <AppSelectList
-              placeholder="Seleccione la marca"
-              setSelected={setSelected}
-              data={data2}
-            />
-          </View>
-          <View style={{zIndex: 3}}>
-            <AppText style={styles.titleSelect}>Modelo de vehículo (*)</AppText>
-            <AppSelectList
-              placeholder="Seleccione el modelo"
-              setSelected={setSelected}
-              data={data2}
-            />
-          </View>
-          <View style={{zIndex: 2}}>
-            <AppText style={styles.titleSelect}>Año de vehículo (*)</AppText>
-            <AppSelectList
-              placeholder="Seleccione el año"
-              setSelected={setSelected}
-              data={data2}
-            />
-          </View>
-          <View style={{zIndex: 1}}>
-            <AppText style={styles.titleSelect}>Motor de vehiculo (*)</AppText>
-            <AppSelectList
-              placeholder="Seleccione el motor"
-              setSelected={setSelected}
-              data={data2}
-            />
-          </View>
-          <View style={{flex: 1}}>
+          </AppForm>
+        ) : (
+          <AppForm
+            initialValues={data}
+            onSubmit={value => backPageChange(value)}
+            validationSchema={validationSchema}>
+            <View style={{zIndex: 4}}>
+              <AppText style={styles.titleSelect}>
+                Marca de vehículo (*)
+              </AppText>
+              <AppSelectList
+                placeholder="Seleccione la marca"
+                setSelected={setSelected}
+                data={data2}
+              />
+            </View>
+            <View style={{zIndex: 3}}>
+              <AppText style={styles.titleSelect}>
+                Modelo de vehículo (*)
+              </AppText>
+              <AppSelectList
+                placeholder="Seleccione el modelo"
+                setSelected={setSelected}
+                data={data2}
+              />
+            </View>
+            <View style={{zIndex: 2}}>
+              <AppText style={styles.titleSelect}>Año de vehículo (*)</AppText>
+              <AppSelectList
+                placeholder="Seleccione el año"
+                setSelected={setSelected}
+                data={data2}
+              />
+            </View>
+            <View style={{zIndex: 1}}>
+              <AppText style={styles.titleSelect}>
+                Motor de vehiculo (*)
+              </AppText>
+              <AppSelectList
+                placeholder="Seleccione el motor"
+                setSelected={setSelected}
+                data={data2}
+              />
+            </View>
+
             <View style={styles.botones}>
               <SubmitButton title="Atrás" color="black" />
               <View style={{margin: 10}} />
@@ -210,19 +209,27 @@ const RegisterScreen = () => {
                 onpress={() => console.log('guardar')}
               />
             </View>
-          </View>
-        </AppForm>
-      )}
-    </Screen>
+          </AppForm>
+        )}
+      </Screen>
+    </ScrollView>
   );
 };
 
 export default RegisterScreen;
 
+const h = Dimensions.get('window').height;
+
 const styles = StyleSheet.create({
+  btnSiguiente: {
+    bottom: 0,
+    right: 0,
+    width: '40%',
+  },
   container: {
-    padding: 10,
-    flex: 1,
+    margin: 20,
+    //flex: 1,
+    height: h,
   },
   containerLogo: {
     alignSelf: 'center',
@@ -251,7 +258,6 @@ const styles = StyleSheet.create({
   botones: {
     flexDirection: 'row',
     width: '45%',
-    position: 'absolute',
     bottom: 0,
   },
   dropdownContainer: {

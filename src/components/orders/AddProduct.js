@@ -59,12 +59,9 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <Screen style={styles.container}>
-        <CardImage img={image} height={150} title={title} />
+        <CardImage img={image} height={130} title={title} />
         <View
           style={{
-            margin: 10,
-            flexDirection: 'row',
-            justifyContent: 'space-around',
             zIndex: 999,
           }}>
           <View style={{zIndex: 3}}>
@@ -72,7 +69,6 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
               placeholder="Seleccionar vehículo"
               data={vehicles}
               setSelected={setSelectedVehicle}
-              width_max={false}
             />
           </View>
           <View style={{zIndex: 2}}>
@@ -80,36 +76,51 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
               placeholder="Seleccionar marca"
               data={marcas}
               setSelected={setSelectedBrand}
-              width_max={false}
             />
           </View>
         </View>
-        <View style={{marginLeft: 30, flexDirection: 'row', zIndex: 1}}>
+        <View style={{zIndex: 1}}>
           <AppSelectList
             placeholder="Seleccionar Aceite"
             data={aceites}
             setSelected={setSelectedOil}
-            width_max={false}
           />
         </View>
 
-        <View style={{alignSelf: 'flex-end', width: '40%', right: 20}}>
-          <AppButton title="Agregar" onPress={onSubmitDataVehicle} />
-        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
+          <View>
+            <TouchableOpacity
+              style={{
+                backgroundColor: 'white',
+                borderRadius: 25,
+                elevation: 2,
+                top: 5,
+              }}
+              onPress={onPress}>
+              <AppText style={{textAlign: 'center'}}>
+                Elementos agregados
+              </AppText>
+            </TouchableOpacity>
+            <Badge
+              style={{
+                backgroundColor: 'black',
+                position: 'absolute',
+                marginLeft: 10,
+                top: -2,
+                right: -10,
+              }}
+              size={15}>
+              {data.length}
+            </Badge>
+          </View>
 
-        <View style={{alignSelf: 'center', top: 40, width: '80%'}}>
-          <TouchableOpacity
-            style={{backgroundColor: 'white', borderRadius: 25, elevation: 2}}
-            onPress={onPress}>
-            <AppText style={{textAlign: 'center'}}>
-              lista de elementos agregegados
-            </AppText>
-          </TouchableOpacity>
-          <Badge
-            style={{backgroundColor: 'black', right: 20, position: 'absolute'}}
-            size={15}>
-            {data.length}
-          </Badge>
+          <View style={{width: '40%'}}>
+            <AppButton title="Agregar" onPress={onSubmitDataVehicle} />
+          </View>
         </View>
 
         <View style={styles.footer}>
@@ -178,6 +189,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    margin: 20,
   },
   footer: {
     flexDirection: 'row',
