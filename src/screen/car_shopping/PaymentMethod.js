@@ -1,8 +1,7 @@
-import React from 'react';
-import {AppText} from '../../components';
+import {AppText, CalendarService} from '../../components';
 
 const PaymentMethod = props => {
-  return <AppText>Payment method</AppText>;
+  return <CalendarService />;
 };
 
 export default PaymentMethod;

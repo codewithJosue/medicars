@@ -12,6 +12,7 @@ import BottomSheet from '../BottomSheet';
 import colors from '../../config/colors';
 import {details} from '../../data/detailProduct';
 import DetailProduct from './DetailProduct';
+import route from '../../navigations/route';
 
 const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   const [selectedVehicle, setSelectedVehicle] = useState('');
@@ -158,7 +159,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
           <View style={styles.btnCar}>
             <AppButton
               title="añadir al carrito"
-              onPress={() => navigation.navigate('cart_shopping', {detail})}
+              onPress={() => navigation.navigate(route.CART_SHOPPING, {detail})}
             />
           </View>
         </View>

@@ -1,4 +1,4 @@
-import LocationShoppingCart from '../../components/shopping_cart/LocationShoppingCart';
+import {LocationShoppingCart} from '../../components/';
 
 const CartShopping = props => {
   const {detail} = props.route.params;

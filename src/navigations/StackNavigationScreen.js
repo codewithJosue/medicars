@@ -8,7 +8,7 @@ import LogoHeader from '../components/LogoHeader';
 import route from './route';
 
 import BottomTabs from './BottomTabs';
-import {AddVehicle, CartShopping, Order} from '../screen';
+import {AddVehicle, CartShopping, Order, PaymentMethod} from '../screen';
 import colors from '../config/colors';
 
 const Stack = createStackNavigator();
@@ -62,6 +62,7 @@ const StackNavigationScreen = () => {
       <Stack.Screen name={route.ORDER} component={Order} />
       <Stack.Screen name={route.ADD_VEHICLE} component={AddVehicle} />
       <Stack.Screen name={route.CART_SHOPPING} component={CartShopping} />
+      <Stack.Screen name={route.PAYMENT_METHOD} component={PaymentMethod} />
     </Stack.Navigator>
   );
 };

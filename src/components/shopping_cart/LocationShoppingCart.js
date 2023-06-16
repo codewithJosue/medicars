@@ -1,12 +1,14 @@
 import {FlatList, StyleSheet, View} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+import {useNavigation} from '@react-navigation/native';
 
 import {AppButton, AppText, Screen} from '../index';
 import colors from '../../config/colors';
-import React from 'react';
 import DetailProduct from '../orders/DetailProduct';
+import route from '../../navigations/route';
 
 const LocationShoppingCart = ({detail}) => {
+  const navigation = useNavigation();
   return (
     <Screen style={styles.container}>
       <View
@@ -38,7 +40,7 @@ const LocationShoppingCart = ({detail}) => {
       <View style={{flex: 2}}>
         <AppButton
           title="agregar ubicacion y proceder al pago"
-          onPress={() => {}}
+          onPress={() => navigation.navigate(route.PAYMENT_METHOD)}
         />
 
         <View style={styles.location}>
