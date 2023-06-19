@@ -1,6 +1,6 @@
-import {StyleSheet, TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {DrawerActions, useTheme} from '@react-navigation/native';
-import {Appbar} from 'react-native-paper';
+import {Appbar, Badge} from 'react-native-paper';
 import {createStackNavigator} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -8,7 +8,13 @@ import LogoHeader from '../components/LogoHeader';
 import route from './route';
 
 import BottomTabs from './BottomTabs';
-import {AddVehicle, CartShopping, Order, PaymentMethod} from '../screen';
+import {
+  AddVehicle,
+  CartShopping,
+  CartDetailShopping,
+  Order,
+  PaymentMethod,
+} from '../screen';
 import colors from '../config/colors';
 
 const Stack = createStackNavigator();
@@ -54,6 +60,24 @@ const StackNavigationScreen = () => {
                   color: colors.primary,
                 }}
               />
+              <View>
+                <Badge
+                  //visible={unread && unread > 0}
+                  size={16}
+                  style={{
+                    position: 'absolute',
+                    top: 5,
+                    right: 5,
+                    backgroundColor: colors.black,
+                  }}>
+                  1
+                </Badge>
+                <Appbar.Action
+                  icon="cart"
+                  color={colors.primary}
+                  onPress={() => navigation.navigate('cart_detail_shopping')}
+                />
+              </View>
             </Appbar.Header>
           );
         },
@@ -62,13 +86,16 @@ const StackNavigationScreen = () => {
       <Stack.Screen name={route.ORDER} component={Order} />
       <Stack.Screen name={route.ADD_VEHICLE} component={AddVehicle} />
       <Stack.Screen name={route.CART_SHOPPING} component={CartShopping} />
+      <Stack.Screen
+        name={route.CART_DETAIL_SHOPPING}
+        component={CartDetailShopping}
+      />
       <Stack.Screen name={route.PAYMENT_METHOD} component={PaymentMethod} />
     </Stack.Navigator>
   );
 };
 
 export default StackNavigationScreen;
-
 const styles = StyleSheet.create({
   heading: {
     color: 'white',

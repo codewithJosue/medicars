@@ -42,7 +42,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
           vehicle: selectedVehicle,
           brand: selectedBrand,
           oil: selectedOil,
-          total: 0,
+          detail,
         },
       ]);
 
@@ -55,8 +55,9 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
     }
   };
 
-  const total = detail.reduce((n, {precio}) => n + precio, 0);
+  const total = detail.reduce((n, {total}) => n + total, 0);
 
+  console.log('DATA', data);
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <Screen style={styles.container}>

@@ -7,9 +7,9 @@ const DetailProduct = ({item, index, data, setDetail, flag = true}) => {
   const increment = () => {
     const dataNew = data.map(a => {
       if (a.id === item.id) {
-        if (a.cantidad >= 0 && a.precio >= 0) {
+        if (a.cantidad >= 0 && a.total >= 0) {
           a.cantidad = item.cantidad + 1;
-          a.precio = item.precioInicial * a.cantidad;
+          a.total = item.precio * a.cantidad;
         }
       }
       return a;
@@ -20,9 +20,9 @@ const DetailProduct = ({item, index, data, setDetail, flag = true}) => {
   const decrement = () => {
     const dataOld = data.map(a => {
       if (a.id === item.id) {
-        if (a.cantidad > 0 && a.precio > 0) {
+        if (a.cantidad > 0 && a.total > 0) {
           a.cantidad = item.cantidad - 1;
-          a.precio = item.precio - a.precioInicial;
+          a.total = item.total - a.precio;
         }
       }
       return a;
@@ -49,7 +49,7 @@ const DetailProduct = ({item, index, data, setDetail, flag = true}) => {
             </TouchableOpacity>
           )}
         </View>
-        <AppText style={[styles.text, {width: 40}]}>{item.precio}</AppText>
+        <AppText style={[styles.text, {width: 40}]}>{item.total}</AppText>
       </View>
     </>
   );

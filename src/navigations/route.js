@@ -7,5 +7,6 @@ export default Object.freeze({
   HOME: 'home',
   ADD_VEHICLE: 'add_vehicle',
   CART_SHOPPING: 'cart_shopping',
+  CART_DETAIL_SHOPPING: 'cart_detail_shopping',
   PAYMENT_METHOD: 'payment_method',
 });
