@@ -1,7 +1,7 @@
 import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {AppButton, AppText, Screen} from '../index';
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import AppSelectList from '../AppSelectList';
 import CardImage from '../CardImage';
 
@@ -12,8 +12,8 @@ import BottomSheet from '../BottomSheet';
 import colors from '../../config/colors';
 import {details} from '../../data/detailProduct';
 import DetailProduct from './DetailProduct';
-import route from '../../navigations/route';
 import Feather from 'react-native-vector-icons/Feather';
+import {setCartShopping} from '../../storage/cartShopping';
 
 const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   const [selectedVehicle, setSelectedVehicle] = useState('');
@@ -27,28 +27,42 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   const ref = useRef(null);
 
   const onPress = useCallback(() => {
+    if (data.length <= 0) {
+      return toasRef.current.show(
+        'debe agregar: vehículo, marca y aceite',
+        3000,
+      );
+    }
+
     const isActive = ref?.current?.isActive();
 
     if (isActive) ref?.current?.scrollTo(0);
 
     ref?.current?.scrollTo(-500);
-  }, []);
+  }, [data]);
 
+  const findData = (data, selectionId) => {
+    return data.find(d => d.key === selectionId).value;
+  };
   const onSubmitDataVehicle = () => {
-    if (!data.some(e => e.vehicle === selectedVehicle)) {
+    if (!data.some(e => e.vehicle_id === selectedVehicle)) {
       setData([
         ...data,
         {
-          vehicle: selectedVehicle,
-          brand: selectedBrand,
-          oil: selectedOil,
-          detail,
+          vehicle_id: selectedVehicle,
+          vehicle: findData(vehicles, selectedVehicle),
+          brand_id: selectedBrand,
+          brand: findData(marcas, selectedBrand),
+          oil_id: selectedOil,
+          oil: findData(aceites, selectedOil),
+          image,
+          detail: [],
         },
       ]);
 
       toasRef.current.show('Se agrego correctamente', 3000);
     } else {
-      toasRefError.current.show(
+      toasRef.current.show(
         'Ya se encuentra registrada la información del vehículo',
         3000,
       );
@@ -57,7 +71,23 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
 
   const total = detail.reduce((n, {total}) => n + total, 0);
 
-  console.log('DATA', data);
+  const addCartShopping = async () => {
+    if (data.some(v => v.vehicle_id === selectedVehicle)) {
+      const dataNew = data.map(a => {
+        if (a.vehicle_id === selectedVehicle) {
+          a.detail = detail;
+        }
+        return a;
+      });
+
+      setData(dataNew);
+      await setCartShopping(dataNew);
+      //setDetail(details);
+      ref?.current?.scrollTo(0);
+    }
+  };
+
+  console.log(data);
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <Screen style={styles.container}>
@@ -153,7 +183,8 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
           <View style={styles.btnCar}>
             <AppButton
               title="añadir al carrito"
-              onPress={() => navigation.navigate(route.CART_SHOPPING, {detail})}
+              // onPress={() => navigation.navigate(route.CART_SHOPPING, {detail})}
+              onPress={addCartShopping}
             />
           </View>
         </View>

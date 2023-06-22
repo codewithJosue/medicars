@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const cart = '@cart_shopping';
 
-const setCartShopping = async dataCart => {
+export const setCartShopping = async dataCart => {
   try {
     await AsyncStorage.setItem(cart, JSON.stringify(dataCart));
   } catch (error) {
@@ -10,7 +10,17 @@ const setCartShopping = async dataCart => {
   }
 };
 
-const GetCartShopping = () => {
-  const jsonData = AsyncStorage.getItem(cart);
-  return jsonData != null ? JSON.parse(jsonData) : null;
+export const getCartShopping = async () => {
+  const jsonData = await AsyncStorage.getItem(cart);
+  return jsonData != null ? await JSON.parse(jsonData) : null;
+};
+
+export const removeCartShopping = async () => {
+  try {
+    await AsyncStorage.removeItem(cart);
+  } catch (e) {
+    return new Error(e);
+  }
+
+  console.log('Done remove cart shopping!');
 };
