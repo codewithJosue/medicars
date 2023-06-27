@@ -24,3 +24,13 @@ export const removeCartShopping = async () => {
 
   console.log('Done remove cart shopping!');
 };
+
+export const countCartShopping = async () => {
+  let count;
+
+  await getCartShopping().then(data => {
+    count = data.length;
+  });
+
+  return await count;
+};

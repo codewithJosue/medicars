@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {AppText, Screen} from '../index';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
-import {getCartShopping} from '../../storage/cartShopping';
+import {countCartShopping, getCartShopping} from '../../storage/cartShopping';
 import colors from '../../config/colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
