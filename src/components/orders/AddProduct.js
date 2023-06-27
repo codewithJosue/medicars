@@ -19,7 +19,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   const [selectedVehicle, setSelectedVehicle] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('');
   const [selectedOil, setSelectedOil] = useState('');
-  const [detail, setDetail] = useState(details);
+  const [dataDetail, setDataDetail] = useState(details);
 
   const [data, setData] = useState([]);
 
@@ -56,7 +56,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
           oil_id: selectedOil,
           oil: findData(aceites, selectedOil),
           image,
-          detail: [],
+          detail: dataDetail,
         },
       ]);
 
@@ -69,25 +69,34 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
     }
   };
 
-  const total = detail.reduce((n, {total}) => n + total, 0);
+  const total = dataDetail.reduce((n, {total}) => n + total, 0);
 
   const addCartShopping = async () => {
-    if (data.some(v => v.vehicle_id === selectedVehicle)) {
-      const dataNew = data.map(a => {
-        if (a.vehicle_id === selectedVehicle) {
-          a.detail = detail;
-        }
-        return a;
-      });
+    const copy = [...dataDetail];
 
-      setData(dataNew);
-      await setCartShopping(dataNew);
-      //setDetail(details);
+    if (data.some(v => v.vehicle_id === selectedVehicle)) {
+      setData(
+        data.map(info =>
+          info.vehicle_id === selectedVehicle
+            ? {
+                ...info,
+                detail: info.detail.map(details => {
+                  return {
+                    ...details,
+                    cantidad: details.cantidad,
+                    total: details.total,
+                  };
+                }),
+              }
+            : {...info},
+        ),
+      );
+
+      await setCartShopping(data);
       ref?.current?.scrollTo(0);
     }
   };
-
-  console.log(data);
+  console.log('DATA', data);
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <Screen style={styles.container}>
@@ -122,7 +131,9 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
 
           <View style={styles.containerElements}>
             <View>
-              <TouchableOpacity style={styles.itemsAdd} onPress={onPress}>
+              <TouchableOpacity
+                style={styles.itemsAdd}
+                onPress={() => onPress()}>
                 <Feather name="list" size={20} />
               </TouchableOpacity>
               <Badge style={styles.badge} size={15}>
@@ -160,18 +171,18 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
           </View>
           <FlatList
             style={{margin: 10}}
-            data={detail}
+            data={dataDetail}
             showsVerticalScrollIndicator={false}
             renderItem={({item, index}) => (
               <DetailProduct
                 item={item}
                 index={index}
-                data={detail}
-                setDetail={setDetail}
+                data={dataDetail}
+                setDetail={setDataDetail}
               />
             )}
             keyExtractor={(item, index) => index.toString()}
-            extraData={detail}
+            extraData={dataDetail}
             //ItemSeparatorComponent={() => <View style={styles.separator} />}
           />
         </View>
@@ -184,7 +195,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
             <AppButton
               title="añadir al carrito"
               // onPress={() => navigation.navigate(route.CART_SHOPPING, {detail})}
-              onPress={addCartShopping}
+              onPress={() => addCartShopping()}
             />
           </View>
         </View>

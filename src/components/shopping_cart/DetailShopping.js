@@ -23,6 +23,7 @@ const DetailShopping = () => {
     <Screen style={styles.container}>
       {data.map((cart, index) => {
         const {detail} = cart;
+        // console.log('LOOP', detail);
         return (
           <View key={index} style={styles.containerCard}>
             <View style={styles.viewImage}>

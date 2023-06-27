@@ -1,7 +1,5 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {AppText} from '../index';
-import {useCallback, useEffect} from 'react';
-import {details} from '../../data/detailProduct';
 
 const DetailProduct = ({item, index, data, setDetail, flag = true}) => {
   const increment = () => {
