@@ -26,10 +26,9 @@ export const removeCartShopping = async () => {
 };
 
 export const countCartShopping = async () => {
-  let count;
-
+  let count = 0;
   await getCartShopping().then(data => {
-    count = data.length;
+    if (data != null) count = data.length;
   });
 
   return await count;

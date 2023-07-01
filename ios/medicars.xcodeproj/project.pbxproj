@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* medicarsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* medicarsTests.m */; };
+		0937D7DA5FCB154D87ECCFEC /* libPods-medicars-medicarsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37F1F545E890C5501BCFDD00 /* libPods-medicars-medicarsTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		876DB1623AE427E9B0546684 /* libPods-medicars.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B2D72A929A87AC80B7B5F8D /* libPods-medicars.a */; };
 		CD5F79922A29425B002EEE1F /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5F79912A29425B002EEE1F /* File.swift */; };
-		D41E3AD66A5C0233F34DE568 /* libPods-medicars-medicarsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56E8A294F3A40222870051F7 /* libPods-medicars-medicarsTests.a */; };
+		E71DE717D712D01104676B29 /* libPods-medicars.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5377163D919A3750A44920FD /* libPods-medicars.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,13 +37,13 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = medicars/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = medicars/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = medicars/main.m; sourceTree = "<group>"; };
-		2510E44A30A7E694BB0F3397 /* Pods-medicars.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medicars.debug.xcconfig"; path = "Target Support Files/Pods-medicars/Pods-medicars.debug.xcconfig"; sourceTree = "<group>"; };
-		3876F178B5F4A5910F37526A /* Pods-medicars-medicarsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medicars-medicarsTests.release.xcconfig"; path = "Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests.release.xcconfig"; sourceTree = "<group>"; };
-		44F1606B8238F5ADB2195CEF /* Pods-medicars.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medicars.release.xcconfig"; path = "Target Support Files/Pods-medicars/Pods-medicars.release.xcconfig"; sourceTree = "<group>"; };
-		56E8A294F3A40222870051F7 /* libPods-medicars-medicarsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-medicars-medicarsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B2D72A929A87AC80B7B5F8D /* libPods-medicars.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-medicars.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		37F1F545E890C5501BCFDD00 /* libPods-medicars-medicarsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-medicars-medicarsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4108CA3B69B25ABCE559668F /* Pods-medicars-medicarsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medicars-medicarsTests.debug.xcconfig"; path = "Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		503D822A9005256B5DDF1869 /* Pods-medicars-medicarsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medicars-medicarsTests.release.xcconfig"; path = "Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests.release.xcconfig"; sourceTree = "<group>"; };
+		5377163D919A3750A44920FD /* libPods-medicars.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-medicars.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A1E13FC2BB36D9EC9E19A8A /* Pods-medicars.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medicars.release.xcconfig"; path = "Target Support Files/Pods-medicars/Pods-medicars.release.xcconfig"; sourceTree = "<group>"; };
+		7CD9DEABB6D8CB7458DA54F2 /* Pods-medicars.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medicars.debug.xcconfig"; path = "Target Support Files/Pods-medicars/Pods-medicars.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = medicars/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B27A2B85D6FBF0410B0D5CE2 /* Pods-medicars-medicarsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medicars-medicarsTests.debug.xcconfig"; path = "Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD3D46102A291767005EFA0E /* medicarsDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = medicarsDebug.entitlements; path = medicars/medicarsDebug.entitlements; sourceTree = "<group>"; };
 		CD3D46172A2925CF005EFA0E /* medicars-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "medicars-Bridging-Header.h"; sourceTree = "<group>"; };
 		CD5F79912A29425B002EEE1F /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D41E3AD66A5C0233F34DE568 /* libPods-medicars-medicarsTests.a in Frameworks */,
+				0937D7DA5FCB154D87ECCFEC /* libPods-medicars-medicarsTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				876DB1623AE427E9B0546684 /* libPods-medicars.a in Frameworks */,
+				E71DE717D712D01104676B29 /* libPods-medicars.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,8 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				7B2D72A929A87AC80B7B5F8D /* libPods-medicars.a */,
-				56E8A294F3A40222870051F7 /* libPods-medicars-medicarsTests.a */,
+				5377163D919A3750A44920FD /* libPods-medicars.a */,
+				37F1F545E890C5501BCFDD00 /* libPods-medicars-medicarsTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -147,10 +147,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2510E44A30A7E694BB0F3397 /* Pods-medicars.debug.xcconfig */,
-				44F1606B8238F5ADB2195CEF /* Pods-medicars.release.xcconfig */,
-				B27A2B85D6FBF0410B0D5CE2 /* Pods-medicars-medicarsTests.debug.xcconfig */,
-				3876F178B5F4A5910F37526A /* Pods-medicars-medicarsTests.release.xcconfig */,
+				7CD9DEABB6D8CB7458DA54F2 /* Pods-medicars.debug.xcconfig */,
+				5A1E13FC2BB36D9EC9E19A8A /* Pods-medicars.release.xcconfig */,
+				4108CA3B69B25ABCE559668F /* Pods-medicars-medicarsTests.debug.xcconfig */,
+				503D822A9005256B5DDF1869 /* Pods-medicars-medicarsTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -162,12 +162,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "medicarsTests" */;
 			buildPhases = (
-				8EB13BC9E49768B3D7EFCE94 /* [CP] Check Pods Manifest.lock */,
+				C3077886925FC2A7D15C4F5A /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				53EBBBB66F0DBDD550924B00 /* [CP] Embed Pods Frameworks */,
-				B0AE5381045DCE595FC95C51 /* [CP] Copy Pods Resources */,
+				652DFA89293554B4A1D374DA /* [CP] Embed Pods Frameworks */,
+				23FBB0286B563B006CDE53FD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -183,14 +183,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "medicars" */;
 			buildPhases = (
-				690A6727AD425D5B168CADF5 /* [CP] Check Pods Manifest.lock */,
+				1007EE11F81494EBF91534D5 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				E89B729887A3E45F5D44FF01 /* [CP] Embed Pods Frameworks */,
-				4630EBC239B3F51F82A5DE26 /* [CP] Copy Pods Resources */,
+				4455BD2F7422756DA632EEE1 /* [CP] Embed Pods Frameworks */,
+				70372C24A70673A713FA4479 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -273,41 +273,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		4630EBC239B3F51F82A5DE26 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-medicars/Pods-medicars-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-medicars/Pods-medicars-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-medicars/Pods-medicars-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		53EBBBB66F0DBDD550924B00 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		690A6727AD425D5B168CADF5 /* [CP] Check Pods Manifest.lock */ = {
+		1007EE11F81494EBF91534D5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -329,7 +295,75 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8EB13BC9E49768B3D7EFCE94 /* [CP] Check Pods Manifest.lock */ = {
+		23FBB0286B563B006CDE53FD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4455BD2F7422756DA632EEE1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-medicars/Pods-medicars-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-medicars/Pods-medicars-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-medicars/Pods-medicars-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		652DFA89293554B4A1D374DA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70372C24A70673A713FA4479 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-medicars/Pods-medicars-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-medicars/Pods-medicars-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-medicars/Pods-medicars-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3077886925FC2A7D15C4F5A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -349,40 +383,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B0AE5381045DCE595FC95C51 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-medicars-medicarsTests/Pods-medicars-medicarsTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E89B729887A3E45F5D44FF01 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-medicars/Pods-medicars-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-medicars/Pods-medicars-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-medicars/Pods-medicars-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -438,7 +438,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B27A2B85D6FBF0410B0D5CE2 /* Pods-medicars-medicarsTests.debug.xcconfig */;
+			baseConfigurationReference = 4108CA3B69B25ABCE559668F /* Pods-medicars-medicarsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -466,7 +466,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3876F178B5F4A5910F37526A /* Pods-medicars-medicarsTests.release.xcconfig */;
+			baseConfigurationReference = 503D822A9005256B5DDF1869 /* Pods-medicars-medicarsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -491,7 +491,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2510E44A30A7E694BB0F3397 /* Pods-medicars.debug.xcconfig */;
+			baseConfigurationReference = 7CD9DEABB6D8CB7458DA54F2 /* Pods-medicars.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -521,7 +521,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 44F1606B8238F5ADB2195CEF /* Pods-medicars.release.xcconfig */;
+			baseConfigurationReference = 5A1E13FC2BB36D9EC9E19A8A /* Pods-medicars.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

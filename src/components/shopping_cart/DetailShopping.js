@@ -1,7 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {AppText, Screen} from '../index';
+import {AppButton, AppText, Screen} from '../index';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
-import {countCartShopping, getCartShopping} from '../../storage/cartShopping';
+import {
+  countCartShopping,
+  getCartShopping,
+  removeCartShopping,
+} from '../../storage/cartShopping';
 import colors from '../../config/colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
@@ -15,66 +19,82 @@ const DetailShopping = () => {
     getCartShopping().then(data => {
       setData(data);
     });
-  }, []);
+  }, [data]);
 
-  console.log('DETAIL_SHOPPING', data);
-
+  const resetCartShopping = async () => {
+    const reset = await removeCartShopping();
+  };
   return (
     <Screen style={styles.container}>
-      {data.map((cart, index) => {
-        const {detail} = cart;
-        // console.log('LOOP', detail);
-        return (
-          <View key={index} style={styles.containerCard}>
-            <View style={styles.viewImage}>
-              <Image
-                resizeMode="cover"
-                style={{
-                  width: 60,
-                  height: 60,
-                  borderRadius: 8,
-                }}
-                source={cart.image}
-              />
-            </View>
-            <View>
-              <AppText style={styles.description}>
-                <AppText style={styles.title}> vehículo: </AppText>
-                {cart.vehicle}
-              </AppText>
-              <View style={styles.line} />
+      {data != null ? (
+        data.map((cart, index) => {
+          const {detail} = cart;
+          // console.log('LOOP', detail);
+          return (
+            <View key={index} style={styles.containerCard}>
+              <View style={styles.viewImage}>
+                <Image
+                  resizeMode="cover"
+                  style={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: 8,
+                  }}
+                  source={cart.image}
+                />
+              </View>
               <View>
                 <AppText style={styles.description}>
-                  <AppText style={styles.title}>Marca: </AppText>
-                  {cart.brand}
+                  <AppText style={styles.title}> vehículo: </AppText>
+                  {cart.vehicle}
                 </AppText>
-                <AppText style={styles.description}>
-                  <AppText style={styles.title}> Aceite: </AppText>
-                  {cart.oil}
-                </AppText>
-              </View>
-              <View style={styles.line} />
-            </View>
-            <View style={styles.cardBodyBottom}>
-              <TouchableOpacity
-                style={styles.itemTextActiveContainer}
-                onPress={() =>
-                  navigation.navigate(route.CART_SHOPPING, {detail})
-                }>
+                <View style={styles.line} />
                 <View>
-                  {/*<AntDesign name="checkcircleo" size={20} />*/}
-                  <AppText style={styles.textActive}>Detalle</AppText>
+                  <AppText style={styles.description}>
+                    <AppText style={styles.title}>Marca: </AppText>
+                    {cart.brand}
+                  </AppText>
+                  <AppText style={styles.description}>
+                    <AppText style={styles.title}> Aceite: </AppText>
+                    {cart.oil}
+                  </AppText>
                 </View>
-              </TouchableOpacity>
-              <MaterialCommunityIcons
-                style={{color: '#fff', alignSelf: 'center'}}
-                size={17}
-                name="send-check"
-              />
+                <View style={styles.line} />
+              </View>
+              <View style={styles.cardBodyBottom}>
+                <TouchableOpacity
+                  style={styles.itemTextActiveContainer}
+                  onPress={() =>
+                    navigation.navigate(route.CART_SHOPPING, {detail})
+                  }>
+                  <View>
+                    {/*<AntDesign name="checkcircleo" size={20} />*/}
+                    <AppText style={styles.textActive}>Detalle</AppText>
+                  </View>
+                </TouchableOpacity>
+                <MaterialCommunityIcons
+                  style={{color: '#fff', alignSelf: 'center'}}
+                  size={17}
+                  name="send-check"
+                />
+              </View>
             </View>
-          </View>
-        );
-      })}
+          );
+        })
+      ) : (
+        <View style={styles.cartOf}>
+          <MaterialCommunityIcons
+            style={styles.iconCartOf}
+            name="cart-off"
+            size={50}
+          />
+          <AppText style={styles.textCartOf}>
+            No hay ningún servicio o producto en el carrito
+          </AppText>
+        </View>
+      )}
+
+      <AppButton title="Limpiar carrito" onPress={resetCartShopping} />
     </Screen>
   );
 };
@@ -83,6 +103,7 @@ export default DetailShopping;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    margin: 10,
   },
   containerCard: {
     flexDirection: 'row',
@@ -108,6 +129,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 2,
     borderRadius: 20,
     height: 22,
+  },
+  cartOf: {
+    flex: 1,
+    margin: 20,
+  },
+  textCartOf: {
+    top: 10,
+    fontSize: 14,
+    alignSelf: 'center',
+  },
+  iconCartOf: {
+    alignSelf: 'center',
+    backgroundColor: colors.white,
+    color: colors.danger,
   },
   description: {
     fontSize: 10,

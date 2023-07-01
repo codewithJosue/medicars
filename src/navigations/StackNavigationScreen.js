@@ -17,7 +17,7 @@ import {
 } from '../screen';
 import colors from '../config/colors';
 import {useEffect, useState} from 'react';
-import {countCartShopping} from '../storage/cartShopping';
+import {countCartShopping, removeCartShopping} from '../storage/cartShopping';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +29,8 @@ const StackNavigationScreen = () => {
   useEffect(() => {
     countCartShopping().then(count => {
       setCountCart(count);
+
+      console.log('PROBANDO STACK');
     });
   }, []);
 
