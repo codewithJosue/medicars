@@ -10,6 +10,7 @@ import colors from '../../config/colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 import route from '../../navigations/route';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const DetailShopping = () => {
   const [data, setData] = useState([]);
@@ -22,7 +23,7 @@ const DetailShopping = () => {
   }, [data]);
 
   const resetCartShopping = async () => {
-    const reset = await removeCartShopping();
+    await removeCartShopping();
   };
   return (
     <Screen style={styles.container}>
@@ -68,14 +69,13 @@ const DetailShopping = () => {
                     navigation.navigate(route.CART_SHOPPING, {detail})
                   }>
                   <View>
-                    {/*<AntDesign name="checkcircleo" size={20} />*/}
-                    <AppText style={styles.textActive}>Detalle</AppText>
+                    <MaterialCommunityIcons name="trash-can" size={17} />
                   </View>
                 </TouchableOpacity>
                 <MaterialCommunityIcons
                   style={{color: '#fff', alignSelf: 'center'}}
                   size={17}
-                  name="send-check"
+                  name="send-circle-outline"
                 />
               </View>
             </View>
@@ -91,10 +91,15 @@ const DetailShopping = () => {
           <AppText style={styles.textCartOf}>
             No hay ningún servicio o producto en el carrito
           </AppText>
+          <View style={{top: 20}}>
+            <AppButton title="ir al inicio" onPress={resetCartShopping} />
+          </View>
         </View>
       )}
 
-      <AppButton title="Limpiar carrito" onPress={resetCartShopping} />
+      {data.length > 0 ? (
+        <AppButton title="Limpiar carrito" onPress={resetCartShopping} />
+      ) : null}
     </Screen>
   );
 };
@@ -168,7 +173,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingVertical: 3,
     borderRadius: 20,
-    fontSize: 9,
+    fontSize: 12,
   },
   viewImage: {
     marginRight: 15,

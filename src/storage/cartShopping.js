@@ -31,5 +31,5 @@ export const countCartShopping = async () => {
     if (data != null) count = data.length;
   });
 
-  return await count;
+  return count;
 };

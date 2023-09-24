@@ -32,7 +32,7 @@ const StackNavigationScreen = () => {
 
       console.log('PROBANDO STACK');
     });
-  }, []);
+  }, [countCart]);
 
   return (
     <Stack.Navigator
