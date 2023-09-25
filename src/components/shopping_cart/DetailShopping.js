@@ -1,36 +1,30 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {AppButton, AppText, Screen} from '../index';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
-import {
-  countCartShopping,
-  getCartShopping,
-  removeCartShopping,
-} from '../../storage/cartShopping';
+
 import colors from '../../config/colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 import route from '../../navigations/route';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import ShoppingCartContext from '../../contexts/shoppingCartContext';
 
 const DetailShopping = () => {
-  const [data, setData] = useState([]);
   const navigation = useNavigation();
 
-  useEffect(() => {
-    getCartShopping().then(data => {
-      setData(data);
-    });
-  }, [data]);
+  const {state, dispatch} = useContext(ShoppingCartContext);
+
+  console.log('CART SHOPPING DETAIL', state);
 
   const resetCartShopping = async () => {
-    await removeCartShopping();
+    dispatch({type: 'REMOVE', payload: []});
   };
+
   return (
     <Screen style={styles.container}>
-      {data != null ? (
-        data.map((cart, index) => {
+      {state.length > 0 ? (
+        state.map((cart, index) => {
           const {detail} = cart;
-          // console.log('LOOP', detail);
+
           return (
             <View key={index} style={styles.containerCard}>
               <View style={styles.viewImage}>
@@ -92,12 +86,15 @@ const DetailShopping = () => {
             No hay ningún servicio o producto en el carrito
           </AppText>
           <View style={{top: 20}}>
-            <AppButton title="ir al inicio" onPress={resetCartShopping} />
+            <AppButton
+              title="ir al inicio"
+              onPress={() => navigation.navigate(route.HOME)}
+            />
           </View>
         </View>
       )}
 
-      {data.length > 0 ? (
+      {state.length > 0 ? (
         <AppButton title="Limpiar carrito" onPress={resetCartShopping} />
       ) : null}
     </Screen>

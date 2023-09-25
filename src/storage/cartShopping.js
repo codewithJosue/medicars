@@ -12,7 +12,7 @@ export const setCartShopping = async dataCart => {
 
 export const getCartShopping = async () => {
   const jsonData = await AsyncStorage.getItem(cart);
-  return jsonData != null ? await JSON.parse(jsonData) : null;
+  return jsonData != null ? await JSON.parse(jsonData) : [];
 };
 
 export const removeCartShopping = async () => {
@@ -25,7 +25,7 @@ export const removeCartShopping = async () => {
   console.log('Done remove cart shopping!');
 };
 
-export const countCartShopping = async () => {
+export const getCountCartShopping = async () => {
   let count = 0;
   await getCartShopping().then(data => {
     if (data != null) count = data.length;

@@ -16,23 +16,15 @@ import {
   PaymentMethod,
 } from '../screen';
 import colors from '../config/colors';
-import {useEffect, useState} from 'react';
-import {countCartShopping, removeCartShopping} from '../storage/cartShopping';
+import {useContext} from 'react';
+import ShoppingCartContext from '../contexts/shoppingCartContext';
 
 const Stack = createStackNavigator();
 
 const StackNavigationScreen = () => {
   const theme = useTheme();
 
-  const [countCart, setCountCart] = useState(0);
-
-  useEffect(() => {
-    countCartShopping().then(count => {
-      setCountCart(count);
-
-      console.log('PROBANDO STACK');
-    });
-  }, [countCart]);
+  const {state} = useContext(ShoppingCartContext);
 
   return (
     <Stack.Navigator
@@ -82,7 +74,7 @@ const StackNavigationScreen = () => {
                     right: 5,
                     backgroundColor: colors.black,
                   }}>
-                  {countCart}
+                  {state.length > 0 ? state.length : 0}
                 </Badge>
                 <Appbar.Action
                   icon="cart"

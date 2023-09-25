@@ -1,7 +1,7 @@
 import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {AppButton, AppText, Screen} from '../index';
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useContext, useRef, useState} from 'react';
 import AppSelectList from '../AppSelectList';
 import CardImage from '../CardImage';
 
@@ -10,10 +10,10 @@ import {Badge} from 'react-native-paper';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import BottomSheet from '../BottomSheet';
 import colors from '../../config/colors';
-import {details} from '../../data/detailProduct';
 import DetailProduct from './DetailProduct';
 import Feather from 'react-native-vector-icons/Feather';
-import {setCartShopping} from '../../storage/cartShopping';
+import {details} from '../../data/detailProduct';
+import ShoppingCartContext from '../../contexts/shoppingCartContext';
 
 const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   const [selectedVehicle, setSelectedVehicle] = useState('');
@@ -21,13 +21,13 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   const [selectedOil, setSelectedOil] = useState('');
   const [dataDetail, setDataDetail] = useState(details);
 
-  const [data, setData] = useState([]);
+  const {state, dispatch, setCartShopping} = useContext(ShoppingCartContext);
 
   const navigation = useNavigation();
   const ref = useRef(null);
 
   const onPress = useCallback(() => {
-    if (data.length <= 0) {
+    if (state.length <= 0) {
       return toasRef.current.show(
         'debe agregar: vehículo, marca y aceite',
         3000,
@@ -39,26 +39,24 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
     if (isActive) ref?.current?.scrollTo(0);
 
     ref?.current?.scrollTo(-500);
-  }, [data]);
+  }, [state]);
 
-  const findData = (data, selectionId) => {
-    return data.find(d => d.key === selectionId).value;
-  };
   const onSubmitDataVehicle = () => {
-    if (!data.some(e => e.vehicle_id === selectedVehicle)) {
-      setData([
-        ...data,
-        {
-          vehicle_id: selectedVehicle,
-          vehicle: findData(vehicles, selectedVehicle),
-          brand_id: selectedBrand,
-          brand: findData(marcas, selectedBrand),
-          oil_id: selectedOil,
-          oil: findData(aceites, selectedOil),
+    if (selectedBrand === '' || selectedVehicle === '' || selectedOil === '') {
+      return toasRefError.current.show('hay opciones sin seleccionar');
+    }
+
+    if (!state.some(e => e.vehicle_id === selectedVehicle)) {
+      dispatch({
+        type: 'ADD',
+        payload: {
+          selectedVehicle,
+          selectedBrand,
+          selectedOil,
           image,
           detail: dataDetail,
         },
-      ]);
+      });
 
       toasRef.current.show('Se agrego correctamente', 3000);
     } else {
@@ -72,31 +70,12 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   const total = dataDetail.reduce((n, {total}) => n + total, 0);
 
   const addCartShopping = async () => {
-    const copy = [...dataDetail];
-
-    if (data.some(v => v.vehicle_id === selectedVehicle)) {
-      setData(
-        data.map(info =>
-          info.vehicle_id === selectedVehicle
-            ? {
-                ...info,
-                detail: info.detail.map(details => {
-                  return {
-                    ...details,
-                    cantidad: details.cantidad,
-                    total: details.total,
-                  };
-                }),
-              }
-            : {...info},
-        ),
-      );
-
-      await setCartShopping(data);
+    if (state.some(v => v.vehicle_id === selectedVehicle)) {
+      dispatch({type: 'UPDATE', payload: {selectedVehicle}});
       ref?.current?.scrollTo(0);
     }
   };
-  console.log('DATA', data);
+
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <Screen style={styles.container}>
@@ -137,7 +116,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
                 <Feather name="list" size={20} />
               </TouchableOpacity>
               <Badge style={styles.badge} size={15}>
-                {data.length}
+                {state.length}
               </Badge>
             </View>
 
