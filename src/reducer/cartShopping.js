@@ -1,4 +1,4 @@
-import {aceites, marcas, vehicles} from '../data';
+import {aceites, brands, customerVehicle} from '../data';
 import {setCartShopping, removeCartShopping} from '../storage/cartShopping';
 
 const findData = (data, selectionId) => {
@@ -14,9 +14,9 @@ const cartShoppingReducer = (state, action) => {
         ...state,
         {
           vehicle_id: action.payload.selectedVehicle,
-          vehicle: findData(vehicles, action.payload.selectedVehicle),
+          vehicle: findData(customerVehicle, action.payload.selectedVehicle),
           brand_id: action.payload.selectedBrand,
-          brand: findData(marcas, action.payload.selectedBrand),
+          brand: findData(brands, action.payload.selectedBrand),
           oil_id: action.payload.selectedOil,
           oil: findData(aceites, action.payload.selectedOil),
           image: action.payload.image,

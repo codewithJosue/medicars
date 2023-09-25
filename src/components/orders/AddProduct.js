@@ -5,7 +5,7 @@ import React, {useCallback, useContext, useRef, useState} from 'react';
 import AppSelectList from '../AppSelectList';
 import CardImage from '../CardImage';
 
-import {aceites, marcas, vehicles} from '../../data/';
+import {aceites, brands, customerVehicle} from '../../data/';
 import {Badge} from 'react-native-paper';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import BottomSheet from '../BottomSheet';
@@ -88,14 +88,14 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
             <View style={{zIndex: 3}}>
               <AppSelectList
                 placeholder="Seleccionar vehículo"
-                data={vehicles}
+                data={customerVehicle}
                 setSelected={setSelectedVehicle}
               />
             </View>
             <View style={{zIndex: 2}}>
               <AppSelectList
                 placeholder="Seleccionar marca"
-                data={marcas}
+                data={brands}
                 setSelected={setSelectedBrand}
               />
             </View>

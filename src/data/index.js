@@ -1,5 +1,5 @@
-import { vehicles } from "./vehicles";
-import { marcas } from "./marcas";
-import { aceites } from "./aceites";
+import {customerVehicle, vehicles} from './vehicles';
+import {brands, brandVehicles} from './marcas';
+import {aceites} from './aceites';
 
-export { aceites, marcas, vehicles };
+export {aceites, brands, customerVehicle, vehicles, brandVehicles};
