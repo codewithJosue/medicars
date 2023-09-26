@@ -4,6 +4,7 @@ import {StyleSheet, View} from 'react-native';
 import AvatarText from '../components/AvatarText';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import route from './route';
+import iconSize from '../config/iconSize';
 
 const DrawerContent = ({navigation, ...props}) => {
   const onchangeScreen = screen => {
@@ -11,29 +12,23 @@ const DrawerContent = ({navigation, ...props}) => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={styles.container}>
       <DrawerContentScrollView {...props}>
-        <View style={styles.drawerContent}>
+        <View>
           <View style={styles.userInfoSection}>
-            <View style={{flexDirection: 'row', marginTop: 10, bottom: 0}}>
-              {<AvatarText size={30} />}
-              <View
-                style={{
-                  marginLeft: 15,
-                  flexDirection: 'column',
-                }}>
-                <Title style={styles.title}>Josue A. Flores </Title>
-                <Caption style={styles.caption}>correo@gmail.com</Caption>
-              </View>
+            {<AvatarText size={30} />}
+            <View style={styles.userInfoSectionDetalle}>
+              <Title style={styles.title}>Josue A. Flores </Title>
+              <Caption style={styles.caption}>correo@gmail.com</Caption>
             </View>
           </View>
 
-          <Drawer.Section style={styles.drawerSection}>
+          <Drawer.Section showDivider={false}>
             <DrawerItem
               label="Inicio"
               labelStyle={styles.labelItem}
               icon={({color, size}) => (
-                <Icon name="home" color={color} size={size} />
+                <Icon name="home" color={color} size={iconSize.small} />
               )}
               onPress={() => onchangeScreen(route.HOME)}
             />
@@ -41,7 +36,7 @@ const DrawerContent = ({navigation, ...props}) => {
               label="Adicionar Vehículos"
               labelStyle={styles.labelItem}
               icon={({color, size}) => (
-                <Icon name="plus-circle" color={color} size={size} />
+                <Icon name="plus-circle" color={color} size={iconSize.small} />
               )}
               onPress={() => onchangeScreen(route.ADD_VEHICLE)}
             />
@@ -49,17 +44,17 @@ const DrawerContent = ({navigation, ...props}) => {
               label="Historial Mantenimientos"
               labelStyle={styles.labelItem}
               icon={({color, size}) => (
-                <Icon name="history" color={color} size={size} />
+                <Icon name="history" color={color} size={iconSize.small} />
               )}
               onPress={() => onchangeScreen('profile')}
             />
           </Drawer.Section>
-          <Drawer.Section style={styles.drawerSection}>
+          <Drawer.Section showDivider={false}>
             <DrawerItem
               label="Historial Compras"
               labelStyle={styles.labelItem}
               icon={({color, size}) => (
-                <Icon name="money" color={color} size={size} />
+                <Icon name="money" color={color} size={iconSize.small} />
               )}
               onPress={() => onchangeScreen('setting')}
             />
@@ -68,7 +63,7 @@ const DrawerContent = ({navigation, ...props}) => {
               label="Consultar Estado Orden"
               labelStyle={styles.labelItem}
               icon={({color, size}) => (
-                <Icon name="check-circle" color={color} size={size} />
+                <Icon name="check-circle" color={color} size={iconSize.small} />
               )}
               onPress={() => onchangeScreen('support')}
             />
@@ -76,7 +71,11 @@ const DrawerContent = ({navigation, ...props}) => {
               label="Ir al Carrito de compras"
               labelStyle={styles.labelItem}
               icon={({color, size}) => (
-                <Icon name="shopping-cart" color={color} size={size} />
+                <Icon
+                  name="shopping-cart"
+                  color={color}
+                  size={iconSize.small}
+                />
               )}
               onPress={() => onchangeScreen('support')}
             />
@@ -84,7 +83,7 @@ const DrawerContent = ({navigation, ...props}) => {
               label="Notificaciones"
               labelStyle={styles.labelItem}
               icon={({color, size}) => (
-                <Icon name="bell" color={color} size={size} />
+                <Icon name="bell" color={color} size={iconSize.small} />
               )}
               onPress={() => onchangeScreen('support')}
             />
@@ -94,20 +93,20 @@ const DrawerContent = ({navigation, ...props}) => {
             label="Cambiar contraseña"
             labelStyle={styles.labelItem}
             icon={({color, size}) => (
-              <Icon name="edit" color={color} size={size} />
+              <Icon name="edit" color={color} size={iconSize.small} />
             )}
             onPress={() => onchangeScreen('support')}
           />
         </View>
       </DrawerContentScrollView>
 
-      <Drawer.Section style={styles.bottomDrawerSection}>
+      <Drawer.Section showDivider={false} style={styles.bottomDrawerSection}>
         <DrawerItem
           label="Cerrar Sesión"
           labelStyle={styles.labelItem}
           onPress={() => console.log('salir')}
           icon={({color, size}) => (
-            <Icon name="sign-in" color={color} size={size} />
+            <Icon name="sign-in" color={color} size={iconSize.small} />
           )}
         />
       </Drawer.Section>
@@ -118,47 +117,31 @@ const DrawerContent = ({navigation, ...props}) => {
 export default DrawerContent;
 
 const styles = StyleSheet.create({
-  drawerContent: {
+  container: {
     flex: 1,
   },
   userInfoSection: {
-    paddingLeft: 20,
+    marginLeft: 10,
+    flexDirection: 'row',
+    marginTop: 10,
+    bottom: 0,
+  },
+  userInfoSectionDetalle: {
+    marginLeft: 15,
   },
   title: {
     fontSize: 12,
     fontWeight: 'bold',
   },
   caption: {
-    fontSize: 12,
-    lineHeight: 14,
+    fontSize: 10,
+    lineHeight: 10,
   },
-  row: {
-    marginTop: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  section: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: 15,
-  },
-  paragraph: {
-    fontWeight: 'bold',
-    marginRight: 3,
-  },
-  drawerSection: {
-    marginTop: 15,
-  },
+
   bottomDrawerSection: {
     marginBottom: 15,
     borderTopColor: '#f4f4f4',
     borderTopWidth: 1,
-  },
-  preference: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
   },
   labelItem: {
     fontSize: 10,

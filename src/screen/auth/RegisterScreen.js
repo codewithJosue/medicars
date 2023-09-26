@@ -12,6 +12,9 @@ import customStyles from '../../config/customStyleSteps';
 
 import defaultStyles from '../../config/styles';
 import AppSelectList from '../../components/AppSelectList';
+import {Title} from 'react-native-paper';
+import iconSize from '../../config/iconSize';
+import {brandVehicles, engine, vehicles, year} from '../../data';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('El nombre es requerido').label('Name'),
@@ -163,41 +166,35 @@ const RegisterScreen = () => {
             onSubmit={value => backPageChange(value)}
             validationSchema={validationSchema}>
             <View style={{zIndex: 4}}>
-              <AppText style={styles.titleSelect}>
-                Marca de vehículo (*)
-              </AppText>
               <AppSelectList
                 placeholder="Seleccione la marca"
                 setSelected={setSelected}
-                data={data2}
+                data={brandVehicles}
+                iconName="car-2-plus"
               />
             </View>
             <View style={{zIndex: 3}}>
-              <AppText style={styles.titleSelect}>
-                Modelo de vehículo (*)
-              </AppText>
               <AppSelectList
                 placeholder="Seleccione el modelo"
                 setSelected={setSelected}
-                data={data2}
+                data={vehicles}
+                iconName="car-3-plus"
               />
             </View>
             <View style={{zIndex: 2}}>
-              <AppText style={styles.titleSelect}>Año de vehículo (*)</AppText>
               <AppSelectList
                 placeholder="Seleccione el año"
                 setSelected={setSelected}
-                data={data2}
+                data={year}
+                iconName="calendar-range"
               />
             </View>
             <View style={{zIndex: 1}}>
-              <AppText style={styles.titleSelect}>
-                Motor de vehiculo (*)
-              </AppText>
               <AppSelectList
                 placeholder="Seleccione el motor"
                 setSelected={setSelected}
-                data={data2}
+                data={engine}
+                iconName="engine"
               />
             </View>
 

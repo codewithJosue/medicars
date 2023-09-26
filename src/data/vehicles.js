@@ -60,7 +60,7 @@ export const vehicles = [
   {key: 50, value: 'Pontiac'},
 ];
 
-const year = [
+export const year = [
   {key: 1, value: 2023},
   {key: 2, value: 2022},
   {key: 3, value: 2021},
@@ -113,7 +113,7 @@ const year = [
   {key: 50, value: 1974},
 ];
 
-const engine = [
+export const engine = [
   {key: 1, value: '2.0L Inline-4'},
   {key: 2, value: '1.5L Turbocharged Inline-4'},
   {key: 3, value: '3.5L V6'},

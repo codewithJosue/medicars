@@ -18,6 +18,7 @@ import {
 import colors from '../config/colors';
 import {useContext} from 'react';
 import ShoppingCartContext from '../contexts/shoppingCartContext';
+import iconSize from '../config/iconSize';
 
 const Stack = createStackNavigator();
 
@@ -43,6 +44,7 @@ const StackNavigationScreen = () => {
               {back ? (
                 <Appbar.BackAction
                   style={styles.back}
+                  size={iconSize.small}
                   onPress={navigation.goBack}
                   color={colors.primary}
                 />
@@ -52,7 +54,11 @@ const StackNavigationScreen = () => {
                   onPress={() => {
                     navigation.dispatch(DrawerActions.openDrawer());
                   }}>
-                  <Icon name="align-left" size={25} color={colors.primary} />
+                  <Icon
+                    name="align-left"
+                    size={iconSize.small}
+                    color={colors.primary}
+                  />
                 </TouchableOpacity>
               )}
               <Appbar.Content
@@ -67,7 +73,7 @@ const StackNavigationScreen = () => {
               <View>
                 <Badge
                   //visible={unread && unread > 0}
-                  size={16}
+                  size={iconSize.badge}
                   style={{
                     position: 'absolute',
                     top: 5,
@@ -78,6 +84,7 @@ const StackNavigationScreen = () => {
                 </Badge>
                 <Appbar.Action
                   icon="cart"
+                  size={iconSize.small}
                   color={colors.primary}
                   onPress={() => navigation.navigate('cart_detail_shopping')}
                 />

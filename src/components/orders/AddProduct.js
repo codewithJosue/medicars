@@ -90,6 +90,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
                 placeholder="Seleccionar vehículo"
                 data={customerVehicle}
                 setSelected={setSelectedVehicle}
+                iconName="car-2-plus"
               />
             </View>
             <View style={{zIndex: 2}}>
@@ -97,6 +98,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
                 placeholder="Seleccionar marca"
                 data={brands}
                 setSelected={setSelectedBrand}
+                iconName="oil"
               />
             </View>
           </View>
@@ -105,6 +107,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
               placeholder="Seleccionar Aceite"
               data={aceites}
               setSelected={setSelectedOil}
+              iconName="cursor-default-click"
             />
           </View>
 

@@ -1,10 +1,10 @@
 export default {
-  stepIndicatorSize: 25,
-  currentStepIndicatorSize:30,
+  stepIndicatorSize: 30,
+  currentStepIndicatorSize: 30,
   separatorStrokeWidth: 2,
-  currentStepStrokeWidth: 3,
+  currentStepStrokeWidth: 1,
   stepStrokeCurrentColor: 'red',
-  stepStrokeWidth: 3,
+  stepStrokeWidth: 2,
   stepStrokeFinishedColor: 'red',
   stepStrokeUnFinishedColor: '#aaaaaa',
   separatorFinishedColor: 'red',
@@ -13,12 +13,11 @@ export default {
   stepIndicatorUnFinishedColor: '#ffffff',
   stepIndicatorCurrentColor: '#ffffff',
   stepIndicatorLabelFontSize: 13,
-  currentStepIndicatorLabelFontSize: 13,
+  currentStepIndicatorLabelFontSize: 11,
   stepIndicatorLabelCurrentColor: 'black',
   stepIndicatorLabelFinishedColor: '#ffffff',
   stepIndicatorLabelUnFinishedColor: '#aaaaaa',
   labelColor: '#999999',
-  labelSize: 13,
-  currentStepLabelColor: 'red'
-}
-
+  labelSize: 10,
+  currentStepLabelColor: 'red',
+};
