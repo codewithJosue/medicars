@@ -84,7 +84,7 @@ const DrawerContent = ({navigation, ...props}) => {
               label="Notificaciones"
               labelStyle={styles.labelItem}
               icon={({color, size}) => (
-                <Icon name="bell-o" color={color} size={size} />
+                <Icon name="bell" color={color} size={size} />
               )}
               onPress={() => onchangeScreen('support')}
             />
