@@ -67,7 +67,7 @@ const StackNavigationLogin = () => {
             <>
               <View style={styles.containerBack}>
                 <MaterialCommunityIcons
-                  size={30}
+                  size={iconSize.small}
                   style={styles.back}
                   name="keyboard-backspace"
                   onPress={() => navigation.goBack()}

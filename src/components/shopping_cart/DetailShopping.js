@@ -161,7 +161,6 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 11,
     fontWeight: 'bold',
   },
   textActive: {

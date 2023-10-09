@@ -2,11 +2,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import Drawer from './Drawer';
 import StackNavigationLogin from './StackNavigationLogin';
 import ShoppingCartContext from '../contexts/shoppingCartContext';
-import {
-  getCartShopping,
-  setCartShopping,
-  removeCartShopping,
-} from '../storage/cartShopping';
+import {getCartShopping, setCartShopping} from '../storage/cartShopping';
 import {useEffect, useReducer} from 'react';
 import cartShoppingReducer from '../reducer/cartShopping';
 
@@ -31,7 +27,7 @@ const RootNavigations = () => {
         setCartShopping,
       }}>
       <NavigationContainer>
-        <Drawer />
+        <StackNavigationLogin />
       </NavigationContainer>
     </ShoppingCartContext.Provider>
   );

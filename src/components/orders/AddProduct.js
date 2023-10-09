@@ -27,7 +27,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   const ref = useRef(null);
 
   const onPress = useCallback(() => {
-    if (state.length <= 0) {
+    if (state.length > 0 && selectedVehicle === '') {
       return toasRef.current.show(
         'debe agregar: vehículo, marca y aceite',
         3000,
@@ -119,7 +119,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
                 <Feather name="list" size={20} />
               </TouchableOpacity>
               <Badge style={styles.badge} size={15}>
-                {state.length}
+                {state.length > 0 && selectedVehicle !== '' ? state.length : 0}
               </Badge>
             </View>
 
