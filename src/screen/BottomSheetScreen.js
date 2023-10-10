@@ -1,10 +1,9 @@
-import React, { useCallback, useRef } from 'react';
-import { StatusBar, StyleSheet, TouchableOpacity, View } from "react-native";
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import React, {useCallback, useRef} from 'react';
+import {StatusBar, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import BottomSheet from '../components/BottomSheet';
 
 const BottomSheetScreen = () => {
-
   const ref = useRef(null);
 
   const onPress = useCallback(() => {
@@ -17,18 +16,17 @@ const BottomSheetScreen = () => {
   }, []);
 
   return (
-
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={{flex: 1}}>
       <View style={styles.container}>
-        <StatusBar style="dark" />
+        <StatusBar style={colors.black} />
         <TouchableOpacity style={styles.button} onPress={onPress} />
         <BottomSheet ref={ref}>
-          <View style={{ flex: 1, backgroundColor: 'orange' }} />
+          <View style={{flex: 1, backgroundColor: 'orange'}} />
         </BottomSheet>
       </View>
     </GestureHandlerRootView>
-  )
-}
+  );
+};
 export default BottomSheetScreen;
 
 const styles = StyleSheet.create({

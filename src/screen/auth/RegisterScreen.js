@@ -1,5 +1,11 @@
 import {useEffect, useState} from 'react';
-import {Dimensions, ScrollView, StyleSheet, View} from 'react-native';
+import {
+  Dimensions,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  View,
+} from 'react-native';
 import * as Yup from 'yup';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import StepIndicator from 'react-native-step-indicator';
@@ -12,9 +18,8 @@ import customStyles from '../../config/customStyleSteps';
 
 import defaultStyles from '../../config/styles';
 import AppSelectList from '../../components/AppSelectList';
-import {Title} from 'react-native-paper';
-import iconSize from '../../config/iconSize';
 import {brandVehicles, engine, vehicles, year} from '../../data';
+import {Divider} from 'react-native-paper';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('El nombre es requerido').label('Name'),
@@ -42,8 +47,6 @@ const RegisterScreen = () => {
 
   const [selected, setSelected] = useState('');
 
-  const data2 = [{key: '1', value: 'Jammu & Kashmir'}];
-
   const onChange_text = (e, type) => {
     setData({
       ...data,
@@ -63,21 +66,25 @@ const RegisterScreen = () => {
     setForm(true);
   };
 
+  const icons = ['account-question', 'car-back'];
+
+  //keyboardShouldPersistTaps="always"
   return (
-    <ScrollView keyboardShouldPersistTaps="always">
-      <Screen style={styles.container}>
-        <StepIndicator
-          customStyles={customStyles}
-          currentPosition={currentPosition}
-          labels={labels}
-          stepCount={2}
-        />
+    <Screen style={styles.container}>
+      <StepIndicator
+        customStyles={customStyles}
+        currentPosition={currentPosition}
+        labels={labels}
+        renderStepIndicator={({position, stepstatus}) => (
+          <Icon name={icons[position]} size={20} color={colors.white} />
+        )}
+        stepCount={2}
+      />
 
-        <View style={styles.containerLogo}>
-          {/*<Image style={styles.logo} source={logo} />*/}
-        </View>
-
-        {form ? (
+      {form ? (
+        <ScrollView
+          keyboardShouldPersistTaps="always"
+          contentContainerStyle={{marginTop: 10}}>
           <AppForm
             initialValues={data}
             onSubmit={value => onPageChange(value)}
@@ -155,91 +162,78 @@ const RegisterScreen = () => {
                 color={eyePassword ? colors.medium : colors.primary}
               />
             </View>
-
-            <View style={styles.btnSiguiente}>
+            <View style={styles.btnNext}>
               <SubmitButton title="siguiente" />
             </View>
           </AppForm>
-        ) : (
-          <AppForm
-            initialValues={data}
-            onSubmit={value => backPageChange(value)}
-            validationSchema={validationSchema}>
-            <View style={{zIndex: 4}}>
-              <AppSelectList
-                placeholder="Seleccione la marca"
-                setSelected={setSelected}
-                data={brandVehicles}
-                iconName="car-2-plus"
-              />
-            </View>
-            <View style={{zIndex: 3}}>
-              <AppSelectList
-                placeholder="Seleccione el modelo"
-                setSelected={setSelected}
-                data={vehicles}
-                iconName="car-3-plus"
-              />
-            </View>
-            <View style={{zIndex: 2}}>
-              <AppSelectList
-                placeholder="Seleccione el año"
-                setSelected={setSelected}
-                data={year}
-                iconName="calendar-range"
-              />
-            </View>
-            <View style={{zIndex: 1}}>
-              <AppSelectList
-                placeholder="Seleccione el motor"
-                setSelected={setSelected}
-                data={engine}
-                iconName="engine"
-              />
-            </View>
+        </ScrollView>
+      ) : (
+        <AppForm
+          initialValues={data}
+          onSubmit={value => backPageChange(value)}
+          validationSchema={validationSchema}>
+          <View style={{marginTop: 15}} />
 
-            <View style={styles.botones}>
-              <SubmitButton title="Atrás" color="black" />
-              <View style={{margin: 10}} />
-              <AppButton
-                title="Guardar"
-                onpress={() => console.log('guardar')}
-              />
-            </View>
-          </AppForm>
-        )}
-      </Screen>
-    </ScrollView>
+          <View style={{zIndex: 4}}>
+            <AppSelectList
+              placeholder="Seleccione la marca"
+              setSelected={setSelected}
+              data={brandVehicles}
+              iconName="car-2-plus"
+            />
+          </View>
+          <View style={{zIndex: 3}}>
+            <AppSelectList
+              placeholder="Seleccione el modelo"
+              setSelected={setSelected}
+              data={vehicles}
+              iconName="car-3-plus"
+            />
+          </View>
+          <View style={{zIndex: 2}}>
+            <AppSelectList
+              placeholder="Seleccione el año"
+              setSelected={setSelected}
+              data={year}
+              iconName="calendar-range"
+            />
+          </View>
+          <View style={{zIndex: 1}}>
+            <AppSelectList
+              placeholder="Seleccione el motor"
+              setSelected={setSelected}
+              data={engine}
+              iconName="engine"
+            />
+          </View>
+
+          {/*<TextInput placeholder="Observaciones" multiline={true} />*/}
+
+          <View style={styles.buttons}>
+            <SubmitButton title="Atrás" color="danger" />
+            <View style={{margin: 10}} />
+            <AppButton title="Guardar" onpress={() => console.log('guardar')} />
+          </View>
+        </AppForm>
+      )}
+    </Screen>
   );
 };
 
 export default RegisterScreen;
 
-const h = Dimensions.get('window').height;
-
 const styles = StyleSheet.create({
-  btnSiguiente: {
-    bottom: 0,
-    right: 0,
-    width: '40%',
-  },
   container: {
     margin: 20,
-    //flex: 1,
-    height: h,
+    flex: 1,
   },
-  containerLogo: {
-    alignSelf: 'center',
-    marginTop: 15,
+  btnNext: {
+    justifyContent: 'flex-end',
   },
   iconPass: {
     position: 'absolute',
     paddingTop: 15,
     right: 10,
-  },
-  logo: {
-    height: 100,
-    width: 310,
   },
   text: {
     fontWeight: 'bold',
@@ -252,8 +246,9 @@ const styles = StyleSheet.create({
     fontWeight: '200',
     marginLeft: 10,
   },
-  botones: {
+  buttons: {
     flexDirection: 'row',
+    position: 'absolute',
     width: '45%',
     bottom: 0,
   },
@@ -281,7 +276,6 @@ const styles = StyleSheet.create({
   },
   textDropdown: {
     marginVertical: 5,
-    //paddingRight:10,
   },
   containerMotorYear: {
     flexDirection: 'row',

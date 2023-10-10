@@ -1,8 +1,8 @@
-import React from "react";
-import { SafeAreaView, StyleSheet, View } from "react-native";
-import colors from "../config/colors";
+import React from 'react';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
+import colors from '../config/colors';
 
-const Screen = ({ children, style }) => (
+const Screen = ({children, style}) => (
   <SafeAreaView style={[styles.screen]}>
     <View style={style}>{children}</View>
   </SafeAreaView>
