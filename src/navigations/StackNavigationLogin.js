@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     top: 10,
   },
   back: {
-    color: '#c2c2c2',
+    color: colors.primary,
     backgroundColor: '#fff',
     borderRadius: 14,
     top: -7,

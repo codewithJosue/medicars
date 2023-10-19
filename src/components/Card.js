@@ -24,10 +24,11 @@ export default Card;
 const styles = StyleSheet.create({
   card: {
     borderRadius: 10,
-    backgroundColor: colors.white,
+    backgroundColor: colors.light,
+    elevation: 5,
     overflow: 'hidden',
     marginTop: 10,
-    width: '50%',
+    width: '48%',
     margin: 2,
   },
   detailsContainer: {
@@ -35,17 +36,16 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 80,
+    height: 50,
   },
   subTitle: {
-    color: colors.primary,
-    fontSize: 10,
-    //fontWeight:'bold'
+    color: colors.black,
+    fontSize: 8,
+    fontWeight: 'bold',
   },
   title: {
     marginBottom: 5,
-    color: colors.secondary,
-    fontWeight: 'bold',
-    fontSize: 10,
+    color: colors.primary,
+    fontSize: 9,
   },
 });

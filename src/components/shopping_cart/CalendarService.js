@@ -18,7 +18,8 @@ const CalendarService = props => {
 
   return (
     <Screen style={styles.container}>
-      <AppText style={{alignSelf: 'center', color: colors.medium, top: -5}}>
+      <AppText
+        style={{alignSelf: 'center', color: colors.grey_medium, top: -5}}>
         Método de pago
       </AppText>
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -37,14 +38,10 @@ const CalendarService = props => {
             <FontAwesome
               name="arrow-right"
               size={30}
-              color={colors.light_grey}
+              color={colors.secondary}
             />
           ) : (
-            <FontAwesome
-              name="arrow-left"
-              size={30}
-              color={colors.light_grey}
-            />
+            <FontAwesome name="arrow-left" size={30} color={colors.secondary} />
           )}
         </TouchableOpacity>
 

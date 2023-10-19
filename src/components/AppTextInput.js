@@ -9,12 +9,12 @@ const AppTextInput = ({icon, ...otherProps}) => (
       <Icon
         name={icon}
         size={17}
-        color={defaultStyles.colors.medium}
+        color={defaultStyles.colors.secondary}
         style={styles.icon}
       />
     )}
     <TextInput
-      placeholderTextColor={defaultStyles.colors.medium}
+      placeholderTextColor={defaultStyles.colors.grey_medium}
       style={defaultStyles.text}
       {...otherProps}
     />

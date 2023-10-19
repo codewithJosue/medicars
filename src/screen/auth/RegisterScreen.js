@@ -19,7 +19,6 @@ import customStyles from '../../config/customStyleSteps';
 import defaultStyles from '../../config/styles';
 import AppSelectList from '../../components/AppSelectList';
 import {brandVehicles, engine, vehicles, year} from '../../data';
-import {Divider} from 'react-native-paper';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('El nombre es requerido').label('Name'),
@@ -71,15 +70,17 @@ const RegisterScreen = () => {
   //keyboardShouldPersistTaps="always"
   return (
     <Screen style={styles.container}>
-      <StepIndicator
-        customStyles={customStyles}
-        currentPosition={currentPosition}
-        labels={labels}
-        renderStepIndicator={({position, stepstatus}) => (
-          <Icon name={icons[position]} size={20} color={colors.white} />
-        )}
-        stepCount={2}
-      />
+      <View style={styles.containerStep}>
+        <StepIndicator
+          customStyles={customStyles}
+          currentPosition={currentPosition}
+          labels={labels}
+          renderStepIndicator={({position, stepstatus}) => (
+            <Icon name={icons[position]} size={20} color={colors.primary} />
+          )}
+          stepCount={2}
+        />
+      </View>
 
       {form ? (
         <ScrollView
@@ -141,7 +142,7 @@ const RegisterScreen = () => {
                 style={styles.iconPass}
                 name={eyePassword ? 'eye-off' : 'eye'}
                 size={17}
-                color={eyePassword ? colors.medium : colors.primary}
+                color={eyePassword ? colors.grey_medium : colors.primary}
               />
               <AppFormField
                 autoCapitalize="none"
@@ -159,7 +160,7 @@ const RegisterScreen = () => {
                 style={styles.iconPass}
                 name={eyePassword ? 'eye-off' : 'eye'}
                 size={17}
-                color={eyePassword ? colors.medium : colors.primary}
+                color={eyePassword ? colors.grey_medium : colors.primary}
               />
             </View>
             <View style={styles.btnNext}>
@@ -227,6 +228,11 @@ const styles = StyleSheet.create({
     margin: 20,
     flex: 1,
   },
+  containerStep: {
+    backgroundColor: colors.light,
+    padding: 5,
+    borderRadius: 10,
+  },
   btnNext: {
     justifyContent: 'flex-end',
   },
@@ -242,7 +248,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   titleSelect: {
-    color: colors.light_grey,
+    color: colors.secondary,
     fontWeight: '200',
     marginLeft: 10,
   },

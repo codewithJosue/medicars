@@ -55,7 +55,7 @@ const StackNavigationScreen = () => {
                     navigation.dispatch(DrawerActions.openDrawer());
                   }}>
                   <Icon
-                    name="align-left"
+                    name="bars"
                     size={iconSize.small}
                     color={colors.primary}
                   />
@@ -64,11 +64,6 @@ const StackNavigationScreen = () => {
               <Appbar.Content
                 style={{flexDirection: 'row', justifyContent: 'center'}}
                 title={title && <LogoHeader />}
-                titleStyle={{
-                  fontSize: 18,
-                  fontWeight: 'bold',
-                  color: colors.primary,
-                }}
               />
               <View>
                 <Badge
@@ -78,7 +73,7 @@ const StackNavigationScreen = () => {
                     position: 'absolute',
                     top: 5,
                     right: 5,
-                    backgroundColor: colors.black,
+                    backgroundColor: colors.secondary,
                   }}>
                   {state.length > 0 ? state.length : 0}
                 </Badge>
@@ -112,5 +107,9 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 22,
     fontWeight: 'bold',
+  },
+  back: {
+    color: colors.primary,
+    backgroundColor: '#fff',
   },
 });

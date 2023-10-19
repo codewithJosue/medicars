@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   soporte: {
-    color: colors.blue,
+    color: colors.secondary,
     fontWeight: 'bold',
   },
 });

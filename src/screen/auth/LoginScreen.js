@@ -72,7 +72,7 @@ const LoginScreen = () => {
               style={styles.iconPass}
               name={eyePassword ? 'eye-off' : 'eye'}
               size={17}
-              color={eyePassword ? colors.medium : colors.secondary}
+              color={eyePassword ? colors.grey_medium : colors.primary}
             />
           </View>
         </View>
@@ -85,13 +85,13 @@ const LoginScreen = () => {
           </AppText>
         </TouchableOpacity>
       </AppForm>
-      <View style={{marginTop: 20}}>
+      <View style={styles.containerSocial}>
         <AppText style={styles.titleSocial}>O inicie sesión con: </AppText>
-        <View style={styles.containerSocial}>
+        <View style={styles.containerButton}>
           <IconButton
             icon="facebook"
             style={styles.social}
-            iconColor={colors.darkBlue}
+            iconColor={colors.primary}
             containerColor={colors.white}
             size={20}
             onPress={loginFacebook}
@@ -101,7 +101,7 @@ const LoginScreen = () => {
             icon="google-plus"
             style={styles.social}
             containerColor={colors.white}
-            iconColor={colors.darkBlue}
+            iconColor={colors.primary}
             size={20}
             onPress={loginGoogle}
           />
@@ -131,6 +131,9 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   containerSocial: {
+    marginTop: 20,
+  },
+  containerButton: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
@@ -154,17 +157,19 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: 'bold',
     fontSize: 20,
+    color: colors.primary,
     top: 10,
     alignSelf: 'center',
   },
   titleSocial: {
     textAlign: 'center',
     fontWeight: 'bold',
+    color: colors.secondary,
   },
   forgotPassword: {
     textAlign: 'right',
     fontWeight: 'bold',
-    color: colors.black,
+    color: colors.primary,
   },
   social: {
     width: '50%',
