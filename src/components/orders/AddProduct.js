@@ -79,7 +79,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <Screen style={styles.container}>
-        <CardImage img={image} height={130} title={title} />
+        <CardImage img={image} height={150} title={title} />
         <View style={{flex: 1, top: 10}}>
           <View
             style={{
@@ -131,7 +131,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
           <View style={styles.footer}>
             <AppButton
               title="Seguir comprando"
-              color="black"
+              color="secondary"
               onPress={() => navigation.goBack()}
             />
             <View style={{margin: 10}} />

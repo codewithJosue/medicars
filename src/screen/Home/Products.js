@@ -7,6 +7,7 @@ import colors from '../../config/colors';
 const Products = () => {
   return (
     <FlatList
+      horizontal={false}
       style={styles.screen}
       data={products}
       keyExtractor={listings => listings.id.toString()}

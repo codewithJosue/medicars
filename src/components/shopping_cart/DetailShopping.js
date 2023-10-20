@@ -57,17 +57,20 @@ const DetailShopping = () => {
                 <View style={styles.line} />
               </View>
               <View style={styles.cardBodyBottom}>
-                <TouchableOpacity
-                  style={styles.itemTextActiveContainer}
-                  onPress={() =>
-                    navigation.navigate(route.CART_SHOPPING, {detail})
-                  }>
+                <TouchableOpacity style={styles.itemTextActiveContainer}>
                   <View>
-                    <MaterialCommunityIcons name="trash-can" size={17} />
+                    <MaterialCommunityIcons
+                      name="trash-can"
+                      size={17}
+                      color={colors.secondary}
+                    />
                   </View>
                 </TouchableOpacity>
                 <MaterialCommunityIcons
                   style={{color: '#fff', alignSelf: 'center'}}
+                  onPress={() =>
+                    navigation.navigate(route.CART_SHOPPING, {detail})
+                  }
                   size={17}
                   name="send-circle-outline"
                 />
@@ -123,7 +126,7 @@ const styles = StyleSheet.create({
   cardBodyBottom: {
     top: 2,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     right: 10,
     position: 'absolute',
     backgroundColor: colors.primary,
@@ -131,6 +134,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 2,
     borderRadius: 20,
     height: 22,
+    width: 50,
   },
   cartOf: {
     flex: 1,

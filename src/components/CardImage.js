@@ -8,13 +8,14 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
+  Text,
 } from 'react-native';
 import {Card} from 'react-native-paper';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import colors from '../config/colors';
 import {AppText} from './index';
 
-const CardImage = ({img, width = 250, height = 150, title}) => {
+const CardImage = ({img, width = 280, height = 150, title}) => {
   const [isVisible, setIsvisible] = useState(false);
 
   return (
@@ -23,7 +24,7 @@ const CardImage = ({img, width = 250, height = 150, title}) => {
         <Card style={{flexDirection: 'row', alignSelf: 'center'}}>
           <AppText style={styles.carCoverTitle}>{title}</AppText>
           <Card.Cover
-            style={{width: width, height: height, opacity: 0.7}}
+            style={{width: width, height: height}}
             source={img}></Card.Cover>
         </Card>
       </TouchableOpacity>
@@ -62,12 +63,12 @@ const styles = StyleSheet.create({
   },
   carCoverTitle: {
     position: 'absolute',
-    color: colors.black,
+    color: colors.white,
     fontWeight: 'bold',
     zIndex: 1,
-    alignSelf: 'center',
-    top: 50,
-    fontSize: 18,
+    fontSize: 12,
+    bottom: 10,
+    marginLeft: 10,
   },
   imageZoom: {
     width: 400,
