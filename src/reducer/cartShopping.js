@@ -1,5 +1,5 @@
 import {aceites, brands, customerVehicle} from '../data';
-import {setCartShopping, removeCartShopping} from '../storage/cartShopping';
+import {removeCartShopping, setCartShopping} from '../storage/cartShopping';
 
 const findData = (data, selectionId) => {
   return data.find(d => d.key === selectionId).value;
@@ -42,6 +42,16 @@ const cartShoppingReducer = (state, action) => {
       setCartShopping(data).then(r => console.log('DONE'));
 
       return data;
+
+    case 'REMOVE_ID':
+      const cartShoppingId = state.filter(
+        x => x.vehicle_id !== action.payload.id,
+      );
+
+      setCartShopping(cartShoppingId).then(r => console.log('DONE'));
+
+      return cartShoppingId;
+
     case 'REMOVE':
       removeCartShopping().then();
       return action.payload;

@@ -19,12 +19,15 @@ const DetailShopping = () => {
     dispatch({type: 'REMOVE', payload: []});
   };
 
+  const deleteCartShoppingId = async id => {
+    dispatch({type: 'REMOVE_ID', payload: {id}});
+  };
+
   return (
     <Screen style={styles.container}>
       {state.length > 0 ? (
         state.map((cart, index) => {
           const {detail} = cart;
-
           return (
             <View key={index} style={styles.containerCard}>
               <View style={styles.viewImage}>
@@ -62,6 +65,7 @@ const DetailShopping = () => {
                     <MaterialCommunityIcons
                       name="trash-can"
                       size={17}
+                      onPress={() => deleteCartShoppingId(cart.vehicle_id)}
                       color={colors.secondary}
                     />
                   </View>
