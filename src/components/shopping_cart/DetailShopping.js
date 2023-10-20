@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {AppButton, AppText, Screen} from '../index';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 
@@ -7,24 +7,34 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {useNavigation} from '@react-navigation/native';
 import route from '../../navigations/route';
 import ShoppingCartContext from '../../contexts/shoppingCartContext';
+import AppDialog from '../AppDialog';
 
 const DetailShopping = () => {
   const navigation = useNavigation();
 
   const {state, dispatch} = useContext(ShoppingCartContext);
+  const [isVisible, setIsVisible] = useState(false);
+  const [onPress, setOnPress] = useState(null);
 
-  console.log('CART SHOPPING DETAIL', state);
+  //console.log('CART SHOPPING DETAIL', state);
 
   const resetCartShopping = async () => {
     dispatch({type: 'REMOVE', payload: []});
   };
 
-  const deleteCartShoppingId = async id => {
+  const deleteCartShoppingId = id => {
     dispatch({type: 'REMOVE_ID', payload: {id}});
   };
 
+  console.log(onPress);
+
   return (
     <Screen style={styles.container}>
+      <AppDialog
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+        onPress={onPress}
+      />
       {state.length > 0 ? (
         state.map((cart, index) => {
           const {detail} = cart;
@@ -65,7 +75,13 @@ const DetailShopping = () => {
                     <MaterialCommunityIcons
                       name="trash-can"
                       size={17}
-                      onPress={() => deleteCartShoppingId(cart.vehicle_id)}
+                      //onPress={() => deleteCartShoppingId(cart.vehicle_id)}
+                      onPress={() => {
+                        setIsVisible(!isVisible);
+                        setOnPress(
+                          () => () => deleteCartShoppingId(cart.vehicle_id),
+                        );
+                      }}
                       color={colors.secondary}
                     />
                   </View>
