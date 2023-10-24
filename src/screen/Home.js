@@ -8,7 +8,7 @@ import {Screen} from '../components';
 
 const initialLayout = {width: Dimensions.get('window').width};
 
-const HomeScreen = () => {
+const Home = () => {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     {key: 'services', title: 'Servicios'},
@@ -25,7 +25,11 @@ const HomeScreen = () => {
   const renderTabBar = props => (
     <TabBar
       {...props}
-      indicatorStyle={{backgroundColor: colors.secondary}}
+      indicatorStyle={{
+        backgroundColor: colors.light,
+        height: 20,
+        borderRadius: 24,
+      }}
       style={{
         backgroundColor: colors.white,
         shadowColor: theme.colors.text,
@@ -51,7 +55,7 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default Home;
 
 const styles = StyleSheet.create({
   container: {

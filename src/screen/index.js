@@ -1,4 +1,4 @@
-import HomeScreen from './HomeScreen';
+import Home from './Home';
 import Order from './Order';
 import Settings from './Settings';
 import Vehicles from './Vehicles';
@@ -10,7 +10,7 @@ export {
   Vehicles,
   CartShopping,
   CartDetailShopping,
-  HomeScreen,
+  Home,
   Order,
   PaymentMethod,
   Settings,

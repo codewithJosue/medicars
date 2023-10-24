@@ -1,7 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import color from 'color';
 
-import {HomeScreen, Settings} from '../screen';
+import {Home, Settings} from '../screen';
 import {useTheme} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import route from './route';
@@ -28,7 +28,7 @@ const BottomTabs = () => {
         sceneAnimationEnabled={false}>
         <Tab.Screen
           name={route.HOME}
-          component={HomeScreen}
+          component={Home}
           options={{
             title: 'Inicio',
             tabBarIcon: ({color, size}) => (

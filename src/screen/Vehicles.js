@@ -18,7 +18,7 @@ const Vehicles = props => {
         customSize={30}
         animated={true}
         style={styles.fabStyle}
-        onPress={() => console.log('Pressed')}
+        onPress={() => console.log('Pressed to')}
       />
       <FlatList
         horizontal={false}
@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   fabStyle: {
-    bottom: 16,
-    right: 10,
+    bottom: 0,
+    right: 0,
     position: 'absolute',
     backgroundColor: colors.light,
   },
