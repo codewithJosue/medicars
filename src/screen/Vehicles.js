@@ -13,13 +13,6 @@ const Vehicles = props => {
 
   return (
     <Screen style={styles.container}>
-      <FAB
-        icon="plus"
-        customSize={30}
-        animated={true}
-        style={styles.fabStyle}
-        onPress={() => console.log('Pressed to')}
-      />
       <FlatList
         horizontal={false}
         style={styles.screen}
@@ -33,6 +26,14 @@ const Vehicles = props => {
           />
         )}
       />
+
+      <FAB
+        icon="plus"
+        customSize={30}
+        animated={true}
+        style={styles.fab}
+        onPress={() => console.log('Pressed to')}
+      />
     </Screen>
   );
 };
@@ -44,10 +45,13 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 20,
   },
-  fabStyle: {
-    bottom: 0,
-    right: 0,
+  fab: {
+    flex: 2,
     position: 'absolute',
+    right: 0,
+    bottom: 0,
+    borderRadius: 24,
     backgroundColor: colors.light,
+    margin: 16,
   },
 });
