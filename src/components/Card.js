@@ -14,7 +14,7 @@ const Card = ({title, subTitle, image}) => {
       <Image style={styles.image} source={image} />
       <View style={styles.detailsContainer}>
         <AppText style={styles.title}>{title}</AppText>
-        <AppText style={styles.subTitle}>`Lps: ${subTitle}`</AppText>
+        <AppText style={styles.subTitle}>{`Lps: ${subTitle}`}</AppText>
       </View>
     </TouchableOpacity>
   );
