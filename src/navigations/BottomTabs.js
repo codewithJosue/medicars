@@ -23,8 +23,8 @@ const BottomTabs = () => {
         initialRouteName={route.HOME}
         backBehavior="initialRoute"
         shifting={true}
-        activeColor={theme.colors.primary}
-        inactiveColor={color(theme.colors.text).alpha(0.6).rgb().string()}
+        activeColor={colors.primary}
+        inactiveColor={color(colors.light).alpha(0.6).rgb().string()}
         sceneAnimationEnabled={false}>
         <Tab.Screen
           name={route.HOME}
@@ -32,7 +32,11 @@ const BottomTabs = () => {
           options={{
             title: 'Inicio',
             tabBarIcon: ({color, size}) => (
-              <Icon name="home" color={colors.primary} size={iconSize.small} />
+              <Icon
+                name="home-outline"
+                color={colors.secondary}
+                size={iconSize.small}
+              />
             ),
           }}
         />
@@ -41,9 +45,13 @@ const BottomTabs = () => {
           name="account"
           component={Settings}
           options={{
-            title: 'Cuenta',
+            title: 'Opciones',
             tabBarIcon: ({color, size}) => (
-              <Icon name="cogs" color={colors.primary} size={iconSize.small} />
+              <Icon
+                name="cogs"
+                color={colors.secondary}
+                size={iconSize.small}
+              />
             ),
           }}
         />

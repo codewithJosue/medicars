@@ -18,15 +18,13 @@ const DetailShopping = () => {
 
   //console.log('CART SHOPPING DETAIL', state);
 
-  const resetCartShopping = async () => {
+  const resetCartShopping = () => {
     dispatch({type: 'REMOVE', payload: []});
   };
 
   const deleteCartShoppingId = id => {
     dispatch({type: 'REMOVE_ID', payload: {id}});
   };
-
-  console.log(onPress);
 
   return (
     <Screen style={styles.container}>
@@ -75,7 +73,6 @@ const DetailShopping = () => {
                     <MaterialCommunityIcons
                       name="trash-can"
                       size={17}
-                      //onPress={() => deleteCartShoppingId(cart.vehicle_id)}
                       onPress={() => {
                         setIsVisible(!isVisible);
                         setOnPress(
@@ -118,7 +115,13 @@ const DetailShopping = () => {
       )}
 
       {state.length > 0 ? (
-        <AppButton title="Limpiar carrito" onPress={resetCartShopping} />
+        <AppButton
+          title="Limpiar carrito"
+          onPress={() => {
+            setIsVisible(!isVisible);
+            setOnPress(() => () => resetCartShopping());
+          }}
+        />
       ) : null}
     </Screen>
   );

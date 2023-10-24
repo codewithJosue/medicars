@@ -23,11 +23,11 @@ export default Card;
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 10,
     backgroundColor: colors.white,
-    elevation: 5,
-    overflow: 'hidden',
+    borderRadius: 10,
+    elevation: 1,
     marginTop: 10,
+    overflow: 'hidden',
     width: '48%',
   },
   detailsContainer: {
@@ -38,13 +38,13 @@ const styles = StyleSheet.create({
     height: 50,
   },
   subTitle: {
-    color: colors.black,
+    color: colors.secondary,
     fontSize: 8,
     fontWeight: 'bold',
   },
   title: {
-    marginBottom: 5,
     color: colors.primary,
     fontSize: 9,
+    marginBottom: 5,
   },
 });

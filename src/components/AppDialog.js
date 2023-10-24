@@ -7,7 +7,7 @@ import colors from '../config/colors';
 const AppDialog = ({
   color = 'danger',
   icon = 'alert',
-  message = '¿Desea eliminar este registro?',
+  message = '¿Está seguro(a) de proceder con la eliminación?',
   onPress,
   isVisible,
   setIsVisible,

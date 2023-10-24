@@ -17,8 +17,8 @@ const StackNavigationLogin = () => {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: colors.background,
-          shadowColor: colors.background, //IOS
+          backgroundColor: colors.white,
+          shadowColor: colors.light, //IOS
           elevation: 0, //Android
         },
         headerTintColor: colors.text,
@@ -43,16 +43,14 @@ const StackNavigationLogin = () => {
           title: '',
           headerTitleAlign: 'center',
           headerLeft: () => (
-            <>
-              <View style={styles.containerBack}>
-                <MaterialCommunityIcons
-                  size={iconSize.small}
-                  style={styles.back}
-                  name="keyboard-backspace"
-                  onPress={() => navigation.goBack()}
-                />
-              </View>
-            </>
+            <View style={styles.back}>
+              <MaterialCommunityIcons
+                size={iconSize.small}
+                color={colors.secondary}
+                name="keyboard-backspace"
+                onPress={() => navigation.goBack()}
+              />
+            </View>
           ),
           headerTitle: () => <LogoHeader />,
         })}
@@ -65,10 +63,10 @@ const StackNavigationLogin = () => {
           headerTitleAlign: 'center',
           headerLeft: () => (
             <>
-              <View style={styles.containerBack}>
+              <View style={styles.back}>
                 <MaterialCommunityIcons
                   size={iconSize.small}
-                  style={styles.back}
+                  color={colors.secondary}
                   name="keyboard-backspace"
                   onPress={() => navigation.goBack()}
                 />
@@ -85,15 +83,14 @@ const StackNavigationLogin = () => {
 export default StackNavigationLogin;
 
 const styles = StyleSheet.create({
-  containerBack: {
-    marginLeft: 10,
-    top: 10,
-  },
   back: {
-    color: colors.primary,
-    backgroundColor: '#fff',
-    borderRadius: 14,
-    top: -7,
-    elevation: 3,
+    alignItems: 'center',
+    backgroundColor: colors.white,
+    borderRadius: 24,
+    borderWidth: 0.05,
+    height: 25,
+    marginLeft: 10,
+    padding: 2,
+    width: 25,
   },
 });

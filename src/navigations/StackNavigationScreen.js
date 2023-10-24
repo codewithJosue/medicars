@@ -40,13 +40,15 @@ const StackNavigationScreen = () => {
               : route.name;
 
           return (
-            <Appbar.Header theme={{colors: {primary: theme.colors.background}}}>
+            <Appbar.Header style={{backgroundColor: colors.white}}>
               {back ? (
                 <Appbar.BackAction
+                  containerColor={colors.white}
                   style={styles.back}
                   size={iconSize.small}
                   onPress={navigation.goBack}
-                  color={colors.primary}
+                  color={colors.secondary}
+                  mode="outlined"
                 />
               ) : (
                 <TouchableOpacity
@@ -69,12 +71,7 @@ const StackNavigationScreen = () => {
                 <Badge
                   //visible={unread && unread > 0}
                   size={iconSize.badge}
-                  style={{
-                    position: 'absolute',
-                    top: 5,
-                    right: 5,
-                    backgroundColor: colors.secondary,
-                  }}>
+                  style={styles.containerBadge}>
                   {state.length > 0 ? state.length : 0}
                 </Badge>
                 <Appbar.Action
@@ -103,13 +100,15 @@ const StackNavigationScreen = () => {
 
 export default StackNavigationScreen;
 const styles = StyleSheet.create({
-  heading: {
-    color: 'white',
-    fontSize: 22,
-    fontWeight: 'bold',
-  },
   back: {
-    color: colors.primary,
-    backgroundColor: '#fff',
+    height: 25,
+    borderWidth: 0.05,
+    width: 25,
+  },
+  containerBadge: {
+    position: 'absolute',
+    top: 5,
+    right: 5,
+    backgroundColor: colors.secondary,
   },
 });
