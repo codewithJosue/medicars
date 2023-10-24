@@ -10,11 +10,11 @@ const Card = ({title, subTitle, image}) => {
   return (
     <TouchableOpacity
       onPress={() => navigate(route.ORDER, {title, image})}
-      style={styles.card}>
+      style={[styles.card]}>
       <Image style={styles.image} source={image} />
       <View style={styles.detailsContainer}>
         <AppText style={styles.title}>{title}</AppText>
-        <AppText style={styles.subTitle}>{subTitle}</AppText>
+        <AppText style={styles.subTitle}>`Lps: ${subTitle}`</AppText>
       </View>
     </TouchableOpacity>
   );
@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     elevation: 1,
     marginTop: 10,
     overflow: 'hidden',
+    height: 100,
     width: '48%',
   },
   detailsContainer: {

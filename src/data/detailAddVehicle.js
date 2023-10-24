@@ -5,7 +5,25 @@ export const detailAddVehicle = [
 ];
 
 export const detailAddVehicles = [
-  {vehicle: 'Jeep', year: 2000, engine: '3.5L V6', brand: 'Toyota'},
-  {vehicle: 'Tesla', year: 2010, engine: '5.7L V8', brand: 'Tesla'},
-  {vehicle: 'Volvo', year: 2020, engine: '2.5L Inline-4', brand: 'Volvo'},
+  {
+    id: 1,
+    vehicle: 'Jeep',
+    year: 2000,
+    engine: '3.5L V6',
+    brand: 'Toyota',
+  },
+  {
+    id: 2,
+    vehicle: 'Tesla',
+    year: 2010,
+    engine: '5.7L V8',
+    brand: 'Tesla',
+  },
+  {
+    id: 3,
+    vehicle: 'Volvo',
+    year: 2020,
+    engine: '2.5L Inline-4',
+    brand: 'Volvo',
+  },
 ];

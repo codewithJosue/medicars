@@ -1,5 +1,5 @@
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import {DrawerActions, useTheme} from '@react-navigation/native';
+import {DrawerActions} from '@react-navigation/native';
 import {Appbar, Badge} from 'react-native-paper';
 import {createStackNavigator} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -9,7 +9,7 @@ import route from './route';
 
 import BottomTabs from './BottomTabs';
 import {
-  AddVehicle,
+  Vehicles,
   CartShopping,
   CartDetailShopping,
   Order,
@@ -23,8 +23,6 @@ import iconSize from '../config/iconSize';
 const Stack = createStackNavigator();
 
 const StackNavigationScreen = () => {
-  const theme = useTheme();
-
   const {state} = useContext(ShoppingCartContext);
 
   return (
@@ -87,7 +85,7 @@ const StackNavigationScreen = () => {
       }}>
       <Stack.Screen name="initial" component={BottomTabs} />
       <Stack.Screen name={route.ORDER} component={Order} />
-      <Stack.Screen name={route.ADD_VEHICLE} component={AddVehicle} />
+      <Stack.Screen name={route.ADD_VEHICLE} component={Vehicles} />
       <Stack.Screen name={route.CART_SHOPPING} component={CartShopping} />
       <Stack.Screen
         name={route.CART_DETAIL_SHOPPING}

@@ -1,6 +1,4 @@
 import {FlatList, StyleSheet} from 'react-native';
-import colors from '../../config/colors';
-import {Screen} from '../../components';
 import Card from '../../components/Card';
 
 import {services} from '../../data/services';
@@ -24,10 +22,11 @@ export default Services;
 
 const styles = StyleSheet.create({
   screen: {
-    padding: 5,
+    //padding:5,
+    margin: 5,
   },
   column: {
-    //flexShrink: 1,
+    flexShrink: 1,
     justifyContent: 'space-between',
   },
 });
