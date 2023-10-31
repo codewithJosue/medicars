@@ -1,8 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import color from 'color';
 
-import {Home, Settings} from '../screen';
-import {useTheme} from '@react-navigation/native';
+import {Account, Home} from '../screen';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import route from './route';
 import colors from '../config/colors';
@@ -11,8 +10,6 @@ import iconSize from '../config/iconSize';
 const Tab = createBottomTabNavigator();
 
 const BottomTabs = () => {
-  const theme = useTheme();
-
   return (
     <>
       <Tab.Navigator
@@ -31,7 +28,7 @@ const BottomTabs = () => {
           component={Home}
           options={{
             title: 'Inicio',
-            tabBarIcon: ({color, size}) => (
+            tabBarIcon: () => (
               <Icon
                 name="home-outline"
                 color={colors.secondary}
@@ -42,11 +39,11 @@ const BottomTabs = () => {
         />
 
         <Tab.Screen
-          name="account"
-          component={Settings}
+          name={route.ACCOUNT}
+          component={Account}
           options={{
-            title: 'Opciones',
-            tabBarIcon: ({color, size}) => (
+            title: 'Cuenta',
+            tabBarIcon: () => (
               <Icon
                 name="cogs"
                 color={colors.secondary}

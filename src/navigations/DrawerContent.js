@@ -88,15 +88,6 @@ const DrawerContent = ({navigation, ...props}) => {
               onPress={() => onchangeScreen('support')}
             />
           </Drawer.Section>
-
-          <DrawerItem
-            label="Cambiar contraseña"
-            labelStyle={styles.labelItem}
-            icon={({color, size}) => (
-              <Icon name="edit" color={color} size={iconSize.small} />
-            )}
-            onPress={() => onchangeScreen('support')}
-          />
         </View>
       </DrawerContentScrollView>
 

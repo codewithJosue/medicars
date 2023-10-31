@@ -9,6 +9,7 @@ import route from './route';
 
 import BottomTabs from './BottomTabs';
 import {
+  Account,
   Vehicles,
   CartShopping,
   CartDetailShopping,
@@ -19,6 +20,7 @@ import colors from '../config/colors';
 import {useContext} from 'react';
 import ShoppingCartContext from '../contexts/shoppingCartContext';
 import iconSize from '../config/iconSize';
+import Route from './route';
 
 const Stack = createStackNavigator();
 
@@ -84,6 +86,7 @@ const StackNavigationScreen = () => {
         },
       }}>
       <Stack.Screen name="initial" component={BottomTabs} />
+      <Stack.Screen name={route.ACCOUNT} component={Account} />
       <Stack.Screen name={route.ORDER} component={Order} />
       <Stack.Screen name={route.ADD_VEHICLE} component={Vehicles} />
       <Stack.Screen name={route.CART_SHOPPING} component={CartShopping} />
