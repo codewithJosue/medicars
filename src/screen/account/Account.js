@@ -5,12 +5,23 @@ import colors from '../../config/colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 import route from '../../navigations/route';
+import React, {useState} from 'react';
+import AppDialog from '../../components/AppDialog';
 
 const Account = () => {
   const navigation = useNavigation();
+  const [isVisible, setIsVisible] = useState(false);
+  const [onPress, setOnPress] = useState(null);
 
   return (
     <Screen style={styles.container}>
+      <AppDialog
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+        onPress={onPress}
+        message="¿Está seguro de salir de su cuenta?"
+        color="warning"
+      />
       <View style={styles.containerUser}>
         <View style={styles.detail}>
           <AvatarText size={30} />
@@ -45,11 +56,15 @@ const Account = () => {
 
         <View style={styles.cardContainer}>
           <View style={styles.card}>
-            <View style={styles.action}>
+            <TouchableOpacity
+              onPress={() => {
+                setIsVisible(!isVisible);
+                setOnPress(() => () => {});
+              }}
+              style={styles.action}>
               <Icon color={colors.secondary} size={17} name="logout" />
               <AppText style={styles.text}>Cerrar</AppText>
-            </View>
-            <Icon name="arrow-right" style={styles.icon} />
+            </TouchableOpacity>
           </View>
         </View>
       </View>

@@ -6,4 +6,5 @@ export default {
   secondary: '#818cff',
   primary: '#090979',
   white: '#fff',
+  warning: '#ec942c',
 };

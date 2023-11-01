@@ -27,7 +27,7 @@ const AppDialog = ({
           onDismiss={hideDialog}>
           <Dialog.Icon size={15} icon={icon} color={colors[color]} />
           {/*<Dialog.Title style={styles.title}>{title}</Dialog.Title>*/}
-          <Dialog.Content>
+          <Dialog.Content style={styles.message}>
             <Text variant="labelSmall">{message}</Text>
           </Dialog.Content>
           <Dialog.Actions style={styles.actions}>
@@ -65,5 +65,8 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: 'bold',
     color: colors.secondary,
+  },
+  message: {
+    top: 5,
   },
 });
