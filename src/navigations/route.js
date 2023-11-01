@@ -3,6 +3,7 @@ export default Object.freeze({
   ABOUT: 'about',
   ORDER: 'order',
   EDIT_PROFILE: 'edit_profile',
+  CHANGE_PASSWORD: 'change_password',
   EMAIL: 'email',
   HOME: 'home',
   ADD_VEHICLE: 'add_vehicle',

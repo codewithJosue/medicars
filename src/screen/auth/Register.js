@@ -31,7 +31,7 @@ const validationSchema = Yup.object().shape({
 
 const labels = ['Datos Personales', 'Datos del vehiculo'];
 
-const RegisterScreen = () => {
+const Register = () => {
   const [eyePassword, setEyePassword] = useState(true);
   const [currentPosition, setCurrentPosition] = useState(1);
   const [form, setForm] = useState(true);
@@ -221,7 +221,7 @@ const RegisterScreen = () => {
   );
 };
 
-export default RegisterScreen;
+export default Register;
 
 const styles = StyleSheet.create({
   container: {

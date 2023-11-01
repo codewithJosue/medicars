@@ -1,5 +1,5 @@
-import LoginScreen from "./LoginScreen";
-import RegisterScreen from "./RegisterScreen";
-import RecoverPassword from "./RecoverPassword";
+import LoginScreen from './LoginScreen';
+import Register from './Register';
+import RecoverPassword from './RecoverPassword';
 
-export { LoginScreen, RegisterScreen, RecoverPassword };
+export {LoginScreen, Register, RecoverPassword};
