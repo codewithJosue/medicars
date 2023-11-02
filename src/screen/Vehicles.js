@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {FAB} from 'react-native-paper';
 import {Screen} from '../components';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {Dimensions, FlatList, StyleSheet, View} from 'react-native';
 import {detailAddVehicles} from '../data/detailAddVehicle';
 import colors from '../config/colors';
 import CardVehicle from '../components/account/CardVehicle';
@@ -15,18 +15,17 @@ const Vehicles = props => {
     <Screen style={styles.container}>
       <FlatList
         horizontal={false}
-        style={styles.screen}
         data={vehicles}
         keyExtractor={listings => listings.id.toString()}
-        renderItem={({item}) => (
+        renderItem={({item, index}) => (
           <CardVehicle
             vehicle={item.vehicle}
             year={item.year}
             engine={item.engine}
+            index={index}
           />
         )}
       />
-
       <FAB
         icon="plus"
         customSize={30}
@@ -40,10 +39,12 @@ const Vehicles = props => {
 
 export default Vehicles;
 
+const {height} = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: colors.white,
     flex: 1,
-    margin: 20,
+    margin: 15,
   },
   fab: {
     flex: 2,

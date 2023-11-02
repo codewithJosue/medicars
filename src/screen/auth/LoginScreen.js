@@ -1,6 +1,12 @@
 import {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as Yup from 'yup';
 
@@ -109,12 +115,9 @@ const LoginScreen = () => {
       </View>
 
       <View style={styles.containerFooter}>
-        <AppText>No tiene una cuenta? </AppText>
-        <TouchableOpacity
-          style={{top: 0}}
-          onPress={() => navigation.navigate('register')}>
-          <AppText style={{color: colors.primary, fontWeight: 'bold'}}>
-            Registrese
+        <TouchableOpacity onPress={() => navigation.navigate('register')}>
+          <AppText style={styles.register}>
+            <AppText>No tiene una cuenta? </AppText> Registrese
           </AppText>
         </TouchableOpacity>
       </View>
@@ -134,14 +137,20 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   containerButton: {
+    top: 5,
     flexDirection: 'row',
     justifyContent: 'center',
   },
+  register: {
+    color: colors.primary,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
   containerFooter: {
     position: 'absolute',
-    flexDirection: 'row',
-    alignSelf: 'center',
-    bottom: 10,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
   containerLogo: {
     alignSelf: 'center',
