@@ -39,7 +39,7 @@ const loginGoogle = async () => {
   console.log('GOOGLE', data);
 };
 
-const LoginScreen = () => {
+const Login = () => {
   const navigation = useNavigation();
 
   const [eyePassword, setEyePassword] = useState(true);
@@ -125,7 +125,7 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default Login;
 
 const styles = StyleSheet.create({
   container: {

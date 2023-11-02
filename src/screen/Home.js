@@ -36,7 +36,6 @@ const Home = () => {
         height: 20,
       }}
       labelStyle={{color: colors.primary, fontSize: 7, bottom: 15}}
-      //pressColor={rippleColor}
       activeColor={colors.secondary}
       inactiveColor={colors.primary}
     />

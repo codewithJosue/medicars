@@ -2,7 +2,7 @@ import {StyleSheet, View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import colors from '../config/colors';
 //screens
-import {LoginScreen, RecoverPassword, Register} from '../screen/auth';
+import {Login, RecoverPassword, Register} from '../screen/auth';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LogoHeader from '../components/LogoHeader';
 import iconSize from '../config/iconSize';
@@ -33,7 +33,7 @@ const StackNavigationLogin = () => {
           headerTitleAlign: 'center',
           headerTitle: () => <LogoHeader />,
         }}
-        component={LoginScreen}
+        component={Login}
       />
 
       <Stack.Screen

@@ -5,6 +5,7 @@ import AvatarText from '../components/AvatarText';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import route from './route';
 import iconSize from '../config/iconSize';
+import colors from '../config/colors';
 
 const DrawerContent = ({navigation, ...props}) => {
   const onchangeScreen = screen => {
@@ -17,7 +18,7 @@ const DrawerContent = ({navigation, ...props}) => {
         <View>
           <View style={styles.userInfoSection}>
             {<AvatarText size={30} />}
-            <View style={styles.userInfoSectionDetalle}>
+            <View style={styles.userInfoSectionDetails}>
               <Title style={styles.title}>Josue A. Flores </Title>
               <Caption style={styles.caption}>correo@gmail.com</Caption>
             </View>
@@ -27,24 +28,36 @@ const DrawerContent = ({navigation, ...props}) => {
             <DrawerItem
               label="Inicio"
               labelStyle={styles.labelItem}
-              icon={({color, size}) => (
-                <Icon name="home" color={color} size={iconSize.small} />
+              icon={() => (
+                <Icon
+                  name="home"
+                  color={colors.primary}
+                  size={iconSize.small}
+                />
               )}
               onPress={() => onchangeScreen(route.HOME)}
             />
             <DrawerItem
               label="Adicionar Vehículos"
               labelStyle={styles.labelItem}
-              icon={({color, size}) => (
-                <Icon name="plus-circle" color={color} size={iconSize.small} />
+              icon={() => (
+                <Icon
+                  name="plus-circle"
+                  color={colors.secondary}
+                  size={iconSize.small}
+                />
               )}
               onPress={() => onchangeScreen(route.ADD_VEHICLE)}
             />
             <DrawerItem
               label="Historial Mantenimientos"
               labelStyle={styles.labelItem}
-              icon={({color, size}) => (
-                <Icon name="history" color={color} size={iconSize.small} />
+              icon={() => (
+                <Icon
+                  name="history"
+                  color={colors.secondary}
+                  size={iconSize.small}
+                />
               )}
               onPress={() => onchangeScreen('profile')}
             />
@@ -53,8 +66,12 @@ const DrawerContent = ({navigation, ...props}) => {
             <DrawerItem
               label="Historial Compras"
               labelStyle={styles.labelItem}
-              icon={({color, size}) => (
-                <Icon name="money" color={color} size={iconSize.small} />
+              icon={() => (
+                <Icon
+                  name="money"
+                  color={colors.secondary}
+                  size={iconSize.small}
+                />
               )}
               onPress={() => onchangeScreen('setting')}
             />
@@ -62,18 +79,22 @@ const DrawerContent = ({navigation, ...props}) => {
             <DrawerItem
               label="Consultar Estado Orden"
               labelStyle={styles.labelItem}
-              icon={({color, size}) => (
-                <Icon name="check-circle" color={color} size={iconSize.small} />
+              icon={() => (
+                <Icon
+                  name="check-circle"
+                  color={colors.secondary}
+                  size={iconSize.small}
+                />
               )}
               onPress={() => onchangeScreen('support')}
             />
             <DrawerItem
               label="Ir al Carrito de compras"
               labelStyle={styles.labelItem}
-              icon={({color, size}) => (
+              icon={() => (
                 <Icon
                   name="shopping-cart"
-                  color={color}
+                  color={colors.secondary}
                   size={iconSize.small}
                 />
               )}
@@ -82,8 +103,12 @@ const DrawerContent = ({navigation, ...props}) => {
             <DrawerItem
               label="Notificaciones"
               labelStyle={styles.labelItem}
-              icon={({color, size}) => (
-                <Icon name="bell" color={color} size={iconSize.small} />
+              icon={() => (
+                <Icon
+                  name="bell"
+                  color={colors.secondary}
+                  size={iconSize.small}
+                />
               )}
               onPress={() => onchangeScreen('support')}
             />
@@ -95,9 +120,9 @@ const DrawerContent = ({navigation, ...props}) => {
         <DrawerItem
           label="Cerrar Sesión"
           labelStyle={styles.labelItem}
-          onPress={() => console.log('salir')}
-          icon={({color, size}) => (
-            <Icon name="sign-in" color={color} size={iconSize.small} />
+          onPress={() => console.log('logout')}
+          icon={() => (
+            <Icon name="sign-in" color={colors.danger} size={iconSize.small} />
           )}
         />
       </Drawer.Section>
@@ -117,7 +142,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     bottom: 0,
   },
-  userInfoSectionDetalle: {
+  userInfoSectionDetails: {
     marginLeft: 15,
   },
   title: {
