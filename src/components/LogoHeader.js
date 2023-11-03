@@ -5,7 +5,7 @@ const LogoHeader = ({width = 100, height = 50}) => (
   <Image
     resizeMode="contain"
     source={img}
-    style={{opacity: 0.5, width: width, height: height}}
+    style={{width: width, height: height}}
   />
 );
 

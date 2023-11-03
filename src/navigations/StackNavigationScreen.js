@@ -10,7 +10,7 @@ import route from './route';
 import BottomTabs from './BottomTabs';
 import {
   Vehicles,
-  CartShopping,
+  LocationShopping,
   CartDetailShopping,
   Order,
   PaymentMethod,
@@ -44,7 +44,7 @@ const StackNavigationScreen = () => {
                 <Appbar.BackAction
                   containerColor={colors.white}
                   style={styles.back}
-                  size={iconSize.small}
+                  size={iconSize.medium}
                   onPress={navigation.goBack}
                   color={colors.secondary}
                   mode="outlined"
@@ -57,7 +57,7 @@ const StackNavigationScreen = () => {
                   }}>
                   <Icon
                     name="bars"
-                    size={iconSize.small}
+                    size={iconSize.medium}
                     color={colors.primary}
                   />
                 </TouchableOpacity>
@@ -75,7 +75,7 @@ const StackNavigationScreen = () => {
                 </Badge>
                 <Appbar.Action
                   icon="cart"
-                  size={iconSize.small}
+                  size={iconSize.medium}
                   color={colors.primary}
                   onPress={() => navigation.navigate('cart_detail_shopping')}
                 />
@@ -88,7 +88,10 @@ const StackNavigationScreen = () => {
       <Stack.Screen name={route.CHANGE_PASSWORD} component={ChangePassword} />
       <Stack.Screen name={route.ORDER} component={Order} />
       <Stack.Screen name={route.ADD_VEHICLE} component={Vehicles} />
-      <Stack.Screen name={route.CART_SHOPPING} component={CartShopping} />
+      <Stack.Screen
+        name={route.LOCATION_SHOPPING}
+        component={LocationShopping}
+      />
       <Stack.Screen
         name={route.CART_DETAIL_SHOPPING}
         component={CartDetailShopping}
@@ -101,9 +104,9 @@ const StackNavigationScreen = () => {
 export default StackNavigationScreen;
 const styles = StyleSheet.create({
   back: {
-    height: 25,
+    height: 30,
     borderWidth: 0.05,
-    width: 25,
+    width: 30,
   },
   containerBadge: {
     position: 'absolute',

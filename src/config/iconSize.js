@@ -1,5 +1,5 @@
 export default {
   small: 20,
-  medium: 22,
-  badge: 12,
+  medium: 30,
+  badge: 17,
 };

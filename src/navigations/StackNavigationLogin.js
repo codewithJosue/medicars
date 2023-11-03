@@ -11,8 +11,6 @@ const Stack = createStackNavigator();
 const img = require('../assets/logoApp-icon.png');
 
 const StackNavigationLogin = () => {
-  //const {colors} = useTheme();
-
   return (
     <Stack.Navigator
       screenOptions={{
@@ -45,7 +43,7 @@ const StackNavigationLogin = () => {
           headerLeft: () => (
             <View style={styles.back}>
               <MaterialCommunityIcons
-                size={iconSize.small}
+                size={iconSize.medium}
                 color={colors.secondary}
                 name="keyboard-backspace"
                 onPress={() => navigation.goBack()}
@@ -65,7 +63,7 @@ const StackNavigationLogin = () => {
             <>
               <View style={styles.back}>
                 <MaterialCommunityIcons
-                  size={iconSize.small}
+                  size={iconSize.medium}
                   color={colors.secondary}
                   name="keyboard-backspace"
                   onPress={() => navigation.goBack()}
@@ -88,9 +86,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderRadius: 24,
     borderWidth: 0.05,
-    height: 25,
+    height: 30,
     marginLeft: 10,
-    padding: 2,
-    width: 25,
+    width: 30,
   },
 });

@@ -11,18 +11,12 @@ const LocationShoppingCart = ({detail}) => {
   const navigation = useNavigation();
   return (
     <Screen style={styles.container}>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: colors.white,
-          margin: 10,
-          borderWidth: 0.3,
-        }}>
+      <View style={styles.card}>
         <View style={styles.containerModal}>
           <View style={styles.details}>
             <AppText style={styles.textTitle}>Descripción</AppText>
             <AppText style={styles.textTitle}>Cantidad</AppText>
-            <AppText style={styles.textTitle}>Precio (Lps)</AppText>
+            <AppText style={styles.textTitle}>Precio</AppText>
           </View>
         </View>
         <FlatList
@@ -37,7 +31,7 @@ const LocationShoppingCart = ({detail}) => {
           //ItemSeparatorComponent={() => <View style={styles.separator} />}
         />
       </View>
-      <View style={{flex: 2}}>
+      <View style={{flex: 1}}>
         <AppButton
           title="agregar ubicacion y proceder al pago"
           onPress={() => navigation.navigate(route.PAYMENT_METHOD)}
@@ -68,18 +62,21 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 20,
   },
+  card: {
+    backgroundColor: colors.white,
+  },
   containerModal: {
-    backgroundColor: '#FFFFFF',
-    width: '100%',
+    backgroundColor: colors.light,
     padding: 10,
   },
   details: {
+    width: 135,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   textTitle: {
-    //color: '#D3DBE2',
-    color: '#46D0D9',
+    color: colors.primary,
+    fontWeight: 'bold',
     fontSize: 12,
   },
   location: {

@@ -54,11 +54,11 @@ const styles = StyleSheet.create({
     top: -10,
   },
   btnCancel: {
-    fontSize: 9,
+    fontSize: 14,
     color: colors.danger,
   },
   btnSuccess: {
-    fontSize: 9,
+    fontSize: 14,
     color: colors.primary,
   },
   title: {

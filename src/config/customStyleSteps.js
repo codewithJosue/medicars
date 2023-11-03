@@ -1,8 +1,8 @@
 import colors from './colors';
 
 export default {
-  stepIndicatorSize: 30,
-  currentStepIndicatorSize: 30,
+  stepIndicatorSize: 40,
+  currentStepIndicatorSize: 45,
   separatorStrokeWidth: 2,
   currentStepStrokeWidth: 1,
   stepStrokeCurrentColor: colors.secondary,

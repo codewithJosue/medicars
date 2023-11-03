@@ -27,15 +27,15 @@ const Home = () => {
       {...props}
       indicatorStyle={{
         backgroundColor: colors.light,
-        height: 20,
+        height: 30,
         borderRadius: 24,
       }}
       style={{
         backgroundColor: colors.white,
         shadowColor: theme.colors.text,
-        height: 20,
+        height: 30,
       }}
-      labelStyle={{color: colors.primary, fontSize: 7, bottom: 15}}
+      labelStyle={{color: colors.primary, fontSize: 7, bottom: 5}}
       activeColor={colors.secondary}
       inactiveColor={colors.primary}
     />

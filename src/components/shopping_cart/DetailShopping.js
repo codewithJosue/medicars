@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {AppButton, AppText, Screen} from '../index';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 
@@ -86,7 +86,7 @@ const DetailShopping = () => {
                 <MaterialCommunityIcons
                   style={{color: '#fff', alignSelf: 'center'}}
                   onPress={() =>
-                    navigation.navigate(route.CART_SHOPPING, {detail})
+                    navigation.navigate(route.LOCATION_SHOPPING, {detail})
                   }
                   size={17}
                   name="send-circle-outline"
@@ -99,7 +99,7 @@ const DetailShopping = () => {
         <View style={styles.cartOf}>
           <MaterialCommunityIcons
             style={styles.iconCartOf}
-            name="cart-off"
+            name="emoticon-sad"
             size={50}
           />
           <AppText style={styles.textCartOf}>
@@ -160,17 +160,20 @@ const styles = StyleSheet.create({
     width: 50,
   },
   cartOf: {
-    flex: 1,
-    margin: 20,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'center',
   },
   textCartOf: {
     top: 10,
     fontSize: 14,
-    alignSelf: 'center',
+    textAlign: 'center',
   },
   iconCartOf: {
-    alignSelf: 'center',
-    backgroundColor: colors.white,
+    textAlign: 'center',
     color: colors.danger,
   },
   description: {

@@ -39,7 +39,7 @@ export default AppSelectList;
 const styles = StyleSheet.create({
   dropdownContainerText: {
     fontSize: 10,
-    height: 35,
+    height: 40,
     fontWeight: 'bold',
     marginLeft: 20,
   },
@@ -51,9 +51,9 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     backgroundColor: colors.light,
-    borderRadius: 25,
-    marginVertical: 5,
-    height: 35,
+    borderRadius: 5,
+    marginVertical: 10,
+    height: 40,
   },
   icon: {
     position: 'absolute',

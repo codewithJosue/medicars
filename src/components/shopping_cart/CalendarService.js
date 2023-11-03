@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {AppButton, AppText, Screen} from '../index';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import DatePicker from 'react-native-date-picker';
@@ -8,53 +8,62 @@ import DatePicker from 'react-native-date-picker';
 import colors from '../../config/colors';
 import route from '../../navigations/route';
 import {getDate} from '../../helpers/date';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const CalendarService = props => {
-  const [method, setMethod] = useState(false);
-  const [text, setText] = useState('');
+const CalendarService = () => {
+  const [method, setMethod] = useState(null);
 
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
 
+  const method_payment = [
+    {id: 1, description: 'Tarjeta de crédito', icono: 'credit-card-outline'},
+    {id: 2, description: 'Transferencia', icono: 'bank-transfer'},
+    {id: 3, description: 'Efectivo', icono: 'cash-multiple'},
+  ];
+
   return (
     <Screen style={styles.container}>
-      <AppText
-        style={{alignSelf: 'center', color: colors.grey_medium, top: -5}}>
-        Método de pago
-      </AppText>
-      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <View>
-          <FontAwesome
-            name="credit-card"
-            size={70}
-            color={method ? 'green' : 'black'}
-          />
-          <AppText style={styles.description}>Tarjeta de crédito</AppText>
-        </View>
-        <TouchableOpacity
-          onPress={() => setMethod(!method)}
-          style={{top: 20, elevation: 2}}>
-          {method ? (
-            <FontAwesome
-              name="arrow-right"
-              size={30}
-              color={colors.secondary}
-            />
-          ) : (
-            <FontAwesome name="arrow-left" size={30} color={colors.secondary} />
-          )}
-        </TouchableOpacity>
+      <View>
+        <AppText style={styles.title}>Seleccione su método de pago</AppText>
 
-        <View>
-          <FontAwesome
-            name="money"
-            size={70}
-            color={!method ? 'green' : 'black'}
-          />
-          <AppText style={styles.description}>Transferencia bancaria</AppText>
-        </View>
+        <ScrollView horizontal style={{marginTop: 20, marginBottom: 20}}>
+          {method_payment.map(payment => (
+            <TouchableOpacity
+              onPress={() => setMethod(payment.id)}
+              key={payment.id}
+              style={[
+                styles.card,
+                method === payment.id
+                  ? {backgroundColor: colors.primary}
+                  : {backgroundColor: colors.white},
+              ]}>
+              <Icon
+                name={payment.icono}
+                color={colors.primary}
+                size={50}
+                style={[
+                  styles.text,
+                  method === payment.id
+                    ? {color: colors.white}
+                    : {color: colors.primary},
+                ]}
+              />
+              <AppText
+                style={[
+                  styles.text,
+                  method === payment.id
+                    ? {color: colors.white}
+                    : {color: colors.primary},
+                ]}>
+                {payment.description}
+              </AppText>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
       </View>
-      <View style={{margin: 20}}>
+
+      <View style={styles.containerDate}>
         <AppText style={styles.input}>{getDate(date)}</AppText>
         <TouchableOpacity
           style={{
@@ -65,25 +74,27 @@ const CalendarService = props => {
           onPress={() => setOpen(true)}>
           <FontAwesome name="calendar" size={25} />
         </TouchableOpacity>
+
+        <DatePicker
+          modal
+          mode="datetime"
+          title="Seleccione la fecha"
+          confirmText="Confirmar"
+          cancelText="Cancelar"
+          open={open}
+          date={date}
+          locale="es"
+          //is24hourSource="locale"
+          onConfirm={date => {
+            setOpen(false);
+            setDate(date);
+          }}
+          onCancel={() => {
+            setOpen(false);
+          }}
+        />
       </View>
-      <DatePicker
-        modal
-        mode="datetime"
-        title="Seleccione la fecha"
-        confirmText="Confirmar"
-        cancelText="Cancelar"
-        open={open}
-        date={date}
-        locale="es"
-        //is24hourSource="locale"
-        onConfirm={date => {
-          setOpen(false);
-          setDate(date);
-        }}
-        onCancel={() => {
-          setOpen(false);
-        }}
-      />
+
       <AppButton
         title="Finalizar y Guardar"
         onPress={() => navigation.navigate(route.HOME)}
@@ -94,9 +105,22 @@ const CalendarService = props => {
 export default CalendarService;
 
 const styles = StyleSheet.create({
+  card: {
+    width: 120,
+    height: 80,
+    borderWidth: 1.5,
+    borderColor: colors.primary,
+    borderRadius: 5,
+    margin: 10,
+    justifyContent: 'center',
+  },
   container: {
     flex: 1,
     margin: 20,
+  },
+  containerDate: {
+    flex: 2,
+    top: 10,
   },
   description: {
     fontSize: 9,
@@ -110,5 +134,14 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingLeft: 10,
     fontSize: 10,
+  },
+  text: {
+    textAlign: 'center',
+  },
+  title: {
+    textAlign: 'left',
+    color: colors.primary,
+    fontWeight: 'Bold',
+    fontSize: 15,
   },
 });

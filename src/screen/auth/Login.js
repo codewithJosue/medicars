@@ -1,17 +1,11 @@
 import {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {
-  Dimensions,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as Yup from 'yup';
 
 import {AppForm, AppFormField, SubmitButton} from '../../components/forms';
-import {AppButton, AppText, Screen} from '../../components';
+import {AppText, Screen} from '../../components';
 
 import colors from '../../config/colors';
 import {fbAuth} from '../../helpers/loginFacebook';
@@ -47,13 +41,16 @@ const Login = () => {
   return (
     <Screen style={styles.container}>
       <View style={styles.containerLogo}>
-        <AppText style={styles.text}>Medicars</AppText>
+        <AppText style={styles.title}>Medicars</AppText>
+        <AppText style={styles.slogan}>
+          Cuidamos la salud de tu vahículo
+        </AppText>
       </View>
       <AppForm
         initialValues={{email: '', password: ''}}
         onSubmit={values => console.log(values)}
         validationSchema={validationSchema}>
-        <View style={{marginBottom: 5}}>
+        <View style={{marginVertical: 10}}>
           <AppFormField
             autoCapitalize="none"
             autoCorrect={false}
@@ -83,11 +80,12 @@ const Login = () => {
           </View>
         </View>
 
-        <SubmitButton title="Inicio de Sesión" />
+        <SubmitButton title="Iniciar Sesión" />
         <TouchableOpacity
+          style={{top: 10}}
           onPress={() => navigation.navigate('recover_password')}>
           <AppText style={styles.forgotPassword}>
-            Olvidaste tu contrasena ?
+            ¿Olvidaste tu contrasena?
           </AppText>
         </TouchableOpacity>
       </AppForm>
@@ -130,11 +128,11 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 0,
+    marginTop: 30,
     margin: 20,
   },
   containerSocial: {
-    marginTop: 20,
+    marginTop: 30,
   },
   containerButton: {
     top: 5,
@@ -143,6 +141,7 @@ const styles = StyleSheet.create({
   },
   register: {
     color: colors.primary,
+    fontSize: 14,
     fontWeight: 'bold',
     textAlign: 'center',
   },
@@ -154,24 +153,27 @@ const styles = StyleSheet.create({
   },
   containerLogo: {
     alignSelf: 'center',
-    marginBottom: 30,
-    marginTop: 10,
+    marginBottom: 20,
   },
   iconPass: {
     position: 'absolute',
-    paddingTop: 15,
-    paddingRight: 15,
-    right: 0,
+    paddingTop: 20,
+    right: 10,
   },
-  text: {
+  title: {
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 30,
     color: colors.primary,
-    top: 10,
     alignSelf: 'center',
+  },
+  slogan: {
+    color: colors.secondary,
+    fontSize: 11,
+    fontWeight: '200',
   },
   titleSocial: {
     textAlign: 'center',
+    fontSize: 14,
     fontWeight: 'bold',
     color: colors.secondary,
   },

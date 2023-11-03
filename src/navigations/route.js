@@ -7,7 +7,7 @@ export default Object.freeze({
   EMAIL: 'email',
   HOME: 'home',
   ADD_VEHICLE: 'add_vehicle',
-  CART_SHOPPING: 'cart_shopping',
+  LOCATION_SHOPPING: 'location_shopping',
   CART_DETAIL_SHOPPING: 'cart_detail_shopping',
   PAYMENT_METHOD: 'payment_method',
 });

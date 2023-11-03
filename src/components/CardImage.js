@@ -9,23 +9,22 @@ import {
   TouchableWithoutFeedback,
   View,
   Text,
+  useWindowDimensions,
 } from 'react-native';
 import {Card} from 'react-native-paper';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import colors from '../config/colors';
 import {AppText} from './index';
 
-const CardImage = ({img, width = 280, height = 150, title}) => {
+const CardImage = ({img, height = 150, title}) => {
   const [isVisible, setIsvisible] = useState(false);
 
   return (
     <>
       <TouchableOpacity onPress={() => setIsvisible(true)}>
-        <Card style={{flexDirection: 'row', alignSelf: 'center', top: 5}}>
+        <Card>
           <AppText style={styles.carCoverTitle}>{title}</AppText>
-          <Card.Cover
-            style={{width: width, height: height}}
-            source={img}></Card.Cover>
+          <Card.Cover style={{height: height}} source={img}></Card.Cover>
         </Card>
       </TouchableOpacity>
       <Modal

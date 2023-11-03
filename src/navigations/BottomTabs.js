@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import route from './route';
 import colors from '../config/colors';
 import iconSize from '../config/iconSize';
+import {StyleSheet} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,7 +16,6 @@ const BottomTabs = () => {
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
-          tabBarStyle: {height: 40},
         }}
         initialRouteName={route.HOME}
         backBehavior="initialRoute"
@@ -27,14 +27,22 @@ const BottomTabs = () => {
           name={route.HOME}
           component={Home}
           options={{
-            title: 'Inicio',
-            tabBarIcon: () => (
-              <Icon
-                name="home-outline"
-                color={colors.secondary}
-                size={iconSize.small}
-              />
-            ),
+            tabBarLabel: 'Principal',
+            tabBarLabelStyle: {fontSize: 12},
+            tabBarIcon: ({focused}) => {
+              let nameIcon = 'home';
+              if (!focused) {
+                nameIcon = 'home-outline';
+              }
+              return (
+                <Icon
+                  style={focused ? styles.tabBarTitle : null}
+                  name={nameIcon}
+                  color={colors.secondary}
+                  size={iconSize.medium}
+                />
+              );
+            },
           }}
         />
 
@@ -42,14 +50,24 @@ const BottomTabs = () => {
           name={route.ACCOUNT}
           component={Account}
           options={{
-            title: 'Cuenta',
-            tabBarIcon: () => (
-              <Icon
-                name="cogs"
-                color={colors.secondary}
-                size={iconSize.small}
-              />
-            ),
+            tabBarLabel: 'Tú',
+            tabBarLabelStyle: {fontSize: 12},
+            //tabBarItemStyle: {borderTopWidth: 1},
+            tabBarIcon: ({focused}) => {
+              let nameIcon = 'account-heart';
+              if (!focused) {
+                nameIcon = 'account-heart-outline';
+              }
+
+              return (
+                <Icon
+                  style={focused ? styles.tabBarTitle : null}
+                  name={nameIcon}
+                  color={colors.secondary}
+                  size={iconSize.medium}
+                />
+              );
+            },
           }}
         />
       </Tab.Navigator>
@@ -58,3 +76,11 @@ const BottomTabs = () => {
 };
 
 export default BottomTabs;
+
+const styles = StyleSheet.create({
+  tabBarTitle: {
+    borderTopWidth: 2,
+    borderStyle: 'solid',
+    borderColor: colors.primary,
+  },
+});

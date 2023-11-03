@@ -1,16 +1,10 @@
 import {useEffect, useState} from 'react';
-import {
-  Dimensions,
-  ScrollView,
-  StyleSheet,
-  TextInput,
-  View,
-} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import * as Yup from 'yup';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import StepIndicator from 'react-native-step-indicator';
 
-import {AppButton, AppText, Screen} from '../../components';
+import {AppButton, Screen} from '../../components';
 import {AppForm, AppFormField, SubmitButton} from '../../components/forms';
 import colors from '../../config/colors';
 
@@ -19,6 +13,7 @@ import customStyles from '../../config/customStyleSteps';
 import defaultStyles from '../../config/styles';
 import AppSelectList from '../../components/AppSelectList';
 import {brandVehicles, engine, vehicles, year} from '../../data';
+import iconSize from '../../config/iconSize';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('El nombre es requerido').label('Name'),
@@ -76,7 +71,11 @@ const Register = () => {
           currentPosition={currentPosition}
           labels={labels}
           renderStepIndicator={({position, stepstatus}) => (
-            <Icon name={icons[position]} size={20} color={colors.primary} />
+            <Icon
+              name={icons[position]}
+              size={iconSize.medium}
+              color={colors.primary}
+            />
           )}
           stepCount={2}
         />
@@ -85,7 +84,7 @@ const Register = () => {
       {form ? (
         <ScrollView
           keyboardShouldPersistTaps="always"
-          contentContainerStyle={{marginTop: 10}}>
+          contentContainerStyle={{marginTop: 15}}>
           <AppForm
             initialValues={data}
             onSubmit={value => onPageChange(value)}
@@ -225,20 +224,23 @@ export default Register;
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 30,
     margin: 20,
+
     flex: 1,
   },
   containerStep: {
     backgroundColor: colors.light,
-    padding: 5,
+    padding: 20,
     borderRadius: 10,
   },
   btnNext: {
     justifyContent: 'flex-end',
+    marginBottom: 10,
   },
   iconPass: {
     position: 'absolute',
-    paddingTop: 15,
+    paddingTop: 20,
     right: 10,
   },
   text: {
@@ -278,9 +280,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     padding: 0,
-    marginVertical: 5,
-  },
-  textDropdown: {
     marginVertical: 5,
   },
   containerMotorYear: {

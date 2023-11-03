@@ -1,9 +1,9 @@
 import {LocationShoppingCart} from '../../components/';
 
-const CartShopping = props => {
+const LocationShopping = props => {
   const {detail} = props.route.params;
 
   return <LocationShoppingCart detail={detail} />;
 };
 
-export default CartShopping;
+export default LocationShopping;

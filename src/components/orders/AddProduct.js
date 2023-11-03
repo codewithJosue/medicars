@@ -14,6 +14,8 @@ import DetailProduct from './DetailProduct';
 import Feather from 'react-native-vector-icons/Feather';
 import {details} from '../../data/detailProduct';
 import ShoppingCartContext from '../../contexts/shoppingCartContext';
+import iconSize from '../../config/iconSize';
+import route from '../../navigations/route';
 
 const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   const [selectedVehicle, setSelectedVehicle] = useState('');
@@ -21,7 +23,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   const [selectedOil, setSelectedOil] = useState('');
   const [dataDetail, setDataDetail] = useState(details);
 
-  const {state, dispatch, setCartShopping} = useContext(ShoppingCartContext);
+  const {state, dispatch} = useContext(ShoppingCartContext);
 
   const navigation = useNavigation();
   const ref = useRef(null);
@@ -77,9 +79,9 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   };
 
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
+    <GestureHandlerRootView style={styles.root}>
       <Screen style={styles.container}>
-        <CardImage img={image} height={140} title={title} />
+        <CardImage img={image} height={150} title={title} />
         <View style={{flex: 1, top: 10}}>
           <View
             style={{
@@ -116,9 +118,9 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
               <TouchableOpacity
                 style={styles.itemsAdd}
                 onPress={() => onPress()}>
-                <Feather name="list" size={20} />
+                <Feather name="list" size={iconSize.medium} />
               </TouchableOpacity>
-              <Badge style={styles.badge} size={15}>
+              <Badge style={styles.badge} size={iconSize.badge}>
                 {state.length > 0 && selectedVehicle !== '' ? state.length : 0}
               </Badge>
             </View>
@@ -136,19 +138,21 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
             />
             <View style={{margin: 10}} />
             <AppButton
-              title="Ir al carrito"
-              onPress={() => console.log('press')}
+              title="Terminar"
+              onPress={() =>
+                navigation.navigate(route.LOCATION_SHOPPING, {dataDetail})
+              }
             />
           </View>
         </View>
       </Screen>
       <BottomSheet ref={ref}>
-        <View style={{flex: 1, backgroundColor: colors.white}}>
+        <View style={styles.bottomSheet}>
           <View style={styles.containerModal}>
             <View style={styles.details}>
               <AppText style={styles.textTitle}>Descripción</AppText>
               <AppText style={styles.textTitle}>Cantidad</AppText>
-              <AppText style={styles.textTitle}>Precio (Lps)</AppText>
+              <AppText style={styles.textTitle}>Precio</AppText>
             </View>
           </View>
           <FlatList
@@ -165,21 +169,18 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
             )}
             keyExtractor={(item, index) => index.toString()}
             extraData={dataDetail}
-            //ItemSeparatorComponent={() => <View style={styles.separator} />}
           />
         </View>
-        <View style={{flex: 1}}>
-          <View style={styles.total}>
-            <AppText style={{fontSize: 10}}>Total orden:</AppText>
-            <AppText style={styles.totalPrice}>{`${total} lps`}</AppText>
-          </View>
-          <View style={styles.btnCar}>
-            <AppButton
-              title="añadir al carrito"
-              // onPress={() => navigation.navigate(route.CART_SHOPPING, {detail})}
-              onPress={() => addCartShopping()}
-            />
-          </View>
+
+        <View style={styles.total}>
+          <AppText style={styles.totalLabel}>Total orden:</AppText>
+          <AppText style={styles.totalPrice}>{`${total} lps`}</AppText>
+        </View>
+        <View style={styles.btnCar}>
+          <AppButton
+            title="añadir al carrito"
+            onPress={() => addCartShopping()}
+          />
         </View>
       </BottomSheet>
     </GestureHandlerRootView>
@@ -189,17 +190,22 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
 export default AddProduct;
 
 const styles = StyleSheet.create({
-  btnCar: {
-    alignSelf: 'flex-end',
-    right: 20,
-    bottom: 0,
-  },
   badge: {
     backgroundColor: colors.primary,
     position: 'absolute',
     marginLeft: 10,
     top: -2,
     right: -10,
+  },
+  bottomSheet: {
+    backgroundColor: colors.white,
+  },
+  btnCar: {
+    alignSelf: 'flex-end',
+    top: 10,
+    right: 20,
+    bottom: 0,
+    width: '40%',
   },
   container: {
     flex: 1,
@@ -214,50 +220,49 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 5,
   },
+  containerModal: {
+    backgroundColor: colors.light,
+    padding: 10,
+  },
+  details: {
+    width: 160,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   footer: {
     flexDirection: 'row',
     width: '50%',
     position: 'absolute',
-    bottom: 0,
+    bottom: 10,
     padding: 10,
-  },
-  containerModal: {
-    backgroundColor: '#FFFFFF',
-    width: '100%',
-    padding: 10,
-  },
-  details: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
   },
   itemsAdd: {
-    // backgroundColor: colors.white,
-    // borderRadius: 25,
     top: 5,
     padding: 3,
   },
+  root: {
+    flex: 1,
+  },
   textTitle: {
-    //color: '#D3DBE2',
-    color: '#46D0D9',
+    color: colors.primary,
+    fontWeight: 'bold',
     fontSize: 12,
   },
   total: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '90%',
-    backgroundColor: 'white',
+    backgroundColor: colors.light,
     borderRadius: 5,
-    elevation: 1,
-    marginBottom: 10,
-    left: 15,
+    padding: 10,
   },
   totalPrice: {
     fontSize: 10,
-    padding: 2,
+    fontWeight: 'bold',
+    textAlign: 'right',
+    padding: 10,
+    position: 'absolute',
   },
-  separator: {
-    opacity: 0.1,
-    height: 1,
-    backgroundColor: '#182E44',
+  totalLabel: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    color: colors.primary,
   },
 });

@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
     elevation: 1,
     marginTop: 10,
     overflow: 'hidden',
-    height: 100,
     width: '48%',
   },
   detailsContainer: {
@@ -36,16 +35,18 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 50,
+    height: 100,
   },
   subTitle: {
     color: colors.secondary,
-    fontSize: 8,
+    fontSize: 10,
     fontWeight: 'bold',
+    fontStyle: 'italic',
   },
   title: {
     color: colors.primary,
-    fontSize: 9,
+    fontWeight: 'bold',
+    fontSize: 11,
     marginBottom: 5,
   },
 });

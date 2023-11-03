@@ -31,8 +31,8 @@ const DrawerContent = ({navigation, ...props}) => {
               icon={() => (
                 <Icon
                   name="home"
-                  color={colors.primary}
-                  size={iconSize.small}
+                  color={colors.secondary}
+                  size={iconSize.medium}
                 />
               )}
               onPress={() => onchangeScreen(route.HOME)}
@@ -44,7 +44,7 @@ const DrawerContent = ({navigation, ...props}) => {
                 <Icon
                   name="plus-circle"
                   color={colors.secondary}
-                  size={iconSize.small}
+                  size={iconSize.medium}
                 />
               )}
               onPress={() => onchangeScreen(route.ADD_VEHICLE)}
@@ -56,7 +56,7 @@ const DrawerContent = ({navigation, ...props}) => {
                 <Icon
                   name="history"
                   color={colors.secondary}
-                  size={iconSize.small}
+                  size={iconSize.medium}
                 />
               )}
               onPress={() => onchangeScreen('profile')}
@@ -70,7 +70,7 @@ const DrawerContent = ({navigation, ...props}) => {
                 <Icon
                   name="money"
                   color={colors.secondary}
-                  size={iconSize.small}
+                  size={iconSize.medium}
                 />
               )}
               onPress={() => onchangeScreen('setting')}
@@ -83,7 +83,7 @@ const DrawerContent = ({navigation, ...props}) => {
                 <Icon
                   name="check-circle"
                   color={colors.secondary}
-                  size={iconSize.small}
+                  size={iconSize.medium}
                 />
               )}
               onPress={() => onchangeScreen('support')}
@@ -95,7 +95,7 @@ const DrawerContent = ({navigation, ...props}) => {
                 <Icon
                   name="shopping-cart"
                   color={colors.secondary}
-                  size={iconSize.small}
+                  size={iconSize.medium}
                 />
               )}
               onPress={() => onchangeScreen('support')}
@@ -107,7 +107,7 @@ const DrawerContent = ({navigation, ...props}) => {
                 <Icon
                   name="bell"
                   color={colors.secondary}
-                  size={iconSize.small}
+                  size={iconSize.medium}
                 />
               )}
               onPress={() => onchangeScreen('support')}
@@ -122,7 +122,7 @@ const DrawerContent = ({navigation, ...props}) => {
           labelStyle={styles.labelItem}
           onPress={() => console.log('logout')}
           icon={() => (
-            <Icon name="sign-in" color={colors.danger} size={iconSize.small} />
+            <Icon name="sign-in" color={colors.danger} size={iconSize.medium} />
           )}
         />
       </Drawer.Section>
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   title: {
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: 'bold',
   },
   caption: {
@@ -160,6 +160,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
   },
   labelItem: {
-    fontSize: 10,
+    fontSize: 13,
+    color: colors.black,
+    fontWeight: 'bold',
   },
 });

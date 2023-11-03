@@ -26,15 +26,15 @@ export default AppTextInput;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: defaultStyles.colors.light,
-    borderRadius: 25,
+    borderRadius: 5,
     flexDirection: 'row',
     width: '100%',
     padding: Platform.OS === 'android' ? 0 : 5,
-    marginVertical: 5,
-    height: 35,
+    marginVertical: 10,
+    height: 40,
   },
   icon: {
-    paddingTop: 6,
+    paddingTop: 10,
     marginRight: 20,
     paddingLeft: 10,
   },
