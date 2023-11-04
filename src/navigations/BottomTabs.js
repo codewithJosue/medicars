@@ -2,10 +2,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import color from 'color';
 
 import {Account, Home} from '../screen';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import route from './route';
 import colors from '../config/colors';
-import iconSize from '../config/iconSize';
+import AppIcon from './AppIcon';
 
 const Tab = createBottomTabNavigator();
 
@@ -33,13 +32,7 @@ const BottomTabs = () => {
               if (!focused) {
                 nameIcon = 'home-outline';
               }
-              return (
-                <Icon
-                  name={nameIcon}
-                  color={colors.secondary}
-                  size={iconSize.medium}
-                />
-              );
+              return <AppIcon name={nameIcon} />;
             },
           }}
         />
@@ -57,13 +50,7 @@ const BottomTabs = () => {
                 nameIcon = 'account-heart-outline';
               }
 
-              return (
-                <Icon
-                  name={nameIcon}
-                  color={colors.secondary}
-                  size={iconSize.medium}
-                />
-              );
+              return <AppIcon name={nameIcon} />;
             },
           }}
         />

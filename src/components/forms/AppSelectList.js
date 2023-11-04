@@ -1,10 +1,8 @@
 import SelectList from 'react-native-dropdown-select-list';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {StyleSheet} from 'react-native';
 
-import colors from '../config/colors';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import iconSize from '../config/iconSize';
+import colors from '../../config/colors';
+import AppIcon from '../../navigations/AppIcon';
 
 const AppSelectList = ({
   data,
@@ -16,19 +14,25 @@ const AppSelectList = ({
     <>
       <SelectList
         arrowicon={
-          <FontAwesome name="chevron-down" size={10} color={'black'} />
+          <AppIcon
+            name="chevron-down"
+            size={25}
+            style={{position: 'absolute', right: 0, padding: 7}}
+          />
         }
         inputStyles={[styles.dropdownContainerText]}
         placeholder={placeholder}
         searchPlaceholder="Búsqueda"
         boxStyles={[styles.inputStyle]}
         dropdownStyles={[styles.dropdownContainer]}
-        searchicon={<Icon name="search-web" size={12} color={'black'} />}
+        searchicon={
+          <AppIcon name="search-web" size={12} style={{marginLeft: 20}} />
+        }
         setSelected={setSelected}
         data={data}
       />
       {iconName != null && (
-        <Icon name={iconName} size={iconSize.small} style={styles.icon} />
+        <AppIcon name={iconName} size={20} style={styles.icon} />
       )}
     </>
   );
@@ -48,12 +52,14 @@ const styles = StyleSheet.create({
     position: 'absolute',
     zIndex: 999,
     width: '100%',
+    height: 200,
   },
   inputStyle: {
     backgroundColor: colors.light,
     borderRadius: 5,
     marginVertical: 10,
     height: 40,
+    borderWidth: 0,
   },
   icon: {
     position: 'absolute',

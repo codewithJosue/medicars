@@ -2,7 +2,6 @@ import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {DrawerActions} from '@react-navigation/native';
 import {Appbar, Badge} from 'react-native-paper';
 import {createStackNavigator} from '@react-navigation/stack';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 import LogoHeader from '../components/LogoHeader';
 import route from './route';
@@ -20,6 +19,7 @@ import colors from '../config/colors';
 import {useContext} from 'react';
 import ShoppingCartContext from '../contexts/shoppingCartContext';
 import iconSize from '../config/iconSize';
+import AppIcon from './AppIcon';
 
 const Stack = createStackNavigator();
 
@@ -41,25 +41,20 @@ const StackNavigationScreen = () => {
           return (
             <Appbar.Header style={{backgroundColor: colors.white}}>
               {back ? (
-                <Appbar.BackAction
-                  containerColor={colors.white}
-                  style={styles.back}
-                  size={iconSize.medium}
-                  onPress={navigation.goBack}
-                  color={colors.secondary}
-                  mode="outlined"
-                />
+                <TouchableOpacity
+                  style={styles.left}
+                  onPress={() => {
+                    navigation.goBack();
+                  }}>
+                  <AppIcon name="chevron-left" />
+                </TouchableOpacity>
               ) : (
                 <TouchableOpacity
-                  style={{marginLeft: 10}}
+                  style={styles.left}
                   onPress={() => {
                     navigation.dispatch(DrawerActions.openDrawer());
                   }}>
-                  <Icon
-                    name="bars"
-                    size={iconSize.medium}
-                    color={colors.primary}
-                  />
+                  <AppIcon name="menu" />
                 </TouchableOpacity>
               )}
               <Appbar.Content
@@ -74,9 +69,9 @@ const StackNavigationScreen = () => {
                   {state.length > 0 ? state.length : 0}
                 </Badge>
                 <Appbar.Action
-                  icon="cart"
+                  icon="cart-plus"
                   size={iconSize.medium}
-                  color={colors.primary}
+                  color={colors.secondary}
                   onPress={() => navigation.navigate('cart_detail_shopping')}
                 />
               </View>
@@ -103,15 +98,13 @@ const StackNavigationScreen = () => {
 
 export default StackNavigationScreen;
 const styles = StyleSheet.create({
-  back: {
-    height: 30,
-    borderWidth: 0.05,
-    width: 30,
+  left: {
+    marginLeft: 10,
   },
   containerBadge: {
     position: 'absolute',
     top: 5,
     right: 5,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.primary,
   },
 });

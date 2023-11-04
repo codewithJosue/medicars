@@ -11,7 +11,7 @@ import colors from '../../config/colors';
 import customStyles from '../../config/customStyleSteps';
 
 import defaultStyles from '../../config/styles';
-import AppSelectList from '../../components/AppSelectList';
+import AppSelectList from '../../components/forms/AppSelectList';
 import {brandVehicles, engine, vehicles, year} from '../../data';
 import iconSize from '../../config/iconSize';
 
@@ -182,6 +182,7 @@ const Register = () => {
               iconName="car-2-plus"
             />
           </View>
+
           <View style={{zIndex: 3}}>
             <AppSelectList
               placeholder="Seleccione el modelo"
@@ -190,6 +191,7 @@ const Register = () => {
               iconName="car-3-plus"
             />
           </View>
+
           <View style={{zIndex: 2}}>
             <AppSelectList
               placeholder="Seleccione el año"
@@ -198,6 +200,7 @@ const Register = () => {
               iconName="calendar-range"
             />
           </View>
+
           <View style={{zIndex: 1}}>
             <AppSelectList
               placeholder="Seleccione el motor"

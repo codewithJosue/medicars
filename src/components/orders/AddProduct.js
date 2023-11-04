@@ -2,7 +2,7 @@ import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {AppButton, AppText, Screen} from '../index';
 import React, {useCallback, useContext, useRef, useState} from 'react';
-import AppSelectList from '../AppSelectList';
+import AppSelectList from '../forms/AppSelectList';
 import CardImage from '../CardImage';
 
 import {aceites, brands, customerVehicle} from '../../data/';

@@ -2,12 +2,10 @@ import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {Caption, Drawer, Title} from 'react-native-paper';
 import {StyleSheet, View} from 'react-native';
 import AvatarText from '../components/account/AvatarText';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import route from './route';
-import iconSize from '../config/iconSize';
-import colors from '../config/colors';
 import {useContext} from 'react';
 import AuthLoginContext from '../contexts/authLoginContext';
+import AppIcon from './AppIcon';
 
 const DrawerContent = ({navigation, ...props}) => {
   const {signOut} = useContext(AuthLoginContext);
@@ -31,37 +29,19 @@ const DrawerContent = ({navigation, ...props}) => {
             <DrawerItem
               label="Inicio"
               labelStyle={styles.labelItem}
-              icon={() => (
-                <Icon
-                  name="home"
-                  color={colors.secondary}
-                  size={iconSize.medium}
-                />
-              )}
+              icon={() => <AppIcon name="home-variant-outline" />}
               onPress={() => onchangeScreen(route.HOME)}
             />
             <DrawerItem
               label="Adicionar Vehículos"
               labelStyle={styles.labelItem}
-              icon={() => (
-                <Icon
-                  name="plus-circle"
-                  color={colors.secondary}
-                  size={iconSize.medium}
-                />
-              )}
+              icon={() => <AppIcon name="car-2-plus" />}
               onPress={() => onchangeScreen(route.ADD_VEHICLE)}
             />
             <DrawerItem
               label="Historial Mantenimientos"
               labelStyle={styles.labelItem}
-              icon={() => (
-                <Icon
-                  name="history"
-                  color={colors.secondary}
-                  size={iconSize.medium}
-                />
-              )}
+              icon={() => <AppIcon name="history" />}
               onPress={() => onchangeScreen('profile')}
             />
           </Drawer.Section>
@@ -69,50 +49,26 @@ const DrawerContent = ({navigation, ...props}) => {
             <DrawerItem
               label="Historial Compras"
               labelStyle={styles.labelItem}
-              icon={() => (
-                <Icon
-                  name="money"
-                  color={colors.secondary}
-                  size={iconSize.medium}
-                />
-              )}
+              icon={() => <AppIcon name="shopping-outline" />}
               onPress={() => onchangeScreen('setting')}
             />
 
             <DrawerItem
               label="Consultar Estado Orden"
               labelStyle={styles.labelItem}
-              icon={() => (
-                <Icon
-                  name="check-circle"
-                  color={colors.secondary}
-                  size={iconSize.medium}
-                />
-              )}
+              icon={() => <AppIcon name="order-bool-descending" />}
               onPress={() => onchangeScreen('support')}
             />
             <DrawerItem
               label="Ir al Carrito de compras"
               labelStyle={styles.labelItem}
-              icon={() => (
-                <Icon
-                  name="shopping-cart"
-                  color={colors.secondary}
-                  size={iconSize.medium}
-                />
-              )}
+              icon={() => <AppIcon name="cart-outline" />}
               onPress={() => onchangeScreen('support')}
             />
             <DrawerItem
               label="Notificaciones"
               labelStyle={styles.labelItem}
-              icon={() => (
-                <Icon
-                  name="bell"
-                  color={colors.secondary}
-                  size={iconSize.medium}
-                />
-              )}
+              icon={() => <AppIcon name="bell-ring-outline" />}
               onPress={() => onchangeScreen('support')}
             />
           </Drawer.Section>
@@ -124,9 +80,7 @@ const DrawerContent = ({navigation, ...props}) => {
           label="Cerrar Sesión"
           labelStyle={styles.labelItem}
           onPress={() => signOut()}
-          icon={() => (
-            <Icon name="sign-in" color={colors.danger} size={iconSize.medium} />
-          )}
+          icon={() => <AppIcon name="logout" />}
         />
       </Drawer.Section>
     </View>
@@ -164,7 +118,7 @@ const styles = StyleSheet.create({
   },
   labelItem: {
     fontSize: 13,
-    color: colors.black,
+    color: '#020024',
     fontWeight: 'bold',
   },
 });

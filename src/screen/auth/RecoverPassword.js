@@ -57,9 +57,9 @@ const RecoverPassword = () => {
           </AppModal>
         </View>
         <View style={styles.footer}>
-          <AppText style={{bottom: 10}}>
+          <AppText style={styles.supportMessage}>
             Comunícate con el
-            <Text style={styles.soporte}> Soporte de Medicars</Text> si no
+            <Text style={styles.support}> Soporte de Medicars</Text> si no
             tienes acceso
           </AppText>
           <Divider />
@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
     color: colors.black,
     textAlign: 'justify',
     fontWeight: 'bold',
+    fontSize: 12,
   },
   title: {
     fontWeight: 'bold',
@@ -108,7 +109,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 15,
   },
-  soporte: {
+  supportMessage: {
+    bottom: 10,
+    textAlign: 'center',
+    fontSize: 12,
+  },
+  support: {
     color: colors.secondary,
     fontWeight: 'bold',
   },

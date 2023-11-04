@@ -3,13 +3,10 @@ import {createStackNavigator} from '@react-navigation/stack';
 import colors from '../config/colors';
 //screens
 import {Login, RecoverPassword, Register} from '../screen/auth';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LogoHeader from '../components/LogoHeader';
-import iconSize from '../config/iconSize';
+import AppIcon from './AppIcon';
 
 const Stack = createStackNavigator();
-const img = require('../assets/logoApp-icon.png');
-
 const StackNavigationLogin = () => {
   return (
     <Stack.Navigator
@@ -42,10 +39,8 @@ const StackNavigationLogin = () => {
           headerTitleAlign: 'center',
           headerLeft: () => (
             <View style={styles.back}>
-              <MaterialCommunityIcons
-                size={iconSize.medium}
-                color={colors.secondary}
-                name="keyboard-backspace"
+              <AppIcon
+                name="chevron-left"
                 onPress={() => navigation.goBack()}
               />
             </View>
@@ -62,10 +57,8 @@ const StackNavigationLogin = () => {
           headerLeft: () => (
             <>
               <View style={styles.back}>
-                <MaterialCommunityIcons
-                  size={iconSize.medium}
-                  color={colors.secondary}
-                  name="keyboard-backspace"
+                <AppIcon
+                  name="chevron-left"
                   onPress={() => navigation.goBack()}
                 />
               </View>
@@ -82,12 +75,8 @@ export default StackNavigationLogin;
 
 const styles = StyleSheet.create({
   back: {
-    alignItems: 'center',
-    backgroundColor: colors.white,
-    borderRadius: 24,
-    borderWidth: 0.05,
     height: 30,
-    marginLeft: 10,
     width: 30,
+    marginLeft: 10,
   },
 });

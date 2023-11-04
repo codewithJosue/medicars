@@ -2,13 +2,12 @@ import {useState} from 'react';
 import {AppButton, AppText, Screen} from '../index';
 import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
 
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import DatePicker from 'react-native-date-picker';
 
 import colors from '../../config/colors';
 import route from '../../navigations/route';
 import {getDate} from '../../helpers/date';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import AppIcon from '../../navigations/AppIcon';
 
 const CalendarService = () => {
   const [method, setMethod] = useState(null);
@@ -38,7 +37,7 @@ const CalendarService = () => {
                   ? {backgroundColor: colors.primary}
                   : {backgroundColor: colors.white},
               ]}>
-              <Icon
+              <AppIcon
                 name={payment.icono}
                 color={colors.primary}
                 size={50}
@@ -66,7 +65,7 @@ const CalendarService = () => {
       <View style={styles.containerDate}>
         <AppText style={styles.input}>{getDate(date)}</AppText>
         <TouchableOpacity style={styles.icon} onPress={() => setOpen(true)}>
-          <FontAwesome name="calendar" size={25} />
+          <AppIcon name="calendar" size={25} />
         </TouchableOpacity>
 
         <DatePicker
