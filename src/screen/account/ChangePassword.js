@@ -1,6 +1,5 @@
 import {AppText, Screen} from '../../components';
-import {StyleSheet, Text, View} from 'react-native';
-import {Caption, Divider, Title} from 'react-native-paper';
+import {StyleSheet, View} from 'react-native';
 import colors from '../../config/colors';
 import * as Yup from 'yup';
 import {useState} from 'react';
@@ -21,11 +20,14 @@ const ChangePassword = () => {
   const [eyePassword, setEyePassword] = useState(true);
   return (
     <Screen style={styles.container}>
-      <View>
+      <View style={styles.cardTitle}>
         <AppText style={styles.title}>Cambio de contraseña</AppText>
-        <AppText>Ingrese por favor la información que se le solicita</AppText>
+        <AppText style={styles.description}>
+          Ingrese por favor la información que se le solicita (Se le pide
+          ingrese la contraseña antigua para verificar que es el propietario de
+          la cuenta que quiere realizar el cambio)
+        </AppText>
       </View>
-
       <AppForm
         onSubmit={data => console.log(data)}
         initialValues={{password: '', passwordOld: ''}}
@@ -73,14 +75,24 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 20,
   },
+  cardTitle: {
+    marginTop: 50,
+    marginBottom: 20,
+  },
   title: {
     color: colors.primary,
     fontSize: 18,
     fontWeight: 'bold',
   },
+  description: {
+    fontSize: 12,
+    fontStyle: 'italic',
+    fontWeight: 'bold',
+    textAlign: 'justify',
+  },
   iconPass: {
     position: 'absolute',
-    paddingTop: 13,
+    paddingTop: 20,
     right: 10,
   },
   footer: {

@@ -26,16 +26,17 @@ const Home = () => {
     <TabBar
       {...props}
       indicatorStyle={{
-        backgroundColor: colors.light,
-        height: 30,
+        borderWidth: 1,
+        borderColor: colors.secondary,
         borderRadius: 24,
       }}
       style={{
         backgroundColor: colors.white,
         shadowColor: theme.colors.text,
         height: 30,
+        marginBottom: 10,
       }}
-      labelStyle={{color: colors.primary, fontSize: 7, bottom: 5}}
+      labelStyle={styles.label}
       activeColor={colors.secondary}
       inactiveColor={colors.primary}
     />
@@ -60,5 +61,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
+  },
+  label: {
+    color: colors.primary,
+    fontSize: 10,
+    bottom: 5,
+    fontWeight: 'bold',
   },
 });

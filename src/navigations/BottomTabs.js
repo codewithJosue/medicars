@@ -6,7 +6,6 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import route from './route';
 import colors from '../config/colors';
 import iconSize from '../config/iconSize';
-import {StyleSheet} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -36,7 +35,6 @@ const BottomTabs = () => {
               }
               return (
                 <Icon
-                  style={focused ? styles.tabBarTitle : null}
                   name={nameIcon}
                   color={colors.secondary}
                   size={iconSize.medium}
@@ -61,7 +59,6 @@ const BottomTabs = () => {
 
               return (
                 <Icon
-                  style={focused ? styles.tabBarTitle : null}
                   name={nameIcon}
                   color={colors.secondary}
                   size={iconSize.medium}
@@ -76,11 +73,3 @@ const BottomTabs = () => {
 };
 
 export default BottomTabs;
-
-const styles = StyleSheet.create({
-  tabBarTitle: {
-    borderTopWidth: 2,
-    borderStyle: 'solid',
-    borderColor: colors.primary,
-  },
-});

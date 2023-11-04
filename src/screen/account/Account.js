@@ -7,6 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 import route from '../../navigations/route';
 import React, {useState} from 'react';
 import AppDialog from '../../components/AppDialog';
+import iconSize from '../../config/iconSize';
 
 const Account = () => {
   const navigation = useNavigation();
@@ -24,11 +25,11 @@ const Account = () => {
       />
       <View style={styles.containerUser}>
         <View style={styles.detail}>
-          <AvatarText size={30} />
+          <AvatarText size={40} />
           <View>
             <AppText style={styles.title}> Josue Ariel Flores</AppText>
             <Icon
-              size={20}
+              size={iconSize.small}
               style={styles.iconEdit}
               name="account-edit"
               onPress={() => console.log('edit')}
@@ -45,12 +46,16 @@ const Account = () => {
               style={styles.action}>
               <Icon
                 color={colors.secondary}
-                size={17}
+                size={25}
                 name="lock-open-alert-outline"
               />
               <AppText style={styles.text}>Cambiar contraseña</AppText>
             </TouchableOpacity>
-            <Icon name="arrow-right" style={styles.icon} />
+            <Icon
+              name="arrow-right"
+              style={styles.icon}
+              size={iconSize.small}
+            />
           </View>
         </View>
 
@@ -62,7 +67,7 @@ const Account = () => {
                 setOnPress(() => () => {});
               }}
               style={styles.action}>
-              <Icon color={colors.secondary} size={17} name="logout" />
+              <Icon color={colors.secondary} size={25} name="logout" />
               <AppText style={styles.text}>Cerrar</AppText>
             </TouchableOpacity>
           </View>
@@ -84,7 +89,8 @@ const styles = StyleSheet.create({
     right: -20,
   },
   icon: {
-    right: 10,
+    right: 30,
+    padding: 5,
   },
   options: {
     marginVertical: 10,
@@ -130,8 +136,8 @@ const styles = StyleSheet.create({
   },
   text: {
     marginLeft: 5,
-    top: 2,
-    fontSize: 10,
+    top: 4,
+    fontSize: 12,
     fontWeight: 'bold',
   },
 });

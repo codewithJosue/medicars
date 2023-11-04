@@ -35,7 +35,7 @@ const RecoverPassword = () => {
         initialValues={{email: ''}}
         validationSchema={validateSchema}
         onSubmit={value => changePassword(value)}>
-        <View>
+        <View style={styles.form}>
           <AppFormField
             autoCapitalize="none"
             autoCorrect={false}
@@ -78,12 +78,12 @@ const styles = StyleSheet.create({
     margin: 20,
     flex: 1,
   },
+  form: {marginTop: 20},
   footer: {
     position: 'absolute',
     left: 0,
     right: 0,
-    //bottom: 30,
-    bottom: 0,
+    bottom: 10,
   },
   iconSuccess: {
     flexDirection: 'row',
@@ -93,13 +93,14 @@ const styles = StyleSheet.create({
   subtitle: {
     color: colors.black,
     textAlign: 'justify',
-    margin: 10,
+    fontWeight: 'bold',
   },
   title: {
     fontWeight: 'bold',
     fontSize: 25,
     color: colors.primary,
-    textAlign: 'center',
+    textAlign: 'left',
+    marginBottom: 10,
   },
   titleModal: {
     color: colors.black,

@@ -37,15 +37,16 @@ const DetailShopping = () => {
         state.map((cart, index) => {
           const {detail} = cart;
           return (
-            <View key={index} style={styles.containerCard}>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate(route.LOCATION_SHOPPING, {detail})
+              }
+              key={index}
+              style={styles.containerCard}>
               <View style={styles.viewImage}>
                 <Image
                   resizeMode="cover"
-                  style={{
-                    width: 60,
-                    height: 60,
-                    borderRadius: 8,
-                  }}
+                  style={styles.image}
                   source={cart.image}
                 />
               </View>
@@ -72,27 +73,19 @@ const DetailShopping = () => {
                   <View>
                     <MaterialCommunityIcons
                       name="trash-can"
-                      size={17}
+                      size={25}
                       onPress={() => {
                         setIsVisible(!isVisible);
                         setOnPress(
                           () => () => deleteCartShoppingId(cart.vehicle_id),
                         );
                       }}
-                      color={colors.secondary}
+                      color={colors.danger}
                     />
                   </View>
                 </TouchableOpacity>
-                <MaterialCommunityIcons
-                  style={{color: '#fff', alignSelf: 'center'}}
-                  onPress={() =>
-                    navigation.navigate(route.LOCATION_SHOPPING, {detail})
-                  }
-                  size={17}
-                  name="send-circle-outline"
-                />
               </View>
-            </View>
+            </TouchableOpacity>
           );
         })
       ) : (
@@ -115,13 +108,15 @@ const DetailShopping = () => {
       )}
 
       {state.length > 0 ? (
-        <AppButton
-          title="Limpiar carrito"
-          onPress={() => {
-            setIsVisible(!isVisible);
-            setOnPress(() => () => resetCartShopping());
-          }}
-        />
+        <View style={styles.footer}>
+          <AppButton
+            title="Limpiar carrito"
+            onPress={() => {
+              setIsVisible(!isVisible);
+              setOnPress(() => () => resetCartShopping());
+            }}
+          />
+        </View>
       ) : null}
     </Screen>
   );
@@ -152,12 +147,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     right: 10,
     position: 'absolute',
-    backgroundColor: colors.primary,
+    backgroundColor: colors.light,
     padding: 2,
     paddingHorizontal: 2,
     borderRadius: 20,
-    height: 22,
-    width: 50,
+    height: 30,
+    width: 30,
   },
   cartOf: {
     position: 'absolute',
@@ -181,8 +176,8 @@ const styles = StyleSheet.create({
     padding: 2,
   },
   itemTextActiveContainer: {
-    backgroundColor: '#fff',
-    borderRadius: 20,
+    backgroundColor: colors.white,
+    borderRadius: 30,
     overflow: 'hidden',
   },
   line: {
@@ -210,5 +205,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 10,
+  },
+  image: {
+    width: 60,
+    height: 60,
+    borderRadius: 8,
+  },
+  footer: {
+    position: 'absolute',
+    right: 0,
+    left: 0,
+    bottom: 10,
   },
 });

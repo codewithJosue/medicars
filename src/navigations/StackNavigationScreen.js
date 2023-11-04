@@ -11,7 +11,7 @@ import BottomTabs from './BottomTabs';
 import {
   Vehicles,
   LocationShopping,
-  CartDetailShopping,
+  ShoppingCart,
   Order,
   PaymentMethod,
   ChangePassword,
@@ -94,7 +94,7 @@ const StackNavigationScreen = () => {
       />
       <Stack.Screen
         name={route.CART_DETAIL_SHOPPING}
-        component={CartDetailShopping}
+        component={ShoppingCart}
       />
       <Stack.Screen name={route.PAYMENT_METHOD} component={PaymentMethod} />
     </Stack.Navigator>

@@ -112,7 +112,7 @@ const Login = () => {
         </View>
       </View>
 
-      <View style={styles.containerFooter}>
+      <View style={styles.footer}>
         <TouchableOpacity onPress={() => navigation.navigate('register')}>
           <AppText style={styles.register}>
             <AppText>No tiene una cuenta? </AppText> Registrese
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  containerFooter: {
+  footer: {
     position: 'absolute',
     left: 0,
     right: 0,

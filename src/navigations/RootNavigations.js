@@ -27,7 +27,7 @@ const RootNavigations = () => {
         setCartShopping,
       }}>
       <NavigationContainer>
-        <Drawer />
+        <StackNavigationLogin />
       </NavigationContainer>
     </ShoppingCartContext.Provider>
   );
