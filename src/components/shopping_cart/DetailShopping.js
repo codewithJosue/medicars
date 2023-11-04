@@ -8,6 +8,7 @@ import {useNavigation} from '@react-navigation/native';
 import route from '../../navigations/route';
 import ShoppingCartContext from '../../contexts/shoppingCartContext';
 import AppDialog from '../notify/AppDialog';
+import {Divider} from 'react-native-paper';
 
 const DetailShopping = () => {
   const navigation = useNavigation();
@@ -50,23 +51,21 @@ const DetailShopping = () => {
                   source={cart.image}
                 />
               </View>
-              <View>
+              <View style={{marginVertical: 5}}>
                 <AppText style={styles.description}>
-                  <AppText style={styles.title}> vehículo: </AppText>
+                  <AppText style={styles.title}>Vehículo: </AppText>
                   {cart.vehicle}
                 </AppText>
-                <View style={styles.line} />
                 <View>
                   <AppText style={styles.description}>
                     <AppText style={styles.title}>Marca: </AppText>
                     {cart.brand}
                   </AppText>
                   <AppText style={styles.description}>
-                    <AppText style={styles.title}> Aceite: </AppText>
+                    <AppText style={styles.title}>Aceite: </AppText>
                     {cart.oil}
                   </AppText>
                 </View>
-                <View style={styles.line} />
               </View>
               <View style={styles.cardBodyBottom}>
                 <TouchableOpacity style={styles.itemTextActiveContainer}>
@@ -130,7 +129,7 @@ const styles = StyleSheet.create({
   },
   containerCard: {
     flexDirection: 'row',
-    borderRadius: 8,
+    borderRadius: 5,
     margin: 5,
     padding: 10,
     paddingBottom: 0,
@@ -139,13 +138,13 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     shadowColor: '#000',
     shadowOffset: {height: 0, width: 0},
-    elevation: 2,
+    elevation: 3,
   },
   cardBodyBottom: {
-    top: 2,
+    marginTop: 25,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    right: 10,
+    right: 5,
     position: 'absolute',
     backgroundColor: colors.light,
     padding: 2,
@@ -172,21 +171,19 @@ const styles = StyleSheet.create({
     color: colors.danger,
   },
   description: {
-    fontSize: 10,
     padding: 2,
+    fontSize: 11,
+    fontStyle: 'italic',
+    fontWeight: '200',
   },
   itemTextActiveContainer: {
     backgroundColor: colors.white,
     borderRadius: 30,
     overflow: 'hidden',
   },
-  line: {
-    height: 1,
-    backgroundColor: '#EBEBEB',
-  },
-
   title: {
     fontWeight: 'bold',
+    fontSize: 12,
   },
   textActive: {
     paddingHorizontal: 8,
@@ -207,9 +204,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   image: {
-    width: 60,
-    height: 60,
-    borderRadius: 8,
+    width: 70,
+    height: 70,
+    borderRadius: 5,
   },
   footer: {
     position: 'absolute',

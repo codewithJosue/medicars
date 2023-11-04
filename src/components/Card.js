@@ -24,9 +24,10 @@ export default Card;
 const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.white,
-    borderRadius: 10,
-    elevation: 1,
+    borderRadius: 5,
+    elevation: 3,
     marginTop: 10,
+    marginBottom: 10,
     overflow: 'hidden',
     width: '48%',
   },

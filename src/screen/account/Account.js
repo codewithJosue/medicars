@@ -5,14 +5,16 @@ import colors from '../../config/colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 import route from '../../navigations/route';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import AppDialog from '../../components/notify/AppDialog';
 import iconSize from '../../config/iconSize';
+import AuthLoginContext from '../../contexts/authLoginContext';
 
 const Account = () => {
   const navigation = useNavigation();
   const [isVisible, setIsVisible] = useState(false);
   const [onPress, setOnPress] = useState(null);
+  const {signOut} = useContext(AuthLoginContext);
 
   return (
     <Screen style={styles.container}>
@@ -64,7 +66,7 @@ const Account = () => {
             <TouchableOpacity
               onPress={() => {
                 setIsVisible(!isVisible);
-                setOnPress(() => () => {});
+                setOnPress(() => () => signOut());
               }}
               style={styles.action}>
               <Icon color={colors.secondary} size={25} name="logout" />

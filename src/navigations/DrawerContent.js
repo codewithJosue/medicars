@@ -6,8 +6,11 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import route from './route';
 import iconSize from '../config/iconSize';
 import colors from '../config/colors';
+import {useContext} from 'react';
+import AuthLoginContext from '../contexts/authLoginContext';
 
 const DrawerContent = ({navigation, ...props}) => {
+  const {signOut} = useContext(AuthLoginContext);
   const onchangeScreen = screen => {
     navigation.navigate(screen);
   };
@@ -120,7 +123,7 @@ const DrawerContent = ({navigation, ...props}) => {
         <DrawerItem
           label="Cerrar Sesión"
           labelStyle={styles.labelItem}
-          onPress={() => console.log('logout')}
+          onPress={() => signOut()}
           icon={() => (
             <Icon name="sign-in" color={colors.danger} size={iconSize.medium} />
           )}

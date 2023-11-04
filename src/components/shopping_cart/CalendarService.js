@@ -65,19 +65,14 @@ const CalendarService = () => {
 
       <View style={styles.containerDate}>
         <AppText style={styles.input}>{getDate(date)}</AppText>
-        <TouchableOpacity
-          style={{
-            alignSelf: 'flex-end',
-            position: 'absolute',
-            right: 5,
-          }}
-          onPress={() => setOpen(true)}>
+        <TouchableOpacity style={styles.icon} onPress={() => setOpen(true)}>
           <FontAwesome name="calendar" size={25} />
         </TouchableOpacity>
 
         <DatePicker
           modal
           mode="datetime"
+          androidVariant="iosClone"
           title="Seleccione la fecha"
           confirmText="Confirmar"
           cancelText="Cancelar"
@@ -114,6 +109,12 @@ const styles = StyleSheet.create({
     margin: 10,
     justifyContent: 'center',
   },
+  icon: {
+    alignSelf: 'flex-end',
+    position: 'absolute',
+    right: 5,
+    padding: 5,
+  },
   container: {
     flex: 1,
     margin: 20,
@@ -127,13 +128,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   input: {
-    height: 30,
+    height: 40,
     borderRadius: 10,
     backgroundColor: colors.light,
     elevation: 0.5,
     paddingTop: 10,
     paddingLeft: 10,
     fontSize: 10,
+    textAlign: 'left',
   },
   text: {
     textAlign: 'center',
