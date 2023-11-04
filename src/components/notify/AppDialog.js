@@ -2,7 +2,7 @@ import {StyleSheet, View} from 'react-native';
 import {Button, Dialog, Portal, Text} from 'react-native-paper';
 import {useEffect, useState} from 'react';
 
-import colors from '../config/colors';
+import colors from '../../config/colors';
 
 const AppDialog = ({
   color = 'danger',

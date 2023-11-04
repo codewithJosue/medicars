@@ -1,7 +1,10 @@
-import { ANDROID_CLIENT_ID, IOS_CLIENT_ID } from "@env";
-import { GoogleSignin, statusCodes } from "@react-native-google-signin/google-signin";
+import {ANDROID_CLIENT_ID, IOS_CLIENT_ID} from '@env';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 
-export const signIn = async () => {
+export const GoogleSignIn = async () => {
   await GoogleSignin.configure({
     androidClientId: ANDROID_CLIENT_ID,
     iosClientId: IOS_CLIENT_ID,
@@ -18,12 +21,12 @@ export const signIn = async () => {
 
 const exceptionErros = error => {
   if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-    return "Se cancelo el inicio de sesion";
+    return 'Se cancelo el inicio de sesion';
   } else if (error.code === statusCodes.IN_PROGRESS) {
-    return "la operacion de inicio de sesion ya esta en curso";
+    return 'la operacion de inicio de sesion ya esta en curso';
   } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-    return "los servicios de google play no estan disponibles";
+    return 'los servicios de google play no estan disponibles';
   } else {
-    return "error desconocido";
+    return 'error desconocido';
   }
 };

@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useContext, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -9,8 +9,9 @@ import {AppText, Screen} from '../../components';
 
 import colors from '../../config/colors';
 import {fbAuth} from '../../helpers/loginFacebook';
-import {signIn} from '../../helpers/loginGoogle';
+import {GoogleSignIn} from '../../helpers/loginGoogle';
 import {IconButton} from 'react-native-paper';
+import AuthLoginContext from '../../contexts/authLoginContext';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -29,14 +30,21 @@ const loginFacebook = async () => {
 };
 
 const loginGoogle = async () => {
-  const data = await signIn();
+  const data = await GoogleSignIn();
   console.log('GOOGLE', data);
 };
 
 const Login = () => {
   const navigation = useNavigation();
-
+  const {signIn} = useContext(AuthLoginContext);
   const [eyePassword, setEyePassword] = useState(true);
+
+  const token =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ikpvc3VlIEZsb3JlcyIsInRva2VuIjoxNTE2MjM5MDIyfQ.5a_MPpNHRrwylqkslF80kODVTSxgqtVR3dY3ylLEcns';
+
+  const Login = values => {
+    signIn({token: token, email: values.email});
+  };
 
   return (
     <Screen style={styles.container}>
@@ -48,7 +56,7 @@ const Login = () => {
       </View>
       <AppForm
         initialValues={{email: '', password: ''}}
-        onSubmit={values => console.log(values)}
+        onSubmit={values => Login(values)}
         validationSchema={validationSchema}>
         <View style={{marginVertical: 10}}>
           <AppFormField

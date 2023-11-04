@@ -7,7 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {useNavigation} from '@react-navigation/native';
 import route from '../../navigations/route';
 import ShoppingCartContext from '../../contexts/shoppingCartContext';
-import AppDialog from '../AppDialog';
+import AppDialog from '../notify/AppDialog';
 
 const DetailShopping = () => {
   const navigation = useNavigation();

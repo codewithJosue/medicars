@@ -1,7 +1,7 @@
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {Caption, Drawer, Title} from 'react-native-paper';
 import {StyleSheet, View} from 'react-native';
-import AvatarText from '../components/AvatarText';
+import AvatarText from '../components/account/AvatarText';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import route from './route';
 import iconSize from '../config/iconSize';

@@ -1,12 +1,12 @@
 import {AppText, Screen} from '../../components';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import AvatarText from '../../components/AvatarText';
+import AvatarText from '../../components/account/AvatarText';
 import colors from '../../config/colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useNavigation} from '@react-navigation/native';
 import route from '../../navigations/route';
 import React, {useState} from 'react';
-import AppDialog from '../../components/AppDialog';
+import AppDialog from '../../components/notify/AppDialog';
 import iconSize from '../../config/iconSize';
 
 const Account = () => {

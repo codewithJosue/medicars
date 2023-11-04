@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Avatar} from 'react-native-paper';
-import colors from '../config/colors';
+import colors from '../../config/colors';
 
 const AvatarText = ({size = 30}) => {
   const [avatar, setAvatar] = useState('Invitado');
