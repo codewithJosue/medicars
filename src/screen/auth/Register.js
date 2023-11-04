@@ -172,46 +172,43 @@ const Register = () => {
           initialValues={data}
           onSubmit={value => backPageChange(value)}
           validationSchema={validationSchema}>
-          <View style={{marginTop: 15}} />
-
-          <View style={{zIndex: 4}}>
+          <View style={{flex: 1, marginTop: 15}}>
             <AppSelectList
               placeholder="Seleccione la marca"
               setSelected={setSelected}
               data={brandVehicles}
               iconName="car-2-plus"
             />
+
+            <View>
+              <AppSelectList
+                placeholder="Seleccione el modelo"
+                setSelected={setSelected}
+                data={vehicles}
+                iconName="car-3-plus"
+              />
+            </View>
+
+            <View>
+              <AppSelectList
+                placeholder="Seleccione el año"
+                setSelected={setSelected}
+                data={year}
+                iconName="calendar-range"
+              />
+            </View>
+
+            <View>
+              <AppSelectList
+                placeholder="Seleccione el motor"
+                setSelected={setSelected}
+                data={engine}
+                iconName="engine"
+              />
+            </View>
+
+            {/*<TextInput placeholder="Observaciones" multiline={true} />*/}
           </View>
-
-          <View style={{zIndex: 3}}>
-            <AppSelectList
-              placeholder="Seleccione el modelo"
-              setSelected={setSelected}
-              data={vehicles}
-              iconName="car-3-plus"
-            />
-          </View>
-
-          <View style={{zIndex: 2}}>
-            <AppSelectList
-              placeholder="Seleccione el año"
-              setSelected={setSelected}
-              data={year}
-              iconName="calendar-range"
-            />
-          </View>
-
-          <View style={{zIndex: 1}}>
-            <AppSelectList
-              placeholder="Seleccione el motor"
-              setSelected={setSelected}
-              data={engine}
-              iconName="engine"
-            />
-          </View>
-
-          {/*<TextInput placeholder="Observaciones" multiline={true} />*/}
-
           <View style={styles.buttons}>
             <SubmitButton title="Atrás" color="danger" />
             <View style={{margin: 10}} />
@@ -229,7 +226,6 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 30,
     margin: 20,
-
     flex: 1,
   },
   containerStep: {

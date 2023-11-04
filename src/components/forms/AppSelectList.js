@@ -48,11 +48,8 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   dropdownContainer: {
-    backgroundColor: colors.light,
-    position: 'absolute',
-    zIndex: 999,
-    width: '100%',
-    height: 200,
+    backgroundColor: colors.white,
+    height: 180,
   },
   inputStyle: {
     backgroundColor: colors.light,
