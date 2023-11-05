@@ -2,7 +2,7 @@ import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {AppButton, AppText, Screen} from '../index';
 import React, {useCallback, useContext, useRef, useState} from 'react';
-import AppSelectList from '../forms/AppSelectList';
+
 import CardImage from '../CardImage';
 
 import {aceites, brands, customerVehicle} from '../../data/';
@@ -16,11 +16,12 @@ import {details} from '../../data/detailProduct';
 import ShoppingCartContext from '../../contexts/shoppingCartContext';
 import iconSize from '../../config/iconSize';
 import route from '../../navigations/route';
+import AppDropDownPicker from '../AppDropDownPicker';
 
 const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
-  const [selectedVehicle, setSelectedVehicle] = useState('');
-  const [selectedBrand, setSelectedBrand] = useState('');
-  const [selectedOil, setSelectedOil] = useState('');
+  const [selectedVehicle, setSelectedVehicle] = useState(null);
+  const [selectedBrand, setSelectedBrand] = useState(null);
+  const [selectedOil, setSelectedOil] = useState(null);
   const [dataDetail, setDataDetail] = useState(details);
 
   const {state, dispatch} = useContext(ShoppingCartContext);
@@ -29,7 +30,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   const ref = useRef(null);
 
   const onPress = useCallback(() => {
-    if (state.length > 0 && selectedVehicle === '') {
+    if (state.length > 0 && selectedVehicle === null) {
       return toasRef.current.show(
         'debe agregar: vehículo, marca y aceite',
         3000,
@@ -44,7 +45,11 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   }, [state]);
 
   const onSubmitDataVehicle = () => {
-    if (selectedBrand === '' || selectedVehicle === '' || selectedOil === '') {
+    if (
+      selectedBrand === null ||
+      selectedVehicle === null ||
+      selectedOil === null
+    ) {
       return toasRefError.current.show('hay opciones sin seleccionar');
     }
 
@@ -78,40 +83,38 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
     }
   };
 
+  console.log(selectedBrand, selectedVehicle, selectedOil);
   return (
     <GestureHandlerRootView style={styles.root}>
       <Screen style={styles.container}>
         <CardImage img={image} height={150} title={title} />
-        <View style={{flex: 1, top: 10}}>
-          <View
-            style={{
-              zIndex: 999,
-            }}>
-            <View style={{zIndex: 3}}>
-              <AppSelectList
-                placeholder="Seleccionar vehículo"
-                data={customerVehicle}
-                setSelected={setSelectedVehicle}
-                iconName="car-2-plus"
-              />
-            </View>
-            <View style={{zIndex: 2}}>
-              <AppSelectList
-                placeholder="Seleccionar marca"
-                data={brands}
-                setSelected={setSelectedBrand}
-                iconName="oil"
-              />
-            </View>
-          </View>
-          <View style={{zIndex: 1}}>
-            <AppSelectList
-              placeholder="Seleccionar Aceite"
-              data={aceites}
-              setSelected={setSelectedOil}
-              iconName="cursor-default-click"
-            />
-          </View>
+        <View style={{flex: 1, marginTop: 20}}>
+          <AppDropDownPicker
+            data={customerVehicle}
+            setValue={setSelectedVehicle}
+            value={selectedVehicle}
+            iconName="car-arrow-right"
+            search={false}
+            placeholder="Seleccione su vehículo"
+          />
+
+          <AppDropDownPicker
+            data={brands}
+            setValue={setSelectedBrand}
+            value={selectedBrand}
+            iconName="cursor-default-click"
+            search={false}
+            placeholder="Seleccione una marca del producto"
+          />
+
+          <AppDropDownPicker
+            data={aceites}
+            setValue={setSelectedOil}
+            value={selectedOil}
+            iconName="hydraulic-oil-level"
+            search={false}
+            placeholder="Seleccione una aceite para su vehículo"
+          />
 
           <View style={styles.containerElements}>
             <View>

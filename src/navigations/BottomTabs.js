@@ -4,7 +4,7 @@ import color from 'color';
 import {Account, Home} from '../screen';
 import route from './route';
 import colors from '../config/colors';
-import AppIcon from './AppIcon';
+import AppIcon from '../components/shopping_cart/AppIcon';
 
 const Tab = createBottomTabNavigator();
 

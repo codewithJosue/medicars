@@ -1,6 +1,6 @@
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import iconSize from '../config/iconSize';
-import colors from '../config/colors';
+import iconSize from '../../config/iconSize';
+import colors from '../../config/colors';
 
 const AppIcon = ({
   name,

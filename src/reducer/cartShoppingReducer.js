@@ -2,7 +2,7 @@ import {aceites, brands, customerVehicle} from '../data';
 import {removeCartShopping, setCartShopping} from '../storage/cartShopping';
 
 const findData = (data, selectionId) => {
-  return data.find(d => d.key === selectionId).value;
+  return data.find(d => d.value === selectionId).label;
 };
 
 const cartShoppingReducer = (state, action) => {

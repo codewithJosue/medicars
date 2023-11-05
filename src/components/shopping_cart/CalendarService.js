@@ -7,7 +7,7 @@ import DatePicker from 'react-native-date-picker';
 import colors from '../../config/colors';
 import route from '../../navigations/route';
 import {getDate} from '../../helpers/date';
-import AppIcon from '../../navigations/AppIcon';
+import AppIcon from './AppIcon';
 
 const CalendarService = () => {
   const [method, setMethod] = useState(null);

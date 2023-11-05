@@ -4,7 +4,7 @@ import colors from '../config/colors';
 //screens
 import {Login, RecoverPassword, Register} from '../screen/auth';
 import LogoHeader from '../components/LogoHeader';
-import AppIcon from './AppIcon';
+import AppIcon from '../components/shopping_cart/AppIcon';
 
 const Stack = createStackNavigator();
 const StackNavigationLogin = () => {

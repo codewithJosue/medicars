@@ -5,7 +5,7 @@ import AvatarText from '../components/account/AvatarText';
 import route from './route';
 import {useContext} from 'react';
 import AuthLoginContext from '../contexts/authLoginContext';
-import AppIcon from './AppIcon';
+import AppIcon from '../components/shopping_cart/AppIcon';
 
 const DrawerContent = ({navigation, ...props}) => {
   const {signOut} = useContext(AuthLoginContext);

@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import * as Yup from 'yup';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -11,9 +11,10 @@ import colors from '../../config/colors';
 import customStyles from '../../config/customStyleSteps';
 
 import defaultStyles from '../../config/styles';
-import AppSelectList from '../../components/forms/AppSelectList';
-import {brandVehicles, engine, vehicles, year} from '../../data';
-import iconSize from '../../config/iconSize';
+import {brandVehicles, engines, vehicles, years} from '../../data';
+import AppDropDownPicker from '../../components/AppDropDownPicker';
+import AppIcon from '../../components/shopping_cart/AppIcon';
+import AuthLoginContext from '../../contexts/authLoginContext';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('El nombre es requerido').label('Name'),
@@ -27,19 +28,26 @@ const validationSchema = Yup.object().shape({
 const labels = ['Datos Personales', 'Datos del vehiculo'];
 
 const Register = () => {
+  const token =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ikpvc3VlIEZsb3JlcyIsInRva2VuIjoxNTE2MjM5MDIyfQ.5a_MPpNHRrwylqkslF80kODVTSxgqtVR3dY3ylLEcns';
+  const icons = ['account-question', 'car-back'];
   const [eyePassword, setEyePassword] = useState(true);
   const [currentPosition, setCurrentPosition] = useState(1);
-  const [form, setForm] = useState(true);
   const [data, setData] = useState({
-    name: '',
-    lastName: '',
-    phone: '',
-    email: '',
-    password: '',
+    name: 'Josue',
+    lastName: 'Flores',
+    phone: '32102897',
+    email: 'josueari20@gmail.com',
+    password: 'admin',
     passwordRepeat: '',
   });
 
-  const [selected, setSelected] = useState('');
+  const {signUp} = useContext(AuthLoginContext);
+
+  const [brand, setBrand] = useState(null);
+  const [vehicle, setVehicle] = useState(null);
+  const [year, setYear] = useState(null);
+  const [engine, setEngine] = useState(null);
 
   const onChange_text = (e, type) => {
     setData({
@@ -51,18 +59,17 @@ const Register = () => {
   useEffect(() => {}, [currentPosition]);
 
   const onPageChange = value => {
-    setForm(false);
     setCurrentPosition(currentPosition + 1);
   };
 
-  const backPageChange = value => {
-    setCurrentPosition(0);
-    setForm(true);
+  const backPageChange = () => {
+    setCurrentPosition(1);
   };
 
-  const icons = ['account-question', 'car-back'];
+  const register = value => {
+    signUp({token: token, email: value.email});
+  };
 
-  //keyboardShouldPersistTaps="always"
   return (
     <Screen style={styles.container}>
       <View style={styles.containerStep}>
@@ -71,17 +78,13 @@ const Register = () => {
           currentPosition={currentPosition}
           labels={labels}
           renderStepIndicator={({position, stepstatus}) => (
-            <Icon
-              name={icons[position]}
-              size={iconSize.medium}
-              color={colors.primary}
-            />
+            <AppIcon name={icons[position]} color={colors.primary} />
           )}
           stepCount={2}
         />
       </View>
 
-      {form ? (
+      {currentPosition === 1 ? (
         <ScrollView
           keyboardShouldPersistTaps="always"
           contentContainerStyle={{marginTop: 15}}>
@@ -170,49 +173,54 @@ const Register = () => {
       ) : (
         <AppForm
           initialValues={data}
-          onSubmit={value => backPageChange(value)}
+          onSubmit={value => register(value)}
           validationSchema={validationSchema}>
-          <View style={{flex: 1, marginTop: 15}}>
-            <AppSelectList
-              placeholder="Seleccione la marca"
-              setSelected={setSelected}
+          <View style={{marginTop: 15}}>
+            <AppDropDownPicker
               data={brandVehicles}
-              iconName="car-2-plus"
+              setValue={setBrand}
+              value={brand}
+              iconName="car"
+              placeholder="Seleccione la marca de su vehículo"
             />
 
-            <View>
-              <AppSelectList
-                placeholder="Seleccione el modelo"
-                setSelected={setSelected}
-                data={vehicles}
-                iconName="car-3-plus"
-              />
-            </View>
+            <AppDropDownPicker
+              data={vehicles}
+              setValue={setVehicle}
+              value={vehicle}
+              iconName="car"
+              placeholder="Seleccione el tipo vehículo que posee"
+            />
 
-            <View>
-              <AppSelectList
-                placeholder="Seleccione el año"
-                setSelected={setSelected}
-                data={year}
-                iconName="calendar-range"
-              />
-            </View>
+            <AppDropDownPicker
+              data={years}
+              setValue={setYear}
+              value={year}
+              iconName="calendar"
+              placeholder="Seleccione un año"
+            />
 
-            <View>
-              <AppSelectList
-                placeholder="Seleccione el motor"
-                setSelected={setSelected}
-                data={engine}
-                iconName="engine"
-              />
-            </View>
+            <AppDropDownPicker
+              data={engines}
+              setValue={setEngine}
+              value={engine}
+              iconName="engine"
+              placeholder="Seleccione el motor de su vehículo"
+            />
 
             {/*<TextInput placeholder="Observaciones" multiline={true} />*/}
           </View>
           <View style={styles.buttons}>
-            <SubmitButton title="Atrás" color="danger" />
+            <AppButton
+              title="Atrás"
+              color="danger"
+              onPress={() => backPageChange()}
+            />
             <View style={{margin: 10}} />
-            <AppButton title="Guardar" onpress={() => console.log('guardar')} />
+            <SubmitButton
+              title="Guardar"
+              onpress={() => console.log('guardar')}
+            />
           </View>
         </AppForm>
       )}

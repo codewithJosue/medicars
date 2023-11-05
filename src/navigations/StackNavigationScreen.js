@@ -19,7 +19,7 @@ import colors from '../config/colors';
 import {useContext} from 'react';
 import ShoppingCartContext from '../contexts/shoppingCartContext';
 import iconSize from '../config/iconSize';
-import AppIcon from './AppIcon';
+import AppIcon from '../components/shopping_cart/AppIcon';
 
 const Stack = createStackNavigator();
 
