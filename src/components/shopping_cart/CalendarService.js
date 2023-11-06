@@ -84,27 +84,9 @@ const CalendarService = () => {
             timeZoneName="America/Tegucigalpa"
             neutralButton={{label: 'Clear', textColor: 'grey'}}
             onChange={handleChangePicker}
+            display="inline"
           />
         )}
-        {/*<DatePicker*/}
-        {/*  modal*/}
-        {/*  mode="datetime"*/}
-        {/*  androidVariant="iosClone"*/}
-        {/*  title="Seleccione la fecha"*/}
-        {/*  confirmText="Confirmar"*/}
-        {/*  cancelText="Cancelar"*/}
-        {/*  open={open}*/}
-        {/*  date={date}*/}
-        {/*  locale="es"*/}
-        {/*  //is24hourSource="locale"*/}
-        {/*  onConfirm={date => {*/}
-        {/*    setOpen(false);*/}
-        {/*    setDate(date);*/}
-        {/*  }}*/}
-        {/*  onCancel={() => {*/}
-        {/*    setOpen(false);*/}
-        {/*  }}*/}
-        {/*/>*/}
       </View>
 
       <AppButton
@@ -160,7 +142,7 @@ const styles = StyleSheet.create({
   title: {
     textAlign: 'left',
     color: colors.primary,
-    fontWeight: 'Bold',
+    fontWeight: 'bold',
     fontSize: 15,
   },
 });

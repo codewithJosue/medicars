@@ -1,4 +1,10 @@
-import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  Platform,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import colors from '../config/colors';
 import {AppText} from './index';
 import {useNavigation} from '@react-navigation/native';
@@ -26,10 +32,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderRadius: 5,
     elevation: 3,
-    marginTop: 10,
+    marginTop: 5,
+    margin: 5,
+    flex: 1,
+    marginVertical: '2%',
     marginBottom: 10,
     overflow: 'hidden',
-    width: '48%',
+    maxWidth: '50%',
+    //OS
+    shadowOffset: {width: 5, height: 5},
+    shadowOpacity: 0,
+    shadowRadius: 5,
   },
   detailsContainer: {
     padding: 10,

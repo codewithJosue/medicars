@@ -60,7 +60,7 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.light,
   },
   label: {
     color: colors.primary,

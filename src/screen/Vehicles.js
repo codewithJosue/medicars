@@ -28,7 +28,7 @@ const Vehicles = props => {
       />
       <FAB
         icon="plus"
-        customSize={30}
+        customSize={45}
         animated={true}
         style={styles.fab}
         onPress={() => console.log('Pressed to')}

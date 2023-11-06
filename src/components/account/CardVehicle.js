@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     top: -20,
   },
   card: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.light,
     borderRadius: 5,
     elevation: 5,
   },

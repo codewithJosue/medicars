@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   cardContainer: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.light,
     borderRadius: 5,
     elevation: 2,
     marginVertical: 10,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   },
   containerUser: {
     elevation: 2,
-    backgroundColor: colors.white,
+    backgroundColor: colors.light,
     borderRadius: 14,
     marginBottom: 10,
     top: 5,
