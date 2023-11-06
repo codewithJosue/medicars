@@ -3,18 +3,31 @@ import {Caption, Drawer, Title} from 'react-native-paper';
 import {StyleSheet, View} from 'react-native';
 import AvatarText from '../components/account/AvatarText';
 import route from './route';
-import {useContext} from 'react';
+import {useContext, useState} from 'react';
 import AuthLoginContext from '../contexts/authLoginContext';
 import AppIcon from '../components/shopping_cart/AppIcon';
+import AppDialog from '../components/notify/AppDialog';
 
 const DrawerContent = ({navigation, ...props}) => {
   const {signOut} = useContext(AuthLoginContext);
+  const [isVisible, setIsVisible] = useState(false);
+  const [onPress, setOnPress] = useState(null);
+
   const onchangeScreen = screen => {
     navigation.navigate(screen);
   };
 
   return (
     <View style={styles.container}>
+      <AppDialog
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+        onPress={onPress}
+        button={false}
+        title="¡Proximamente!"
+        message="Una nueva caracteristica muy pronto"
+        color="info"
+      />
       <DrawerContentScrollView {...props}>
         <View>
           <View style={styles.userInfoSection}>
@@ -42,7 +55,11 @@ const DrawerContent = ({navigation, ...props}) => {
               label="Historial Mantenimientos"
               labelStyle={styles.labelItem}
               icon={() => <AppIcon name="history" />}
-              onPress={() => onchangeScreen('profile')}
+              //onPress={() => onchangeScreen('profile')}
+              onPress={() => {
+                setIsVisible(!isVisible);
+                setOnPress(() => () => {});
+              }}
             />
           </Drawer.Section>
           <Drawer.Section showDivider={false}>
@@ -50,26 +67,38 @@ const DrawerContent = ({navigation, ...props}) => {
               label="Historial Compras"
               labelStyle={styles.labelItem}
               icon={() => <AppIcon name="shopping-outline" />}
-              onPress={() => onchangeScreen('setting')}
+              //onPress={() => onchangeScreen('setting')}
+              onPress={() => {
+                setIsVisible(!isVisible);
+                setOnPress(() => () => {});
+              }}
             />
 
             <DrawerItem
               label="Consultar Estado Orden"
               labelStyle={styles.labelItem}
               icon={() => <AppIcon name="order-bool-descending" />}
-              onPress={() => onchangeScreen('support')}
+              //onPress={() => onchangeScreen('support')}
+              onPress={() => {
+                setIsVisible(!isVisible);
+                setOnPress(() => () => {});
+              }}
             />
             <DrawerItem
               label="Ir al Carrito de compras"
               labelStyle={styles.labelItem}
               icon={() => <AppIcon name="cart-outline" />}
-              onPress={() => onchangeScreen('support')}
+              onPress={() => onchangeScreen('cart_detail_shopping')}
             />
             <DrawerItem
               label="Notificaciones"
               labelStyle={styles.labelItem}
               icon={() => <AppIcon name="bell-ring-outline" />}
-              onPress={() => onchangeScreen('support')}
+              //onPress={() => onchangeScreen('support')}
+              onPress={() => {
+                setIsVisible(!isVisible);
+                setOnPress(() => () => {});
+              }}
             />
           </Drawer.Section>
         </View>

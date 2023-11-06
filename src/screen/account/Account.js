@@ -22,6 +22,7 @@ const Account = () => {
         isVisible={isVisible}
         setIsVisible={setIsVisible}
         onPress={onPress}
+        title="Salir de la cuenta"
         message="¿Está seguro de salir de su cuenta?"
         color="warning"
       />

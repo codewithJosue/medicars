@@ -5,6 +5,7 @@ import {Account, Home} from '../screen';
 import route from './route';
 import colors from '../config/colors';
 import AppIcon from '../components/shopping_cart/AppIcon';
+import {StyleSheet} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,7 +27,7 @@ const BottomTabs = () => {
           component={Home}
           options={{
             tabBarLabel: 'Principal',
-            tabBarLabelStyle: {fontSize: 12},
+            tabBarLabelStyle: styles.labelStyle,
             tabBarIcon: ({focused}) => {
               let nameIcon = 'home';
               if (!focused) {
@@ -42,7 +43,7 @@ const BottomTabs = () => {
           component={Account}
           options={{
             tabBarLabel: 'Tú',
-            tabBarLabelStyle: {fontSize: 12},
+            tabBarLabelStyle: styles.labelStyle,
             //tabBarItemStyle: {borderTopWidth: 1},
             tabBarIcon: ({focused}) => {
               let nameIcon = 'account-heart';
@@ -60,3 +61,12 @@ const BottomTabs = () => {
 };
 
 export default BottomTabs;
+
+const styles = StyleSheet.create({
+  labelStyle: {
+    fontSize: 14,
+  },
+  tabBar: {
+    backgroundColor: 'red',
+  },
+});

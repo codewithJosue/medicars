@@ -3,6 +3,7 @@ import {Button, Dialog, Portal, Text} from 'react-native-paper';
 import {useEffect, useState} from 'react';
 
 import colors from '../../config/colors';
+import {AppText} from '../index';
 
 const AppDialog = ({
   color = 'danger',
@@ -11,6 +12,8 @@ const AppDialog = ({
   onPress,
   isVisible,
   setIsVisible,
+  button = true,
+  title = '',
 }) => {
   const onPressDialog = () => {
     onPress();
@@ -26,16 +29,18 @@ const AppDialog = ({
           visible={isVisible}
           onDismiss={hideDialog}>
           <Dialog.Icon size={15} icon={icon} color={colors[color]} />
-          {/*<Dialog.Title style={styles.title}>{title}</Dialog.Title>*/}
-          <Dialog.Content style={styles.message}>
-            <Text variant="labelSmall">{message}</Text>
+          <Dialog.Title style={styles.title}>{title}</Dialog.Title>
+          <Dialog.Content>
+            <AppText style={styles.message}>{message}</AppText>
           </Dialog.Content>
           <Dialog.Actions style={styles.actions}>
-            <Button labelStyle={styles.btnCancel} onPress={hideDialog}>
-              Cancel
-            </Button>
+            {button && (
+              <Button labelStyle={styles.btnCancel} onPress={hideDialog}>
+                Cancelar
+              </Button>
+            )}
             <Button labelStyle={styles.btnSuccess} onPress={onPressDialog}>
-              Ok
+              Aceptar
             </Button>
           </Dialog.Actions>
         </Dialog>
@@ -48,7 +53,7 @@ export default AppDialog;
 
 const styles = StyleSheet.create({
   container: {
-    height: 120,
+    height: 180,
   },
   actions: {
     top: -10,
@@ -62,11 +67,15 @@ const styles = StyleSheet.create({
     color: colors.primary,
   },
   title: {
-    fontSize: 11,
+    marginTop: 0,
+    fontSize: 16,
     fontWeight: 'bold',
     color: colors.secondary,
+    textAlign: 'center',
   },
   message: {
-    top: 5,
+    marginTop: 0,
+    textAlign: 'center',
+    fontSize: 13,
   },
 });

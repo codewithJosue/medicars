@@ -7,5 +7,6 @@ export default {
   primary: '#090979',
   white: '#fff',
   warning: '#ec942c',
+  info: '#3578E5',
   icon: '#aeb9ff',
 };
