@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {AppButton, AppText, Screen} from '../index';
 import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
 
-import DatePicker from 'react-native-date-picker';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 import colors from '../../config/colors';
 import route from '../../navigations/route';
@@ -20,6 +20,13 @@ const CalendarService = () => {
     {id: 2, description: 'Transferencia', icono: 'bank-transfer'},
     {id: 3, description: 'Efectivo', icono: 'cash-multiple'},
   ];
+
+  const handleChangePicker = (evt, date) => {
+    if (date !== undefined) {
+      setOpen(!open);
+      setDate(date);
+    }
+  };
 
   return (
     <Screen style={styles.container}>
@@ -68,25 +75,36 @@ const CalendarService = () => {
           <AppIcon name="calendar" size={25} />
         </TouchableOpacity>
 
-        <DatePicker
-          modal
-          mode="datetime"
-          androidVariant="iosClone"
-          title="Seleccione la fecha"
-          confirmText="Confirmar"
-          cancelText="Cancelar"
-          open={open}
-          date={date}
-          locale="es"
-          //is24hourSource="locale"
-          onConfirm={date => {
-            setOpen(false);
-            setDate(date);
-          }}
-          onCancel={() => {
-            setOpen(false);
-          }}
-        />
+        {open && (
+          <DateTimePicker
+            value={date}
+            locale="es-ES"
+            mode="date"
+            is24Hour={true}
+            timeZoneName="America/Tegucigalpa"
+            neutralButton={{label: 'Clear', textColor: 'grey'}}
+            onChange={handleChangePicker}
+          />
+        )}
+        {/*<DatePicker*/}
+        {/*  modal*/}
+        {/*  mode="datetime"*/}
+        {/*  androidVariant="iosClone"*/}
+        {/*  title="Seleccione la fecha"*/}
+        {/*  confirmText="Confirmar"*/}
+        {/*  cancelText="Cancelar"*/}
+        {/*  open={open}*/}
+        {/*  date={date}*/}
+        {/*  locale="es"*/}
+        {/*  //is24hourSource="locale"*/}
+        {/*  onConfirm={date => {*/}
+        {/*    setOpen(false);*/}
+        {/*    setDate(date);*/}
+        {/*  }}*/}
+        {/*  onCancel={() => {*/}
+        {/*    setOpen(false);*/}
+        {/*  }}*/}
+        {/*/>*/}
       </View>
 
       <AppButton
@@ -132,8 +150,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.light,
     elevation: 0.5,
     paddingTop: 10,
-    paddingLeft: 10,
-    fontSize: 10,
+    paddingLeft: 20,
+    fontSize: 12,
     textAlign: 'left',
   },
   text: {
