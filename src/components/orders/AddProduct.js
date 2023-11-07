@@ -17,6 +17,7 @@ import ShoppingCartContext from '../../contexts/shoppingCartContext';
 import iconSize from '../../config/iconSize';
 import route from '../../navigations/route';
 import AppDropDownPicker from '../AppDropDownPicker';
+import {shoppingCartSum} from '../../helpers/shoppingCartSum';
 
 const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
   const [selectedVehicle, setSelectedVehicle] = useState(null);
@@ -74,7 +75,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
     }
   };
 
-  const total = dataDetail.reduce((n, {total}) => n + total, 0);
+  const total = shoppingCartSum(dataDetail);
 
   const addCartShopping = async () => {
     if (state.some(v => v.vehicle_id === selectedVehicle)) {

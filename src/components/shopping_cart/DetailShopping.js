@@ -9,6 +9,7 @@ import route from '../../navigations/route';
 import ShoppingCartContext from '../../contexts/shoppingCartContext';
 import AppDialog from '../notify/AppDialog';
 import {Divider} from 'react-native-paper';
+import {shoppingCartSum} from '../../helpers/shoppingCartSum';
 
 const DetailShopping = () => {
   const navigation = useNavigation();
@@ -33,10 +34,18 @@ const DetailShopping = () => {
         isVisible={isVisible}
         setIsVisible={setIsVisible}
         onPress={onPress}
+        title="¿Desea eliminar?"
       />
       {state.length > 0 ? (
         state.map((cart, index) => {
           const {detail} = cart;
+          const str = [];
+          detail.map(d => {
+            if (d.cantidad >= 1) str.push(d.descripcion);
+          });
+
+          console.log(str.toString());
+          const total = shoppingCartSum(detail);
           return (
             <TouchableOpacity
               onPress={() =>
@@ -44,45 +53,34 @@ const DetailShopping = () => {
               }
               key={index}
               style={styles.containerCard}>
-              <View style={styles.viewImage}>
-                <Image
-                  resizeMode="cover"
-                  style={styles.image}
-                  source={cart.image}
-                />
-              </View>
+              <Image
+                resizeMode="cover"
+                style={styles.image}
+                source={cart.image}
+              />
+
               <View style={{marginVertical: 5}}>
-                <AppText style={styles.description}>
-                  <AppText style={styles.title}>Vehículo: </AppText>
-                  {cart.vehicle}
+                <AppText style={styles.brand}>{cart.brand}</AppText>
+                <AppText style={styles.oil}>
+                  {cart.oil.substring(0, 35)}....
                 </AppText>
-                <View>
-                  <AppText style={styles.description}>
-                    <AppText style={styles.title}>Marca: </AppText>
-                    {cart.brand}
-                  </AppText>
-                  <AppText style={styles.description}>
-                    <AppText style={styles.title}>Aceite: </AppText>
-                    {cart.oil}
-                  </AppText>
-                </View>
+                <AppText style={styles.services}>
+                  {str.toString().substring(0, 40)}.....
+                </AppText>
+                <AppText style={styles.price}>L{total}</AppText>
               </View>
               <View style={styles.cardBodyBottom}>
-                <TouchableOpacity style={styles.itemTextActiveContainer}>
-                  <View>
-                    <MaterialCommunityIcons
-                      name="trash-can"
-                      size={25}
-                      onPress={() => {
-                        setIsVisible(!isVisible);
-                        setOnPress(
-                          () => () => deleteCartShoppingId(cart.vehicle_id),
-                        );
-                      }}
-                      color={colors.danger}
-                    />
-                  </View>
-                </TouchableOpacity>
+                <MaterialCommunityIcons
+                  name="close"
+                  size={20}
+                  onPress={() => {
+                    setIsVisible(!isVisible);
+                    setOnPress(
+                      () => () => deleteCartShoppingId(cart.vehicle_id),
+                    );
+                  }}
+                  color={colors.danger}
+                />
               </View>
             </TouchableOpacity>
           );
@@ -91,15 +89,15 @@ const DetailShopping = () => {
         <View style={styles.cartOf}>
           <MaterialCommunityIcons
             style={styles.iconCartOf}
-            name="emoticon-sad"
-            size={50}
+            name="cart-off"
+            size={100}
           />
           <AppText style={styles.textCartOf}>
-            No hay ningún servicio o producto en el carrito
+            No hay ningún servicio o producto en el carrito.
           </AppText>
           <View style={{top: 20}}>
             <AppButton
-              title="ir al inicio"
+              title="Agregar servicios o productos"
               onPress={() => navigation.navigate(route.HOME)}
             />
           </View>
@@ -123,35 +121,21 @@ const DetailShopping = () => {
 export default DetailShopping;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    margin: 10,
-  },
-  containerCard: {
-    flexDirection: 'row',
-    borderRadius: 5,
-    margin: 5,
-    padding: 10,
-    paddingBottom: 0,
-    backgroundColor: '#fff',
-    shadowOpacity: 0.14,
-    shadowRadius: 4,
-    shadowColor: '#000',
-    shadowOffset: {height: 0, width: 0},
-    elevation: 3,
+  brand: {
+    fontSize: 15,
+    fontWeight: '800',
+    color: colors.primary,
   },
   cardBodyBottom: {
-    marginTop: 25,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    borderRadius: 5,
+    marginVertical: 5,
+    backgroundColor: colors.light,
+    alignItems: 'center',
+    paddingTop: 2,
     right: 5,
     position: 'absolute',
-    backgroundColor: colors.light,
-    padding: 2,
-    paddingHorizontal: 2,
-    borderRadius: 20,
-    height: 30,
-    width: 30,
+    height: 25,
+    width: 25,
   },
   cartOf: {
     position: 'absolute',
@@ -161,57 +145,63 @@ const styles = StyleSheet.create({
     bottom: 0,
     justifyContent: 'center',
   },
-  textCartOf: {
-    top: 10,
-    fontSize: 14,
-    textAlign: 'center',
-  },
-  iconCartOf: {
-    textAlign: 'center',
-    color: colors.danger,
-  },
-  description: {
-    padding: 2,
-    fontSize: 11,
-    fontStyle: 'italic',
-    fontWeight: '200',
-  },
-  itemTextActiveContainer: {
+  container: {
+    flex: 1,
+    margin: 10,
     backgroundColor: colors.white,
-    borderRadius: 30,
-    overflow: 'hidden',
   },
-  title: {
-    fontWeight: 'bold',
-    fontSize: 12,
-  },
-  textActive: {
-    paddingHorizontal: 8,
-    color: '#3C3C3C',
-    backgroundColor: '#fff',
-    paddingVertical: 3,
-    borderRadius: 20,
-    fontSize: 12,
-  },
-  viewImage: {
-    marginRight: 15,
-    marginVertical: 10,
-  },
-  viewDetails: {
+  containerCard: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  image: {
-    width: 70,
-    height: 70,
     borderRadius: 5,
+    margin: 5,
+    padding: 5,
+    backgroundColor: colors.white,
+    shadowOpacity: 0.14,
+    shadowRadius: 4,
+    shadowColor: '#000',
+    shadowOffset: {height: 0, width: 0},
+    elevation: 3,
   },
   footer: {
     position: 'absolute',
     right: 0,
     left: 0,
     bottom: 10,
+  },
+  iconCartOf: {
+    textAlign: 'center',
+    color: colors.secondary,
+  },
+  image: {
+    marginRight: 15,
+    marginVertical: 10,
+    width: 80,
+    height: 80,
+    borderRadius: 5,
+  },
+  oil: {
+    padding: 2,
+    fontSize: 13,
+    fontStyle: 'normal',
+  },
+  price: {
+    fontWeight: 'bold',
+    fontSize: 15,
+    color: colors.primary,
+  },
+  services: {
+    color: colors.grey_medium,
+    fontStyle: 'italic',
+    fontWeight: '600',
+    fontSize: 12,
+  },
+  textCartOf: {
+    top: 10,
+    fontSize: 14,
+    textAlign: 'center',
+  },
+  viewImage: {
+    marginRight: 15,
+    marginVertical: 10,
   },
 });
