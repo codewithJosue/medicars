@@ -1,14 +1,40 @@
 import {FlatList, StyleSheet, View} from 'react-native';
-import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {Callout, Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {useNavigation} from '@react-navigation/native';
 
 import {AppButton, AppText, Screen} from '../index';
 import colors from '../../config/colors';
 import DetailProduct from '../orders/DetailProduct';
 import route from '../../navigations/route';
+import React, {useState} from 'react';
+import AppIcon from './AppIcon';
+import AppModal from '../AppModal';
+import AppMap from '../AppMap';
 
 const LocationShoppingCart = ({detail}) => {
   const navigation = useNavigation();
+  const [location, setLocation] = useState({
+    region: {
+      latitude: 14.0818,
+      longitude: -87.20681,
+      latitudeDelta: 0.1,
+      longitudeDelta: 0.1,
+    },
+    marker: {
+      latitude: 14.0818,
+      longitude: -87.20681,
+    },
+  });
+
+  //
+  const onRegionChange = region => {
+    setLocation({...location, region: region});
+  };
+
+  const onchangeMarker = coordinate => {
+    setLocation({...location, marker: coordinate});
+  };
+
   return (
     <Screen style={styles.container}>
       <View style={styles.card}>
@@ -20,7 +46,7 @@ const LocationShoppingCart = ({detail}) => {
           </View>
         </View>
         <FlatList
-          style={{margin: 10}}
+          style={styles.table}
           data={detail}
           showsVerticalScrollIndicator={false}
           renderItem={({item, index}) => (
@@ -38,17 +64,7 @@ const LocationShoppingCart = ({detail}) => {
         />
 
         <View style={styles.location}>
-          <MapView
-            style={styles.map}
-            provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-            initialRegion={{
-              latitude: 37.78825,
-              longitude: -122.4324,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-            }}
-            onPress={() => {}}
-          />
+          <AppMap location={location} setLocation={setLocation} />
         </View>
       </View>
     </Screen>
@@ -84,7 +100,5 @@ const styles = StyleSheet.create({
     flex: 3,
     marginVertical: 5,
   },
-  map: {
-    ...StyleSheet.absoluteFillObject,
-  },
+  table: {margin: 10},
 });

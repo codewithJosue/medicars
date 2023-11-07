@@ -44,7 +44,6 @@ const DetailShopping = () => {
             if (d.cantidad >= 1) str.push(d.descripcion);
           });
 
-          console.log(str.toString());
           const total = shoppingCartSum(detail);
           return (
             <TouchableOpacity
