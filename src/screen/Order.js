@@ -3,17 +3,18 @@ import {useRef} from 'react';
 import {AppToast} from '../components';
 
 const Order = ({route}) => {
-  const toasRef = useRef();
-  const toasRefError = useRef();
+  const toastSuccess = useRef();
+  const toastError = useRef();
+
   return (
     <>
       <AddProduct
         order={route.params}
-        toasRef={toasRef}
-        toasRefError={toasRefError}
+        toastSuccess={toastSuccess}
+        toastError={toastError}
       />
-      <AppToast ref={toasRef} />
-      <AppToast ref={toasRefError} backgroundColor="red" />
+      <AppToast ref={toastSuccess} />
+      <AppToast ref={toastError} backgroundColor="red" />
     </>
   );
 };

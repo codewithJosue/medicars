@@ -1,39 +1,35 @@
-import {FlatList, StyleSheet, View} from 'react-native';
-import MapView, {Callout, Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+import {
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Linking,
+  Platform,
+} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {AppButton, AppText, Screen} from '../index';
 import colors from '../../config/colors';
 import DetailProduct from '../orders/DetailProduct';
 import route from '../../navigations/route';
-import React, {useState} from 'react';
-import AppIcon from './AppIcon';
-import AppModal from '../AppModal';
+import React, {useEffect, useState} from 'react';
 import AppMap from '../AppMap';
+import AppIcon from './AppIcon';
+import useCurrentGeolocation from '../../hooks/useCurrentGeolocation';
 
 const LocationShoppingCart = ({detail}) => {
   const navigation = useNavigation();
-  const [location, setLocation] = useState({
-    region: {
-      latitude: 14.0818,
-      longitude: -87.20681,
-      latitudeDelta: 0.1,
-      longitudeDelta: 0.1,
-    },
-    marker: {
-      latitude: 14.0818,
-      longitude: -87.20681,
-    },
-  });
 
-  //
-  const onRegionChange = region => {
-    setLocation({...location, region: region});
+  const openSetting = () => {
+    if (Platform.OS === 'ios') {
+      Linking.openURL('app-settings:');
+    } else {
+      Linking.openSettings();
+    }
   };
 
-  const onchangeMarker = coordinate => {
-    setLocation({...location, marker: coordinate});
-  };
+  const {region, marker, isLoading, hasError, setLocation} =
+    useCurrentGeolocation();
 
   return (
     <Screen style={styles.container}>
@@ -54,19 +50,36 @@ const LocationShoppingCart = ({detail}) => {
           )}
           keyExtractor={(item, index) => index.toString()}
           extraData={detail}
-          //ItemSeparatorComponent={() => <View style={styles.separator} />}
         />
       </View>
-      <View style={{flex: 1}}>
-        <AppButton
-          title="agregar ubicacion y proceder al pago"
-          onPress={() => navigation.navigate(route.PAYMENT_METHOD)}
-        />
 
-        <View style={styles.location}>
-          <AppMap location={location} setLocation={setLocation} />
-        </View>
+      <View style={styles.location}>
+        {hasError ?? (
+          <View style={styles.containerNotMap}>
+            <View style={styles.iconNotMap}>
+              <AppIcon name="map-marker-off" size={80} color={colors.danger} />
+            </View>
+
+            <AppText style={styles.oops}>
+              Ooops! Permiso de ubicación no concedido.
+            </AppText>
+
+            <TouchableOpacity onPress={openSetting}>
+              <AppText style={styles.btnConfiguration}>
+                Ir a configuración
+              </AppText>
+            </TouchableOpacity>
+          </View>
+        )}
+
+        {isLoading ? null : (
+          <AppMap location={region} marker={marker} setLocation={setLocation} />
+        )}
       </View>
+      <AppButton
+        title="agregar ubicacion y proceder al pago"
+        onPress={() => navigation.navigate(route.PAYMENT_METHOD)}
+      />
     </Screen>
   );
 };
@@ -74,12 +87,35 @@ const LocationShoppingCart = ({detail}) => {
 export default LocationShoppingCart;
 
 const styles = StyleSheet.create({
+  btnConfiguration: {
+    color: colors.primary,
+    fontsize: 18,
+    textAlign: 'center',
+  },
+  iconNotMap: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   container: {
     flex: 1,
     margin: 20,
   },
   card: {
     backgroundColor: colors.white,
+  },
+  containerNotMap: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 50,
+    justifyContent: 'center',
+  },
+  oops: {
+    textAlign: 'center',
+    fontsize: 18,
+    fontWeight: 'bold',
   },
   containerModal: {
     backgroundColor: colors.light,
@@ -96,8 +132,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   location: {
-    backgroundColor: '#dbdbdb',
-    flex: 3,
+    backgroundColor: colors.light,
+    flex: 1,
     marginVertical: 5,
   },
   table: {margin: 10},

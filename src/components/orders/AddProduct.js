@@ -1,7 +1,13 @@
 import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {AppButton, AppText, Screen} from '../index';
-import React, {useCallback, useContext, useRef, useState} from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import CardImage from '../CardImage';
 
@@ -19,7 +25,7 @@ import route from '../../navigations/route';
 import AppDropDownPicker from '../AppDropDownPicker';
 import {shoppingCartSum} from '../../helpers/shoppingCartSum';
 
-const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
+const AddProduct = ({order: {title, image}, toastSuccess, toastError}) => {
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [selectedOil, setSelectedOil] = useState(null);
@@ -32,7 +38,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
 
   const onPress = useCallback(() => {
     if (state.length > 0 && selectedVehicle === null) {
-      return toasRef.current.show(
+      return toastSuccess.current.show(
         'debe agregar: vehículo, marca y aceite',
         3000,
       );
@@ -51,7 +57,7 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
       selectedVehicle === null ||
       selectedOil === null
     ) {
-      return toasRefError.current.show('hay opciones sin seleccionar');
+      return toastError.current.show('hay opciones sin seleccionar');
     }
 
     if (!state.some(e => e.vehicle_id === selectedVehicle)) {
@@ -66,9 +72,9 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
         },
       });
 
-      toasRef.current.show('Se agrego correctamente', 3000);
+      toastSuccess.current.show('Se agrego correctamente', 3000);
     } else {
-      toasRef.current.show(
+      toastSuccess.current.show(
         'Ya se encuentra registrada la información del vehículo',
         3000,
       );
@@ -84,7 +90,6 @@ const AddProduct = ({order: {title, image}, toasRef, toasRefError}) => {
     }
   };
 
-  console.log(selectedBrand, selectedVehicle, selectedOil);
   return (
     <GestureHandlerRootView style={styles.root}>
       <Screen style={styles.container}>

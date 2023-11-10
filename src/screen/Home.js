@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
-import {Dimensions, StyleSheet} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Dimensions, Platform, StyleSheet} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 import {Products, Services} from './Home/index';
 import colors from '../config/colors';
 import {Screen} from '../components';
+import {requestLocationPermission} from '../helpers/permissions';
 
 const initialLayout = {width: Dimensions.get('window').width};
 
@@ -41,6 +42,16 @@ const Home = () => {
       inactiveColor={colors.primary}
     />
   );
+
+  const currentLocation = async () => {
+    const granted = await requestLocationPermission();
+  };
+
+  console.log(currentLocation);
+
+  useEffect(() => {
+    currentLocation();
+  }, []);
 
   return (
     <Screen style={styles.container}>

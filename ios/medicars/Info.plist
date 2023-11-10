@@ -58,8 +58,6 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
@@ -93,5 +91,13 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+
+	  <key>NSLocationWhenInUseUsageDescription</key>
+      <string>El programa requiere GPS para almacenar la ubicación del servicio</string>
+        <key>NSLocationAlwaysUsageDescription</key>
+        <string>El programa requiere GPS para almacenar la ubicación del servicio</string>
+          <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+          <string>El programa requiere GPS para almacenar la ubicación del servicio</string>
+
 </dict>
 </plist>

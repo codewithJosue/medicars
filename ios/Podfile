@@ -1,5 +1,6 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+require_relative '../node_modules/react-native-permissions/scripts/setup'
 
 platform :ios, '13.0'
 install! 'cocoapods', :deterministic_uuids => false
@@ -10,6 +11,32 @@ pod 'Google-Maps-iOS-Utils', :git => 'https://github.com/Simon-TechForm/google-m
 
 rn_maps_path = '../node_modules/react-native-maps'
 pod 'react-native-google-maps', :path => rn_maps_path
+
+platform :ios, min_ios_version_supported
+prepare_react_native_project!
+
+# ⬇️ uncomment wanted permissions
+setup_permissions([
+  # 'AppTrackingTransparency',
+  # 'BluetoothPeripheral',
+  # 'Calendars',
+   'Camera',
+  # 'Contacts',
+  # 'FaceID',
+   'LocationAccuracy',
+   'LocationAlways',
+   'LocationWhenInUse',
+   'MediaLibrary',
+  # 'Microphone',
+  # 'Motion',
+   'Notifications',
+   'PhotoLibrary',
+   'PhotoLibraryAddOnly',
+  # 'Reminders',
+  # 'Siri',
+  # 'SpeechRecognition',
+  # 'StoreKit',
+])
 
 target 'medicars' do
   config = use_native_modules!
