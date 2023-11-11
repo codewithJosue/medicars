@@ -3,13 +3,11 @@ import {
   Animated,
   Image,
   Modal,
-  Platform,
   StyleSheet,
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
   Dimensions,
-  ImageBackground,
 } from 'react-native';
 import {Card} from 'react-native-paper';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -82,10 +80,9 @@ const styles = StyleSheet.create({
     bottom: 100,
   },
   buttom: {
-    //position: 'absolute',
     width: 60,
     height: 60,
-    borderRadius: 60 / 2,
+    borderRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
     shadowRadius: 10,

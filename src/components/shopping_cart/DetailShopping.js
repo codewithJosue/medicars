@@ -58,7 +58,7 @@ const DetailShopping = () => {
                 source={cart.image}
               />
 
-              <View style={{marginVertical: 5}}>
+              <View>
                 <AppText style={styles.brand}>{cart.brand}</AppText>
                 <AppText style={styles.oil}>
                   {cart.oil.length > 40
@@ -70,10 +70,14 @@ const DetailShopping = () => {
                     ? `${str.toString().substring(0, 40)}...`
                     : str.toString().substring(0, 40)}
                 </AppText>
-                <View style={styles.cardPrice}>
-                  <AppText style={styles.price}>L{total}</AppText>
-                  <AppText style={styles.price}>{str.length} servicios</AppText>
-                </View>
+
+                <AppText style={styles.price}>
+                  L{total} |
+                  <AppText style={styles.price}>
+                    {' '}
+                    {str.length} servicios
+                  </AppText>
+                </AppText>
               </View>
               <View style={styles.cardBodyBottom}>
                 <MaterialCommunityIcons
@@ -166,14 +170,6 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: {height: 0, width: 0},
     elevation: 3,
-  },
-  cardPrice: {
-    flexDirection: 'row',
-    width: 60,
-    justifyContent: 'space-around',
-    position: 'absolute',
-    left: 20,
-    bottom: 15,
   },
   footer: {
     position: 'absolute',
