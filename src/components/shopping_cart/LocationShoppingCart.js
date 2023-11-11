@@ -12,10 +12,10 @@ import {AppButton, AppText, Screen} from '../index';
 import colors from '../../config/colors';
 import DetailProduct from '../orders/DetailProduct';
 import route from '../../navigations/route';
-import React, {useEffect, useState} from 'react';
 import AppMap from '../AppMap';
 import AppIcon from './AppIcon';
 import useCurrentGeolocation from '../../hooks/useCurrentGeolocation';
+import AppLoading from '../notify/AppLoading';
 
 const LocationShoppingCart = ({detail}) => {
   const navigation = useNavigation();
@@ -30,6 +30,24 @@ const LocationShoppingCart = ({detail}) => {
 
   const {region, marker, isLoading, hasError, setLocation} =
     useCurrentGeolocation();
+
+  if (hasError) {
+    return (
+      <View style={styles.containerNotMap}>
+        <View style={styles.iconNotMap}>
+          <AppIcon name="map-marker-off" size={80} color={colors.danger} />
+        </View>
+
+        <AppText style={styles.oops}>
+          Ooops! Permiso de ubicación no concedido.
+        </AppText>
+
+        <TouchableOpacity onPress={openSetting}>
+          <AppText style={styles.btnConfiguration}>Ir a configuración</AppText>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 
   return (
     <Screen style={styles.container}>
@@ -54,25 +72,9 @@ const LocationShoppingCart = ({detail}) => {
       </View>
 
       <View style={styles.location}>
-        {hasError ?? (
-          <View style={styles.containerNotMap}>
-            <View style={styles.iconNotMap}>
-              <AppIcon name="map-marker-off" size={80} color={colors.danger} />
-            </View>
-
-            <AppText style={styles.oops}>
-              Ooops! Permiso de ubicación no concedido.
-            </AppText>
-
-            <TouchableOpacity onPress={openSetting}>
-              <AppText style={styles.btnConfiguration}>
-                Ir a configuración
-              </AppText>
-            </TouchableOpacity>
-          </View>
-        )}
-
-        {isLoading ? null : (
+        {isLoading ? (
+          <AppLoading />
+        ) : (
           <AppMap location={region} marker={marker} setLocation={setLocation} />
         )}
       </View>
@@ -111,6 +113,7 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 50,
     justifyContent: 'center',
+    backgroundColor: colors.white,
   },
   oops: {
     textAlign: 'center',

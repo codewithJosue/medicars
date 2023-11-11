@@ -11,7 +11,7 @@ const useCurrentGeolocation = () => {
     },
     marker: null,
     isLoading: true,
-    hasError: false,
+    hasError: null,
   });
 
   const getCurrentLocation = () => {
@@ -25,12 +25,16 @@ const useCurrentGeolocation = () => {
           ...location,
           marker: {latitude, longitude},
           isLoading: false,
-          hasError: false,
+          hasError: null,
         });
       },
       error => {
-        setLocation({...location, isLoading: false, hasError: true});
-        console.log(error.code, error.message);
+        setLocation({
+          ...location,
+          isLoading: false,
+          hasError: true,
+        });
+        //console.log(error.code, error.message);
       },
       {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
     );
