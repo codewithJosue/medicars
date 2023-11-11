@@ -8,8 +8,8 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
-  Text,
-  useWindowDimensions,
+  Dimensions,
+  ImageBackground,
 } from 'react-native';
 import {Card} from 'react-native-paper';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -55,6 +55,8 @@ const ImageZoom = props => {
   );
 };
 
+const {height, width} = Dimensions.get('window');
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -70,9 +72,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   imageZoom: {
-    width: 400,
-    height: Platform.OS === 'ios' ? 500 : 400,
-    top: 100,
+    width: width,
+    height: height,
   },
   back: {
     position: 'absolute',
