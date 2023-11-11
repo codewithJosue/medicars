@@ -61,12 +61,19 @@ const DetailShopping = () => {
               <View style={{marginVertical: 5}}>
                 <AppText style={styles.brand}>{cart.brand}</AppText>
                 <AppText style={styles.oil}>
-                  {cart.oil.substring(0, 35)}....
+                  {cart.oil.length > 40
+                    ? `${cart.oil.substring(0, 35)}...`
+                    : cart.oil.substring(0, 35)}
                 </AppText>
                 <AppText style={styles.services}>
-                  {str.toString().substring(0, 40)}.....
+                  {str.length > 40
+                    ? `${str.toString().substring(0, 40)}...`
+                    : str.toString().substring(0, 40)}
                 </AppText>
-                <AppText style={styles.price}>L{total}</AppText>
+                <View style={styles.cardPrice}>
+                  <AppText style={styles.price}>L{total}</AppText>
+                  <AppText style={styles.price}>{str.length} servicios</AppText>
+                </View>
               </View>
               <View style={styles.cardBodyBottom}>
                 <MaterialCommunityIcons
@@ -121,9 +128,8 @@ export default DetailShopping;
 
 const styles = StyleSheet.create({
   brand: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: '800',
-    color: colors.primary,
   },
   cardBodyBottom: {
     borderRadius: 5,
@@ -136,6 +142,7 @@ const styles = StyleSheet.create({
     height: 25,
     width: 25,
   },
+
   cartOf: {
     position: 'absolute',
     top: 0,
@@ -152,14 +159,21 @@ const styles = StyleSheet.create({
   containerCard: {
     flexDirection: 'row',
     borderRadius: 5,
-    margin: 5,
-    padding: 5,
+    margin: 10,
     backgroundColor: colors.white,
     shadowOpacity: 0.14,
     shadowRadius: 4,
     shadowColor: '#000',
     shadowOffset: {height: 0, width: 0},
     elevation: 3,
+  },
+  cardPrice: {
+    flexDirection: 'row',
+    width: 60,
+    justifyContent: 'space-around',
+    position: 'absolute',
+    left: 20,
+    bottom: 15,
   },
   footer: {
     position: 'absolute',
@@ -179,19 +193,16 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   oil: {
-    padding: 2,
     fontSize: 13,
-    fontStyle: 'normal',
+    fontWeight: '600',
   },
   price: {
-    fontWeight: 'bold',
-    fontSize: 15,
-    color: colors.primary,
+    color: colors.grey_medium,
+    fontSize: 11,
+    fontWeight: '200',
   },
   services: {
-    color: colors.grey_medium,
-    fontStyle: 'italic',
-    fontWeight: '600',
+    fontWeight: '400',
     fontSize: 12,
   },
   textCartOf: {
