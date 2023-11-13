@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+import colors from '../config/colors';
 
 const AppMap = ({location, marker, setLocation}) => {
   const onRegionChange = region => {
@@ -10,15 +11,17 @@ const AppMap = ({location, marker, setLocation}) => {
     setLocation({...location, marker: coordinate});
   };
 
-  console.log('ARKER', marker);
-
   return (
     <MapView
       style={styles.map}
       provider={PROVIDER_GOOGLE} // remove if not using Google Maps
       initialRegion={location}
       onPress={evt => onchangeMarker(evt.nativeEvent.coordinate)}>
-      <Marker coordinate={marker} />
+      <Marker
+        draggable
+        coordinate={marker}
+        onDragEnd={evt => onchangeMarker(evt.nativeEvent.coordinate)}
+      />
     </MapView>
   );
 };
