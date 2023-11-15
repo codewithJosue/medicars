@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Dimensions, Platform, StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 import {Products, Services} from './Home/index';

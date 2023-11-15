@@ -1,6 +1,7 @@
 import Home from './Home';
 import Order from './Order';
-import Vehicles from './Vehicles';
+import Vehicles from './cars/Vehicles';
+import AddVehicle from './cars/AddVehicle';
 import LocationShopping from './shopping_cart/LocationShopping';
 import PaymentMethod from './shopping_cart/PaymentMethod';
 import ShoppingCart from './shopping_cart/ShoppingCart';
@@ -16,4 +17,5 @@ export {
   Order,
   ChangePassword,
   PaymentMethod,
+  AddVehicle,
 };

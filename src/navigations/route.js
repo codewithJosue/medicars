@@ -6,6 +6,7 @@ export default Object.freeze({
   CHANGE_PASSWORD: 'change_password',
   EMAIL: 'email',
   HOME: 'home',
+  VEHICLE: 'vehicle',
   ADD_VEHICLE: 'add_vehicle',
   LOCATION_SHOPPING: 'location_shopping',
   CART_DETAIL_SHOPPING: 'cart_detail_shopping',

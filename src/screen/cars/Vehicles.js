@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 import {FAB} from 'react-native-paper';
-import {Screen} from '../components';
+import {Screen} from '../../components';
 import {Dimensions, FlatList, StyleSheet, View} from 'react-native';
-import {detailAddVehicles} from '../data/detailAddVehicle';
-import colors from '../config/colors';
-import CardVehicle from '../components/account/CardVehicle';
+import {detailAddVehicles} from '../../data/detailAddVehicle';
+import colors from '../../config/colors';
+import CardVehicle from '../../components/account/CardVehicle';
+import {useNavigation} from '@react-navigation/native';
+import route from '../../navigations/route';
 
 const Vehicles = props => {
-  const [isExtended, setIsExtended] = useState(true);
   const [vehicles, setVehicles] = useState(detailAddVehicles);
-  const [selected, setSelected] = useState('');
+  const navigation = useNavigation();
 
   return (
     <Screen style={styles.container}>
@@ -31,7 +32,7 @@ const Vehicles = props => {
         customSize={45}
         animated={true}
         style={styles.fab}
-        onPress={() => console.log('Pressed to')}
+        onPress={() => navigation.navigate(route.ADD_VEHICLE)}
       />
     </Screen>
   );

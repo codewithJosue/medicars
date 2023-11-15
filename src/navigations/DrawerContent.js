@@ -49,7 +49,7 @@ const DrawerContent = ({navigation, ...props}) => {
               label="Adicionar Vehículos"
               labelStyle={styles.labelItem}
               icon={() => <AppIcon name="car-2-plus" />}
-              onPress={() => onchangeScreen(route.ADD_VEHICLE)}
+              onPress={() => onchangeScreen(route.VEHICLE)}
             />
             <DrawerItem
               label="Historial Mantenimientos"

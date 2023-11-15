@@ -14,6 +14,7 @@ import {
   Order,
   PaymentMethod,
   ChangePassword,
+  AddVehicle,
 } from '../screen';
 import colors from '../config/colors';
 import {useContext} from 'react';
@@ -82,7 +83,8 @@ const StackNavigationScreen = () => {
       <Stack.Screen name="initial" component={BottomTabs} />
       <Stack.Screen name={route.CHANGE_PASSWORD} component={ChangePassword} />
       <Stack.Screen name={route.ORDER} component={Order} />
-      <Stack.Screen name={route.ADD_VEHICLE} component={Vehicles} />
+      <Stack.Screen name={route.VEHICLE} component={Vehicles} />
+      <Stack.Screen name={route.ADD_VEHICLE} component={AddVehicle} />
       <Stack.Screen
         name={route.LOCATION_SHOPPING}
         component={LocationShopping}
