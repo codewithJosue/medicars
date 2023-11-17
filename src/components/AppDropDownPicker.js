@@ -6,12 +6,13 @@ import AppIcon from './shopping_cart/AppIcon';
 
 const AppDropDownPicker = ({
   data,
-  setValue,
+  // setValue,
   value,
   placeholder = 'Seleccione una opción',
   iconName = null,
   mode = 'MODAL',
   search = true,
+  ...otherProps
 }) => {
   const [open, setOpen] = useState(false);
   const [items, setItems] = useState(data);
@@ -23,8 +24,9 @@ const AppDropDownPicker = ({
         value={value}
         items={items}
         setOpen={setOpen}
-        setValue={setValue}
+        // setValue={setValue}
         setItems={setItems}
+        {...otherProps}
         placeholder={placeholder}
         modalTitle="Elija una opción"
         style={styles.dropDownPicker}

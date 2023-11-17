@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import * as Yup from 'yup';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -15,6 +15,7 @@ import {brandVehicles, engines, vehicles, years} from '../../data';
 import AppDropDownPicker from '../../components/AppDropDownPicker';
 import AppIcon from '../../components/shopping_cart/AppIcon';
 import AuthLoginContext from '../../contexts/authLoginContext';
+import AppFormFieldPicker from '../../components/AppFormFieldPicker';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required('El nombre es requerido').label('Name'),
@@ -23,6 +24,14 @@ const validationSchema = Yup.object().shape({
     .required('La contraseña es obligatoria')
     .min(5, 'Minímo 5 caracteres')
     .label('Password'),
+  brand: Yup.string()
+    .required('la marca del vehículo es requerida')
+    .label('Marca'),
+  vehicle: Yup.string().required('el vehículo es requerida').label('Vehiculo'),
+  year: Yup.string().required('el año es obligatorio').label('Año'),
+  engine: Yup.string()
+    .required('seleccione el motor de su vehículo')
+    .label('Motor'),
 });
 
 const labels = ['Datos Personales', 'Datos del vehiculo'];
@@ -33,25 +42,24 @@ const Register = () => {
   const icons = ['account-question', 'car-back'];
   const [eyePassword, setEyePassword] = useState(true);
   const [currentPosition, setCurrentPosition] = useState(1);
-  const [data, setData] = useState({
+  const [dataForm, setDataForm] = useState({
     name: 'Josue',
     lastName: 'Flores',
     phone: '32102897',
     email: 'josueari20@gmail.com',
     password: 'admin',
     passwordRepeat: '',
+    brand: null,
+    vehicle: null,
+    year: null,
+    engine: null,
   });
 
   const {signUp} = useContext(AuthLoginContext);
 
-  const [brand, setBrand] = useState(null);
-  const [vehicle, setVehicle] = useState(null);
-  const [year, setYear] = useState(null);
-  const [engine, setEngine] = useState(null);
-
   const onChange_text = (e, type) => {
-    setData({
-      ...data,
+    setDataForm({
+      ...dataForm,
       [type]: e.nativeEvent.text,
     });
   };
@@ -89,14 +97,14 @@ const Register = () => {
           keyboardShouldPersistTaps="always"
           contentContainerStyle={{marginTop: 15}}>
           <AppForm
-            initialValues={data}
-            onSubmit={value => onPageChange(value)}
+            initialValues={dataForm}
+            onSubmit={value => {}}
             validationSchema={validationSchema}>
             <AppFormField
               autoCorrect={false}
               icon="account"
               name="name"
-              value={data.name}
+              value={dataForm.name}
               onChange={e => onChange_text(e, 'name')}
               placeholder="Nombres"
             />
@@ -104,7 +112,7 @@ const Register = () => {
               autoCorrect={false}
               icon="account"
               name="lastName"
-              value={data.lastName}
+              value={dataForm.lastName}
               onChange={e => onChange_text(e, 'lastName')}
               placeholder="Apellidos"
             />
@@ -112,7 +120,7 @@ const Register = () => {
               autoCorrect={false}
               icon="phone"
               name="phone"
-              value={data.phone}
+              value={dataForm.phone}
               onChange={e => onChange_text(e, 'phone')}
               placeholder="Teléfono"
             />
@@ -123,7 +131,7 @@ const Register = () => {
               keyboardType="email-address"
               name="email"
               placeholder="Email"
-              value={data.email}
+              value={dataForm.email}
               onChange={e => onChange_text(e, 'email')}
               textContentType="emailAddress"
             />
@@ -134,7 +142,7 @@ const Register = () => {
                 icon="lock"
                 name="password"
                 placeholder="Contraseña"
-                value={data.password}
+                value={dataForm.password}
                 onChange={e => onChange_text(e, 'password')}
                 secureTextEntry={eyePassword}
                 textContentType="password"
@@ -154,7 +162,7 @@ const Register = () => {
                 placeholder="Repetir contraseña"
                 secureTextEntry={eyePassword}
                 textContentType="password"
-                value={data.passwordRepeat}
+                value={dataForm.passwordRepeat}
                 onChange={e => onChange_text(e, 'passwordRepeat')}
               />
               <Icon
@@ -166,49 +174,55 @@ const Register = () => {
               />
             </View>
             <View style={styles.btnNext}>
-              <SubmitButton title="siguiente" />
+              <AppButton title="siguiente" onPress={() => onPageChange()} />
             </View>
           </AppForm>
         </ScrollView>
       ) : (
         <AppForm
-          initialValues={data}
+          initialValues={dataForm}
           onSubmit={value => register(value)}
           validationSchema={validationSchema}>
           <View style={{marginTop: 15}}>
-            <AppDropDownPicker
+            <AppFormFieldPicker
+              dataForm={dataForm}
+              setDataForm={setDataForm}
               data={brandVehicles}
-              setValue={setBrand}
-              value={brand}
+              value={dataForm.brand}
               iconName="car"
               placeholder="Seleccione la marca de su vehículo"
+              name="brand"
             />
 
-            <AppDropDownPicker
+            <AppFormFieldPicker
+              dataForm={dataForm}
+              setDataForm={setDataForm}
               data={vehicles}
-              setValue={setVehicle}
-              value={vehicle}
+              value={dataForm.vehicle}
               iconName="car"
               placeholder="Seleccione el tipo vehículo que posee"
+              name="vehicle"
             />
 
-            <AppDropDownPicker
+            <AppFormFieldPicker
+              dataForm={dataForm}
+              setDataForm={setDataForm}
               data={years}
-              setValue={setYear}
-              value={year}
+              value={dataForm.year}
               iconName="calendar"
-              placeholder="Seleccione un año"
+              placeholder="Seleccione el año de su vehículo"
+              name="year"
             />
 
-            <AppDropDownPicker
+            <AppFormFieldPicker
+              dataForm={dataForm}
+              setDataForm={setDataForm}
               data={engines}
-              setValue={setEngine}
-              value={engine}
+              value={dataForm.engine}
               iconName="engine"
-              placeholder="Seleccione el motor de su vehículo"
+              placeholder="Seleccione el motor"
+              name="engine"
             />
-
-            {/*<TextInput placeholder="Observaciones" multiline={true} />*/}
           </View>
           <View style={styles.buttons}>
             <AppButton

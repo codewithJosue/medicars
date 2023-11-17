@@ -12,69 +12,76 @@ const validationSchema = Yup.object().shape({
   brand: Yup.string()
     .required('la marca del vehículo es requerida')
     .label('Marca'),
+  vehicle: Yup.string().required('el vehículo es requerida').label('Vehiculo'),
+  year: Yup.string().required('el año es obligatorio').label('Año'),
+  engine: Yup.string()
+    .required('seleccione el motor de su vehículo')
+    .label('Motor'),
 });
 
 const AddVehicle = () => {
-  const [brand, setBrand] = useState(null);
-  const [vehicle, setVehicle] = useState(null);
-  const [year, setYear] = useState(null);
-  const [engine, setEngine] = useState(null);
+  const [dataForm, setDataForm] = useState({
+    brand: null,
+    vehicle: null,
+    year: null,
+    engine: null,
+  });
+
+  const addVehicle = value => {
+    console.log('submit', value);
+  };
 
   return (
     <Screen style={styles.screen}>
       <AppText style={styles.title}>Ingrese la información solicitada</AppText>
       <AppForm
-        initialValues={{brand: ''}}
-        onSubmit={value => register(value)}
+        initialValues={dataForm}
+        onSubmit={value => addVehicle(value)}
         validationSchema={validationSchema}>
         <View style={{marginTop: 15}}>
-          <AppDropDownPicker
+          <AppFormFieldPicker
+            dataForm={dataForm}
+            setDataForm={setDataForm}
             data={brandVehicles}
-            setValue={setBrand}
-            value={brand}
+            value={dataForm.brand}
             iconName="car"
             placeholder="Seleccione la marca de su vehículo"
+            name="brand"
           />
 
-          {/*<AppFormFieldPicker*/}
-          {/*  data={data}*/}
-          {/*  items={brandVehicles}*/}
-          {/*  value={data.brand}*/}
-          {/*  iconName="car"*/}
-          {/*  placeholder="Seleccione la marca de su vehículo"*/}
-          {/*  name="brand"*/}
-          {/*/>*/}
-
-          <AppDropDownPicker
+          <AppFormFieldPicker
+            dataForm={dataForm}
+            setDataForm={setDataForm}
             data={vehicles}
-            setValue={setVehicle}
-            value={vehicle}
+            value={dataForm.vehicle}
             iconName="car"
             placeholder="Seleccione el tipo vehículo que posee"
+            name="vehicle"
           />
 
-          <AppDropDownPicker
+          <AppFormFieldPicker
+            dataForm={dataForm}
+            setDataForm={setDataForm}
             data={years}
-            setValue={setYear}
-            value={year}
+            value={dataForm.year}
             iconName="calendar"
-            placeholder="Seleccione un año"
+            placeholder="Seleccione el año de su vehículo"
+            name="year"
           />
 
-          <AppDropDownPicker
+          <AppFormFieldPicker
+            dataForm={dataForm}
+            setDataForm={setDataForm}
             data={engines}
-            setValue={setEngine}
-            value={engine}
+            value={dataForm.engine}
             iconName="engine"
-            placeholder="Seleccione el motor de su vehículo"
+            placeholder="Seleccione el motor"
+            name="engine"
           />
         </View>
         <View style={styles.button}>
           <View style={{margin: 10}} />
-          <SubmitButton
-            title="Guardar"
-            onpress={() => console.log('guardar')}
-          />
+          <SubmitButton title="Guardar" />
         </View>
       </AppForm>
     </Screen>
